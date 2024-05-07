@@ -1,5 +1,5 @@
 {
-  "name": "blog-frontend",
+  "name": "truco-frontend",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@app/eslint-config": "*",
+    "@app/typescript-config": "*",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
