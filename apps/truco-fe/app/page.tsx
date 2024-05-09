@@ -3,7 +3,6 @@ import { Card } from "@app/components/card";
 import { Code } from "@app/components/code";
 import styles from "./page.module.css";
 import { Button } from "@app/components/button";
-import React = require("react");
 
 function Gradient({
   conic,
