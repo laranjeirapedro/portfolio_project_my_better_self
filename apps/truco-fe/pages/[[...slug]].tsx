@@ -1,11 +1,23 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext } from "next";
 import React from "react";
+
+import { createClient } from "@sanity/client";
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  useCdn: true, // set to `false` to bypass the edge cache
+  apiVersion: "2022-03-07", // use current date (YYYY-MM-DD) to target the latest API version
+  token: process.env.NEXT_PUBLIC_SANITY_ACCESS_TOKEN,
+});
 
 type PageProps = {
   resolvedUrl: string;
+  data: any;
 };
 
-const Page = ({ resolvedUrl }: PageProps) => {
+const Page = ({ resolvedUrl, data }: PageProps) => {
+  console.log(data);
+
   return (
     <div>
       <h1>{resolvedUrl ?? "Page"}</h1>
@@ -13,28 +25,27 @@ const Page = ({ resolvedUrl }: PageProps) => {
   );
 };
 
+export async function getPages(slug: string) {
+  const page =
+    await client.fetch(`*[_type == "page" && slug.current=="${slug}"]{
+    title,
+    slug
+  }`);
+  return page?.[0];
+}
+
 // This gets called on every request
 export async function getServerSideProps({
-  res,
-  params,
   resolvedUrl,
 }: GetServerSidePropsContext) {
-  // Fetch data from external API
-  // const res = await fetch(`https://.../data`)
-  // const data = await res.json()
-  console.log("Garbz", { params, resolvedUrl });
+  const data = (await getPages(resolvedUrl)) ?? null;
 
-  //   if (!data) {
-  //     return {
-  //       redirect: {
-  //         destination: "/",
-  //         permanent: false,
-  //       },
-  //     };
-  //   }
+  if (!data) {
+    return { notFound: true };
+  }
 
   // Pass data to the page via props
-  return { props: { resolvedUrl, data: { test: 1 } } };
+  return { props: { resolvedUrl, data } };
 }
 
 export default Page;

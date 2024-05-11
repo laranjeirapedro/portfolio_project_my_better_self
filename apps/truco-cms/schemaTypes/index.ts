@@ -1,3 +1,4 @@
+// Examples
 import blockContent from './blockContent'
 import crewMember from './crewMember'
 import castMember from './castMember'
@@ -7,13 +8,19 @@ import screening from './screening'
 import plotSummary from './plotSummary'
 import plotSummaries from './plotSummaries'
 
+// App
+import page from './pages'
+
 export const schemaTypes = [
   // Document types
+  page,
+  // Examples
   movie,
   person,
   screening,
 
   // Other types
+  // Examples
   blockContent,
   plotSummary,
   plotSummaries,
