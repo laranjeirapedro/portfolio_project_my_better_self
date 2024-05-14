@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "truco:fe": "turbo dev --filter=truco-fe",
     "truco:cms": "turbo dev --filter=truco-cms",
-    "truco:cms:deploy": "turbo deploy --filter=truco-cms",
+    "truco:cms:deploy": "turbo run deploy --filter=truco-cms",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky"
