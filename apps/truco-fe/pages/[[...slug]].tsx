@@ -2,6 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import React from "react";
 
 import { createClient } from "@sanity/client";
+import Head from "next/head";
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
@@ -11,16 +12,21 @@ export const client = createClient({
 });
 
 type PageProps = {
-  resolvedUrl: string;
-  data: any;
+  data: {
+    title: string;
+  };
 };
 
-const Page = ({ resolvedUrl, data }: PageProps) => {
-  console.log(data);
-
+const Page = ({ data }: PageProps) => {
   return (
     <div>
-      <h1>{resolvedUrl ?? "Page"}</h1>
+      <Head>
+        <title>{`Global Truco | ${data.title}`}</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <div>
+        <h1>{data.title ?? "Page"}</h1>
+      </div>
     </div>
   );
 };
@@ -30,8 +36,8 @@ export async function getPages(slug: string) {
     await client.fetch(`*[_type == "page" && slug.current=="${slug}"]{
     title,
     slug
-  }`);
-  return page?.[0];
+  }[0]`);
+  return page;
 }
 
 // This gets called on every request

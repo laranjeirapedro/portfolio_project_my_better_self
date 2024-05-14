@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {MdWeb as icon} from 'react-icons/md'
 
-export default defineType({
+export const page = defineType({
   name: 'page',
   title: 'Page',
   type: 'document',

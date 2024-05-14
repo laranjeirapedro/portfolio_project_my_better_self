@@ -6,12 +6,15 @@
     "dev": "turbo dev",
     "truco:fe": "turbo dev --filter=truco-fe",
     "truco:cms": "turbo dev --filter=truco-cms",
+    "truco:cms:deploy": "turbo deploy --filter=truco-cms",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@app/eslint-config": "*",
     "@app/typescript-config": "*",
+    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
