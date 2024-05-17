@@ -11,8 +11,8 @@ export const link = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
+      name: 'path',
+      title: 'Path',
       type: 'slug',
       options: {
         source: 'title',

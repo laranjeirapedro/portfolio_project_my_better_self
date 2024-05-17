@@ -21,5 +21,16 @@ export const page = defineType({
         maxLength: 100,
       },
     }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [
+        {
+          // Link won't be able to be rendered direclty into contents, just using as an example for now.
+          type: 'link',
+        },
+      ],
+    }),
   ],
 })

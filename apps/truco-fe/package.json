@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@app/components": "*",
+    "@app/hooks": "*",
     "@next/env": "^14.2.3",
     "@sanity/client": "^6.18.0",
     "next": "^14.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@app/eslint-config": "*",
     "@app/typescript-config": "*",
-    "@app/components": "*",
-    "@app/hooks": "*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.11.24",

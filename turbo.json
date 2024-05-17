@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
@@ -9,6 +9,7 @@
         "NEXT_PUBLIC_SANITY_DATASET",
         "NEXT_PUBLIC_SANITY_ACCESS_TOKEN"
       ],
+      "dotEnv": [".env.local", ".env"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
@@ -16,7 +17,8 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env.local", ".env"]
     },
     "deploy": {
       "cache": false

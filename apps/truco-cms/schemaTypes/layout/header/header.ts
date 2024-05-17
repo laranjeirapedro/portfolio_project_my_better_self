@@ -16,8 +16,24 @@ export const header = defineType({
       type: 'image',
     }),
     defineField({
-      name: 'links',
-      title: 'Links',
+      name: 'commonLinks',
+      title: 'Common Links',
+      description: 'Links shown to everybody.',
+      type: 'array',
+      of: [{type: 'link'}],
+    }),
+    defineField({
+      name: 'authenticatedLinks',
+      title: 'Authenticated Links',
+      description: 'Links shown to logged users.',
+
+      type: 'array',
+      of: [{type: 'link'}],
+    }),
+    defineField({
+      name: 'unauthenticatedLinks',
+      title: 'Unnauthenticated Links',
+      description: 'Links shown to unlogged users.',
       type: 'array',
       of: [{type: 'link'}],
     }),

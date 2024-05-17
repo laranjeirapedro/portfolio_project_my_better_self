@@ -2,11 +2,11 @@
   "name": "truco-frontend",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "truco:fe": "turbo dev --filter=truco-fe",
-    "truco:cms": "turbo dev --filter=truco-cms",
-    "truco:cms:deploy": "turbo run deploy --filter=truco-cms",
+    "build": "dotenv -- turbo build",
+    "dev": "dotenv -- turbo dev",
+    "truco:fe": "dotenv -- turbo dev --filter=truco-fe",
+    "truco:cms": "dotenv -- turbo dev --filter=truco-cms",
+    "truco:cms:deploy": "dotenv -- turbo run deploy --filter=truco-cms",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky"
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@app/eslint-config": "*",
     "@app/typescript-config": "*",
+    "dotenv-cli": "latest",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "turbo": "latest"
