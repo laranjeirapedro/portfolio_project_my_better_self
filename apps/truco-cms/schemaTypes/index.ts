@@ -11,12 +11,13 @@
 // App
 import {page} from './sections'
 import {link} from './components'
-import {header, color} from './layout'
+import {header, color, font} from './layout'
 
 export const schemaTypes = [
   // Layout
   header,
   color,
+  font,
   // Sections
   page,
   // Components

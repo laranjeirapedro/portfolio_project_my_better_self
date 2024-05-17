@@ -2,6 +2,7 @@ import {StructureBuilder, UnserializedListItemChild} from 'sanity/structure'
 import {FaHardHat} from 'react-icons/fa'
 import {BsGearFill} from 'react-icons/bs'
 import {IoIosColorPalette} from 'react-icons/io'
+import { FaFont } from "react-icons/fa"
 
 export const structure = (S: StructureBuilder) =>
   S.list()
@@ -21,10 +22,14 @@ export const structure = (S: StructureBuilder) =>
                 .title('Color')
                 .child(S.document().title('Color').schemaType('colorSettings').documentId('colorSettings'))
                 .icon(IoIosColorPalette),
+              S.listItem()
+                .title('Font')
+                .child(S.document().title('Font').schemaType('fontSettings').documentId('fontSettings'))
+                .icon(FaFont),
             ]),
         )
         .icon(BsGearFill),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['header', 'colorSettings'].includes(listItem.getId() ?? ''),
+        (listItem) => !['header', 'colorSettings', 'fontSettings'].includes(listItem.getId() ?? ''),
       ),
     ])
