@@ -25,10 +25,14 @@ export const structure = (S: StructureBuilder) =>
                 .title('Font')
                 .child(S.document().title('Font').schemaType('font').documentId('font'))
                 .icon(FaFont),
+              S.listItem()
+                .title('Footer')
+                .child(S.document().title('Footer').schemaType('footer').documentId('footer'))
+                .icon(FaHardHat),
             ]),
         )
         .icon(BsGearFill),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['header', 'colorSettings', 'font',].includes(listItem.getId() ?? ''),
+        (listItem) => !['header', 'colorSettings', 'font', 'footer'].includes(listItem.getId() ?? ''),
       ),
     ])

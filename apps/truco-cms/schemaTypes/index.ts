@@ -11,7 +11,7 @@
 // App
 import {page} from './sections'
 import {link} from './components'
-import {header, color, font} from './layout'
+import {header, color, font, footer} from './layout'
 import { fontObject } from './objects/fontObject'
 
 export const schemaTypes = [
@@ -19,13 +19,13 @@ export const schemaTypes = [
   header,
   color,
   font,
+  footer,
   // Objects
   fontObject,
   // Sections
   page,
   // Components
   link,
-
   // Examples
   // movie,
   // person,
