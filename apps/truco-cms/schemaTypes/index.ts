@@ -12,7 +12,7 @@
 import {page} from './sections'
 import {link} from './components'
 import {header, color, font, footer} from './layout'
-import { fontObject } from './objects/fontObject'
+import {fontObject} from './objects/font'
 
 export const schemaTypes = [
   // Layout

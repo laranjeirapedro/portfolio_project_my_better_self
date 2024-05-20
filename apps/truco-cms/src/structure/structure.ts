@@ -19,11 +19,21 @@ export const structure = (S: StructureBuilder) =>
                 .icon(FaHardHat),
               S.listItem()
                 .title('Color')
-                .child(S.document().title('Color').schemaType('colorSettings').documentId('colorSettings'))
+                .child(
+                  S.document()
+                    .title('Color')
+                    .schemaType('colorSettings')
+                    .documentId('colorSettings'),
+                )
                 .icon(IoIosColorPalette),
               S.listItem()
                 .title('Font')
-                .child(S.document().title('Font').schemaType('font').documentId('font'))
+                .child(
+                  S.document()
+                    .title('Font Settings')
+                    .schemaType('fontSettings')
+                    .documentId('fontSettings'),
+                )
                 .icon(FaFont),
               S.listItem()
                 .title('Footer')
@@ -33,6 +43,7 @@ export const structure = (S: StructureBuilder) =>
         )
         .icon(BsGearFill),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['header', 'colorSettings', 'font', 'footer'].includes(listItem.getId() ?? ''),
+        (listItem) =>
+          !['header', 'colorSettings', 'font', 'footer'].includes(listItem.getId() ?? ''),
       ),
     ])
