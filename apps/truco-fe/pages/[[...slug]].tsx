@@ -2,8 +2,8 @@ import { GetServerSidePropsContext } from "next";
 import React from "react";
 
 import Head from "next/head";
+
 import { useGetPages } from "@app/hooks";
-import { Link } from "@app/components";
 
 type PageProps = {
   data: {
@@ -23,9 +23,25 @@ const Page = ({ data }: PageProps) => {
         />
       </Head>
       <div>
-        {/* Remove Link */}
-        <Link linkText="About" path="/about" />
-        <h1>{data.title ?? "Page"}</h1>
+        {/* Placeholder */}
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "auto",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
+            minHeight: "calc(100vh - 101px)",
+          }}
+        >
+          <div
+            style={{
+              margin: "auto",
+            }}
+          >
+            <h1>{data.title ?? "Page"}</h1>
+          </div>
+        </div>
       </div>
     </div>
   );

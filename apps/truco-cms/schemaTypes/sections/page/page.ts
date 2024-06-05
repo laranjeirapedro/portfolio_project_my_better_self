@@ -3,7 +3,7 @@ import {MdWeb as icon} from 'react-icons/md'
 
 export const page = defineType({
   name: 'page',
-  title: 'Page',
+  title: 'Pages',
   type: 'document',
   icon,
   fields: [

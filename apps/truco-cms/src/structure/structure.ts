@@ -44,6 +44,6 @@ export const structure = (S: StructureBuilder) =>
         .icon(BsGearFill),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['header', 'colorSettings', 'font', 'footer'].includes(listItem.getId() ?? ''),
+          !['header', 'colorSettings', 'fontSettings', 'footer'].includes(listItem.getId() ?? ''),
       ),
     ])

@@ -7,13 +7,13 @@ export type CaptionProps = {
 };
 
 export const Caption = ({ text }: CaptionProps) => {
-  const { font } = useSettingsContext() ?? {};
+  const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledCaption
-      color={font?.["caption"]?.color.hex}
-      fontFamily={font?.["caption"]?.fontFamily}
-      fontSize={font?.["caption"]?.fontSize}
+      color={fonts?.["caption"]?.color.hex}
+      fontFamily={fonts?.["caption"]?.fontFamily}
+      fontSize={fonts?.["caption"]?.fontSize}
     >
       {text}
     </StyledCaption>

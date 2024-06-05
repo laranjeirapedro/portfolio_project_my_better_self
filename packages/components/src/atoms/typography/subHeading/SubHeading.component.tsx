@@ -7,13 +7,13 @@ export type SubHeadingProps = {
 };
 
 export const SubHeading = ({ text }: SubHeadingProps) => {
-  const { font } = useSettingsContext() ?? {};
+  const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledSubHeading
-      color={font?.["subHeading"]?.color.hex}
-      fontFamily={font?.["subHeading"]?.fontFamily}
-      fontSize={font?.["subHeading"]?.fontSize}
+      color={fonts?.["subHeading"]?.color.hex}
+      fontFamily={fonts?.["subHeading"]?.fontFamily}
+      fontSize={fonts?.["subHeading"]?.fontSize}
     >
       {text}
     </StyledSubHeading>

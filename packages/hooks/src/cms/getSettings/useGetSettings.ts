@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSanityClientContext } from "../../context";
+import { queryColors, queryHeader, queryFonts } from "./queries";
 
 export const useGetSettings = async () => {
   const { client } = useSanityClientContext();
@@ -7,20 +8,15 @@ export const useGetSettings = async () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const font = await client?.fetch(`*[_type == "fontSettings"]{
-        fontHeading,
-        fontSubHeading,
-        paragraph,
-        caption,
-        link,
-        }[0]`);
+      const { fonts, colors, header } =
+        (await client?.fetch(`{
+      ${queryHeader},
+      ${queryFonts},
+      ${queryColors}
+      }
+      `)) ?? {};
 
-      const color = await client?.fetch(`*[_type == "colorSettings"]{
-        primaryColor,
-        secondaryColor,
-        }[0]`);
-
-      setData({ font, color });
+      setData({ header, settings: { fonts, colors } });
     };
 
     fetchData();

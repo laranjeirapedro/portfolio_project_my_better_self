@@ -2,11 +2,11 @@ import { createContext, useContext } from "react";
 
 type SettingsData =
   | {
-      color: {
+      colors: {
         primaryColor: { hex: string };
         secondaryColor: { hex: string };
       };
-      font: {
+      fonts: {
         [key: string]: {
           fontSize: number;
           // TODO: Get font types from packages/types

@@ -7,13 +7,13 @@ export type HeadingProps = {
 };
 
 export const Heading = ({ text }: HeadingProps) => {
-  const { font } = useSettingsContext() ?? {};
+  const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledHeading
-      color={font?.["heading"]?.color.hex}
-      fontFamily={font?.["heading"]?.fontFamily}
-      fontSize={font?.["heading"]?.fontSize}
+      color={fonts?.["heading"]?.color.hex}
+      fontFamily={fonts?.["heading"]?.fontFamily}
+      fontSize={fonts?.["heading"]?.fontSize}
     >
       {text}
     </StyledHeading>

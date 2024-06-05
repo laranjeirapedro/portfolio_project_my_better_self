@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 // TODO: fix the issue where we cant use Link from next/link
 export const StyledLink = styled.a<{
@@ -6,9 +6,9 @@ export const StyledLink = styled.a<{
   fontFamily?: string;
   fontSize?: number;
 }>(({ color, fontFamily, fontSize }) => ({
-  // TODO: use fontSize from packages/styles (TBD)
+  // TODO: use fallback fontSize from packages/styles (TBD)
   fontSize: fontSize ?? 16,
-  // TODO: use COLORS.BLACK from packages/styles (TBD)
+  // TODO: use fallback COLORS.BLACK from packages/styles (TBD)
   color: color ?? "#000000",
   ...(fontFamily && { fontFamily }),
 }));

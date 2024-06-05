@@ -4,18 +4,21 @@ import { useSettingsContext } from "@app/hooks";
 
 export type LinkProps = {
   linkText: string;
-  path: string;
+  path: { current: string };
+  styleOverride?: React.CSSProperties;
 };
 
-export const Link = ({ linkText, path }: LinkProps) => {
-  const { font } = useSettingsContext() ?? {};
+export const Link = (data: LinkProps) => {
+  const { fonts } = useSettingsContext() ?? {};
+  const { path, linkText, styleOverride } = data;
 
   return (
     <StyledLink
-      href={path}
-      color={font?.["link"]?.color.hex}
-      fontFamily={font?.["link"]?.fontFamily}
-      fontSize={font?.["link"]?.fontSize}
+      href={path.current}
+      color={fonts?.["link"]?.color.hex}
+      fontFamily={fonts?.["link"]?.fontFamily}
+      fontSize={fonts?.["link"]?.fontSize}
+      style={styleOverride}
     >
       {linkText}
     </StyledLink>

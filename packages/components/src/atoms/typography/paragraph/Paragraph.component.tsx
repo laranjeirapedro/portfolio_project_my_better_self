@@ -7,13 +7,13 @@ export type ParagraphProps = {
 };
 
 export const Paragraph = ({ text }: ParagraphProps) => {
-  const { font } = useSettingsContext() ?? {};
+  const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledParagraph
-      color={font?.["paragraph"]?.color.hex}
-      fontFamily={font?.["paragraph"]?.fontFamily}
-      fontSize={font?.["paragraph"]?.fontSize}
+      color={fonts?.["paragraph"]?.color.hex}
+      fontFamily={fonts?.["paragraph"]?.fontFamily}
+      fontSize={fonts?.["paragraph"]?.fontSize}
     >
       {text}
     </StyledParagraph>
