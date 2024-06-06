@@ -27,7 +27,18 @@ export const page = defineType({
       type: 'array',
       of: [
         {
-          // Link won't be able to be rendered direclty into contents, just using as an example for now.
+          type: 'heading',
+        },
+        {
+          type: 'subHeading',
+        },
+        {
+          type: 'caption',
+        },
+        {
+          type: 'paragraph',
+        },
+        {
           type: 'link',
         },
       ],

@@ -10,7 +10,7 @@
 
 // App
 import {page} from './sections'
-import {link} from './components'
+import {link, heading, subHeading, caption, paragraph} from './components'
 import {header, color, font, footer} from './layout'
 import {fontObject} from './objects/font'
 
@@ -26,6 +26,10 @@ export const schemaTypes = [
   page,
   // Components
   link,
+  heading,
+  subHeading,
+  caption,
+  paragraph,
   // Examples
   // movie,
   // person,
