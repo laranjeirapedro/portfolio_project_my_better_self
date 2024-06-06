@@ -6,7 +6,6 @@ import {colorInput} from '@sanity/color-input'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './src/structure'
 
-
 export default defineConfig({
   name: 'default',
   title: 'truco-app',

@@ -19,7 +19,7 @@ export const useBreakpoints = () => {
   const isDesktop = useMemo(() => width > breakpoints.tablet, [width]);
   const isTablet = useMemo(
     () => width > breakpoints.mobile && width <= breakpoints.tablet,
-    [width]
+    [width],
   );
   const isMobile = useMemo(() => width <= breakpoints.mobile, [width]);
 

@@ -12,7 +12,7 @@ type PageProps = {
     slug: {
       current: string;
       _type: string;
-    },
+    };
     content: Array<any>;
   };
 };
@@ -38,7 +38,7 @@ const Page = ({ data }: PageProps) => {
             minHeight: "calc(100vh - 101px)",
           }}
         >
-            <ComponentLibrary content={data.content}/>
+          <ComponentLibrary content={data.content} />
         </div>
       </div>
     </div>
