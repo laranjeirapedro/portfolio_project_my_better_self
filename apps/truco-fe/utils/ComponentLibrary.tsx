@@ -31,9 +31,5 @@ const getComponentByType = (component: any): JSX.Element | null => {
 };
 
 export const ComponentLibrary = ({ content }: ComponentLibraryProps) => {
-  return (
-    <React.Fragment>
-      {content?.map((component) => getComponentByType(component))}
-    </React.Fragment>
-  );
+  return content?.map((component) => getComponentByType(component));
 };

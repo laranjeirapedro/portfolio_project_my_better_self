@@ -34,7 +34,8 @@ const Page = ({ data }: PageProps) => {
             maxWidth: 1280,
             margin: "auto",
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
             minHeight: "calc(100vh - 101px)",
           }}
         >
