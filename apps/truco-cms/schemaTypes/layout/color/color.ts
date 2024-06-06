@@ -11,9 +11,9 @@ export const color = defineType({
       type: 'color',
     }),
     defineField({
-        name: 'secondaryColor',
-        title: 'Secondary Color',
-        type: 'color',
-      }),
+      name: 'secondaryColor',
+      title: 'Secondary Color',
+      type: 'color',
+    }),
   ],
 })

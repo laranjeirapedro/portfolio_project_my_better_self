@@ -4,10 +4,16 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetPages } from "@app/hooks";
+import { ComponentLibrary } from "../utils";
 
 type PageProps = {
   data: {
     title: string;
+    slug: {
+      current: string;
+      _type: string;
+    };
+    content: Array<any>;
   };
 };
 
@@ -23,24 +29,17 @@ const Page = ({ data }: PageProps) => {
         />
       </Head>
       <div>
-        {/* Placeholder */}
         <div
           style={{
             maxWidth: 1280,
             margin: "auto",
             display: "flex",
-            alignContent: "center",
-            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
             minHeight: "calc(100vh - 101px)",
           }}
         >
-          <div
-            style={{
-              margin: "auto",
-            }}
-          >
-            <h1>{data.title ?? "Page"}</h1>
-          </div>
+          <ComponentLibrary content={data.content} />
         </div>
       </div>
     </div>
