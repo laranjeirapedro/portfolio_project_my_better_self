@@ -50,7 +50,20 @@ const Page = ({ data }: PageProps) => {
 // This gets called on every request
 export async function getServerSideProps({
   resolvedUrl,
+  res,
 }: GetServerSidePropsContext) {
+  // This value is considered fresh for ten seconds (s-maxage=300).
+  // If a request is repeated within the next 5 minutes, the previously
+  // cached value will still be fresh. If the request is repeated before 20 minutes,
+  // the cached value will be stale but still render (stale-while-revalidate=1200).
+  //
+  // In the background, a revalidation request will be made to populate the cache
+  // with a fresh value. If you refresh the page, you will see the new value.
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=300, stale-while-revalidate=1200"
+  );
+
   const data = (await useGetPages(resolvedUrl)) ?? null;
 
   if (!data) {
