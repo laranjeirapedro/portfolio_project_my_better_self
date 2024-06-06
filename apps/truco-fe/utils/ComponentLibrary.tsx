@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, Caption, Heading, Paragraph, SubHeading } from "@app/components";
 
 type ComponentLibraryProps = {
@@ -12,7 +13,7 @@ export enum ComponentTypes {
   PARAGRAPH = "paragraph",
 }
 
-const getComponentByType = (component: any): JSX.Element => {
+const getComponentByType = (component: any): JSX.Element | null => {
   switch (component._type) {
     case ComponentTypes.LINK:
       return <Link {...component} />;
@@ -23,13 +24,16 @@ const getComponentByType = (component: any): JSX.Element => {
     case ComponentTypes.SUB_HEADING:
       return <SubHeading {...component} />;
     case ComponentTypes.PARAGRAPH:
-    default:
       return <Paragraph {...component} />;
+    default:
+      return null;
   }
 };
 
 export const ComponentLibrary = ({ content }: ComponentLibraryProps) => {
   return (
-    <div>{content?.map((component) => getComponentByType(component))}</div>
+    <React.Fragment>
+      {content?.map((component) => getComponentByType(component))}
+    </React.Fragment>
   );
 };
