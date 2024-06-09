@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { breakpoints, spacing } from "@app/styles";
+import { breakpoints, colors, spacing } from "@app/styles";
 
 export const HeaderContainer = styled.div`
   padding: 0px 16px;
   // TODO: use styles.colors instead when available
-  box-shadow: 0px 0px 4px #2a2a2a;
+  box-shadow: 0px 0px 4px ${colors.darkGrey[900]};
   @media screen and (max-width: ${breakpoints.tablet}px) {
     display: none;
   }

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 // TODO: fix the issue where we cant use Link from next/link
-export const StyledLink = styled.a<{
+export const StyledLink = styled(Link)<{
   color?: string;
   fontFamily?: string;
   fontSize?: number;

@@ -12,6 +12,8 @@ export const Link = (data: LinkProps) => {
   const { fonts } = useSettingsContext() ?? {};
   const { path, linkText, styleOverride } = data;
 
+  console.log("FONTS", { fonts });
+
   return (
     <StyledLink
       href={path.current}

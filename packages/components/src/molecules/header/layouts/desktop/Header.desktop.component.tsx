@@ -37,7 +37,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
       ...commonLinks,
       ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
     ],
-    [],
+    []
   );
 
   const onLogoClick = useCallback(() => {
@@ -57,8 +57,8 @@ export const HeaderDesktop = (data: HeaderProps) => {
         </LogoContainer>
         <LinksContainer>
           {selectedLinks.length > 0 &&
-            selectedLinks.map((link) => (
-              <LinkWrapper key={link.path.current}>
+            selectedLinks.map((link, index) => (
+              <LinkWrapper key={`${link.path.current}-${index}`}>
                 <Link {...link} />
               </LinkWrapper>
             ))}
