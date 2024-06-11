@@ -39,6 +39,7 @@ export const LogoContainer = styled.div`
   max-width: 100px;
   height: calc(100% - ${spacing.s}px);
   position: relative;
+  cursor: pointer;
 `;
 
 export const IconContainer = styled.div`
@@ -59,11 +60,10 @@ export const MenuContainer = styled.div<{
   position: fixed;
   top: 0;
   background-color: ${colors.darkGrey[400]};
-  /* border: 1px solid black; */
   box-shadow: 0px 0px 4px ${colors.darkGrey[900]};
   transition: 0.3s ease-in-out;
   width: ${({ menuWidth }) => menuWidth}px;
   height: 100vh;
-  right: ${({ isActive, menuWidth }) => (isActive ? -menuWidth - 2 : 0)}px;
+  right: ${({ isActive, menuWidth }) => (isActive ? 0 : -menuWidth - 2)}px;
   padding: ${spacing.s}px ${spacing.none}px ${spacing.none}px;
 `;

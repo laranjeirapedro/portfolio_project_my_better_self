@@ -1,32 +1,53 @@
-import { defineField, defineType } from "sanity";
-import { paragraph } from '../paragraph';
-import { heading } from '../heading';
-import { button } from '../button';
+import {defineField, defineType} from 'sanity'
 
 export const card = defineType({
-    name: "card",
-    title: "Card",
-    type: "document",
-    fields: [
-        defineField({
-            name: "title",
-            title: "Title",
-            type: "string",
-        }),
-        defineField({
-            name: "content",
-            title: "Content",
-            type: "array",
-            of: [
-              { type: 'reference', to: [{ type: 'paragraph' }], name: 'paragraphReference' },
-              { type: 'reference', to: [{ type: 'heading' }], name: 'headingReference' },
-              { type: 'reference', to: [{ type: 'button' }], name: 'buttonReference' },
+  name: 'card',
+  title: 'Card',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Paragraph', value: 'normal'},
+            {title: 'Heading', value: 'h1'},
+            {title: 'Subheading', value: 'h2'},
+          ],
+          marks: {
+            // Only allow these decorators
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Underline', value: 'underline'},
             ],
-        }),
-        defineField({
-            name: "image",
-            title: "Image",
-            type: "image",
-        }),
-    ],
+            // Support annotating text with a reference to an author
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'link',
+                fields: [
+                  {
+                    name: 'url',
+                    type: 'url',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {type: 'images'},
+        {type: 'button'},
+        {type: 'caption'},
+      ],
+    }),
+  ],
 })

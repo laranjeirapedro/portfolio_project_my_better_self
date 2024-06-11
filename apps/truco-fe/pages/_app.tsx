@@ -18,7 +18,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       const getSettings = async () => {
         Promise.resolve(settingsData).then((data) => {
           if (data) {
-            console.log(data);
             setSiteData({ ...data });
           }
         });
