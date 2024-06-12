@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import {defineField, defineType} from 'sanity'
 
 export const button = defineType({
   name: 'button',
@@ -13,7 +13,22 @@ export const button = defineType({
     defineField({
       name: 'url',
       title: 'URL',
-      type: 'url',
+      type: 'slug',
+    }),
+    defineField({
+      name: 'buttonType',
+      title: 'Button Type',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Primary', value: 'PRIMARY'},
+          {title: 'Secondary', value: 'SECONDARY'},
+          {title: 'Tertiary', value: 'TERTIARY'},
+        ],
+      },
     }),
   ],
-});
+  initialValue: {
+    buttonType: 'PRIMARY',
+  },
+})

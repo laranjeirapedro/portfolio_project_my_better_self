@@ -4,7 +4,7 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetPages } from "@app/hooks";
-import { ComponentLibrary } from "../utils";
+import { Block } from "@app/components";
 
 type PageProps = {
   data: {
@@ -35,11 +35,10 @@ const Page = ({ data }: PageProps) => {
             margin: "auto",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
             minHeight: "calc(100vh - 101px)",
           }}
         >
-          <ComponentLibrary content={data.content} />
+          <Block content={data.content} />
         </div>
       </div>
     </div>
