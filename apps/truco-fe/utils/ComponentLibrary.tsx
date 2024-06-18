@@ -1,17 +1,10 @@
 import React from "react";
 import { Link, Caption, Heading, Paragraph, SubHeading } from "@app/components";
+import { ComponentTypes } from "@app/types";
 
 type ComponentLibraryProps = {
   content: Array<any>;
 };
-
-export enum ComponentTypes {
-  LINK = "link",
-  HEADING = "heading",
-  CAPTION = "caption",
-  SUB_HEADING = "subHeading",
-  PARAGRAPH = "paragraph",
-}
 
 const getComponentByType = (component: any): JSX.Element | null => {
   switch (component._type) {
