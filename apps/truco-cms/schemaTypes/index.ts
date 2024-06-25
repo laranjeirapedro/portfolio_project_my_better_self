@@ -1,7 +1,7 @@
 import {page} from './sections'
 import {link, heading, subHeading, caption, paragraph, card, button, images} from './components'
 import {header, color, font, footer} from './layout'
-import {fontObject} from './objects/font'
+import {fontObject} from './objects/fonts/font'
 
 export const schemaTypes = [
   // Layout
