@@ -7,9 +7,11 @@
     "truco:fe": "dotenv -- turbo dev --filter=truco-fe",
     "truco:cms": "dotenv -- turbo dev --filter=truco-cms",
     "truco:cms:deploy": "dotenv -- turbo run deploy --filter=truco-cms",
+    "clean": "turbo run clean && rm -rf node_modules",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "truco:mobile:packager": "dotenv -- turbo run truco:mobile:packager --filter=truco-mobile"
   },
   "devDependencies": {
     "@app/eslint-config": "*",
@@ -17,17 +19,20 @@
     "dotenv-cli": "latest",
     "husky": "^9.0.11",
     "prettier": "^3.2.5",
-    "turbo": "latest"
+    "turbo": "^2.0.4"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@8.15.0",
+  "packageManager": "npm@10.5.2",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "dependencies": {
-
+    "@expo/metro-runtime": "~3.2.1",
+    "eslint-config-turbo": "^2.0.4",
+    "react-dom": "18.2.0",
+    "sanity-plugin-icon-picker": "^3.3.0"
   }
 }

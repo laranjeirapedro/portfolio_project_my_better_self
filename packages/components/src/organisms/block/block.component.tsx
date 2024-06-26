@@ -1,15 +1,13 @@
 import React, { useMemo } from "react";
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import { Card } from "../../molecules";
-import { Button, Image } from "../../atoms";
+import { Button, Image, Link } from "../../atoms";
 import { ButtonProps } from "../../atoms/button/Button.types";
-// import Image from "next/image";
 
 export const Block = ({ content }: any) => {
   const myPortableTextComponents = useMemo(
     () =>
       ({
-        marks: {},
         block: {},
         list: {},
         listItem: {},
@@ -22,18 +20,23 @@ export const Block = ({ content }: any) => {
           card: ({ value }: any) => <Card data={value} />,
           button: ({ value }: { value: ButtonProps }) => <Button {...value} />,
         },
-        //   marks: {
-        //     link: ({ children, value }) => {
-        //       const rel = !value.href.startsWith("/")
-        //         ? "noreferrer noopener"
-        //         : undefined;
-        //       return (
-        //         <a href={value.href} rel={rel}>
-        //           {children}
-        //         </a>
-        //       );
-        //     },
-        //   },
+        marks: {
+          link: ({
+            children,
+            value,
+          }: {
+            children: string[];
+            value: { href: string };
+          }) => {
+            return (
+              <Link
+                {...value}
+                path={{ current: value.href }}
+                linkText={children.toString()}
+              />
+            );
+          },
+        },
       }) as unknown as PortableTextReactComponents,
     []
   );

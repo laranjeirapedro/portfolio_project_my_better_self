@@ -2,7 +2,7 @@ import React from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
 
 export const Image = ({ data }: any) => {
-  const { url, filename } = data.image;
+  const { url, originalFilename } = data.image;
 
   return (
     <ImageWraper
@@ -10,7 +10,7 @@ export const Image = ({ data }: any) => {
       $height={data.height}
       $width={data.width}
     >
-      <NextImage src={url} alt={filename} fill />
+      <NextImage src={url} alt={originalFilename} fill />
     </ImageWraper>
   );
 };
