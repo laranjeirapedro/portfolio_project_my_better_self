@@ -4,4 +4,5 @@ export enum ComponentTypes {
     CAPTION = "caption",
     SUB_HEADING = "subHeading",
     PARAGRAPH = "paragraph",
+    ICON_OBJECT = "iconObject"
 }
