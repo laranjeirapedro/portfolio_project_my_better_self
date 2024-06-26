@@ -1,1 +1,1 @@
-export { ComponentLibrary, ComponentTypes } from "./ComponentLibrary";
+export { ComponentLibrary } from "./ComponentLibrary";
