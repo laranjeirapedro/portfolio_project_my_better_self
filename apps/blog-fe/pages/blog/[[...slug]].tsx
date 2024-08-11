@@ -3,10 +3,10 @@ import React from "react";
 
 import Head from "next/head";
 
-import { useGetPages } from "@app/hooks";
+import { useGetBlogs } from "@app/hooks";
 import { Block } from "@app/components";
 
-type PageProps = {
+type BlogProps = {
   data: {
     title: string;
     slug: {
@@ -17,16 +17,16 @@ type PageProps = {
   };
 };
 
-const Page = ({ data }: PageProps) => {
+const Blog = ({ data }: BlogProps) => {
   return (
     <div>
       <Head>
         {/* TODO: update this value to come from CMS Settings */}
-        <title>{`My Better Self | ${data.title}`}</title>
+        <title>{`My Better Self | Post: ${data.title}`}</title>
         {/* TODO: update this value to come from CMS Settings */}
         <meta
           property="og:title"
-          content={`My Better Self | ${data.title}`}
+          content={`My Better Self | Post: ${data.title}`}
           key={data.title}
         />
       </Head>
@@ -64,7 +64,7 @@ export async function getServerSideProps({
     "public, s-maxage=300, stale-while-revalidate=1200"
   );
 
-  const data = (await useGetPages(resolvedUrl)) ?? null;
+  const data = (await useGetBlogs(resolvedUrl.replace("/blog/", ""))) ?? null;
 
   if (!data) {
     return { notFound: true };
@@ -74,4 +74,4 @@ export async function getServerSideProps({
   return { props: { resolvedUrl, data } };
 }
 
-export default Page;
+export default Blog;

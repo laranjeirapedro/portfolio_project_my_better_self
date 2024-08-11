@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import {MdWeb as icon} from 'react-icons/md'
 
-export const page = defineType({
-  name: 'page',
-  title: 'Pages',
+export const blog = defineType({
+  name: 'blog',
+  title: 'Posts',
   type: 'document',
   icon,
   fields: [
@@ -12,6 +12,17 @@ export const page = defineType({
       title: 'Title',
       type: 'string',
     }),
+    defineField({
+      name: 'blogImage',
+      title: 'Blog Image',
+      type: 'image',
+    }),
+    defineField({
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'string',
+    }),
+
     defineField({
       name: 'slug',
       title: 'Slug',

@@ -2,24 +2,3 @@
   margin: 0;
   padding: 0;
 }
-
-body {
-  background-color: #2a2a2a; /* Primary Background */
-  color: #f5f5dc; /* Primary Text Color */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #e6c200; /* Secondary Text Color */
-}
-
-a {
-  color: #ffd700; /* Link Color */
-}
-a:hover {
-  color: #e6c200; /* Link Hover Color */
-}

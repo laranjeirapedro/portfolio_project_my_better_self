@@ -1,5 +1,15 @@
-import {page} from './sections'
-import {link, heading, subHeading, caption, paragraph, card, button, images} from './components'
+import {blog, page} from './sections'
+import {
+  link,
+  heading,
+  subHeading,
+  caption,
+  paragraph,
+  card,
+  button,
+  images,
+  latestBlogBanner,
+} from './components'
 import {header, color, font, footer} from './layout'
 import {fontObject} from './objects/fonts/font'
 
@@ -10,9 +20,11 @@ export const schemaTypes = [
   header,
   footer,
   // Objects
+  latestBlogBanner,
   fontObject,
   // Sections
   page,
+  blog,
   // Components
   link,
   card,
