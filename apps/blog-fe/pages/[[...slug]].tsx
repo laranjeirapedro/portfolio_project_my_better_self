@@ -61,7 +61,7 @@ export async function getServerSideProps({
   // with a fresh value. If you refresh the page, you will see the new value.
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=300, stale-while-revalidate=1200"
+    "public, s-maxage=300, stale-while-revalidate=1200",
   );
 
   const data = (await useGetPages(resolvedUrl)) ?? null;

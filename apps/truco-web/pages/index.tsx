@@ -2,9 +2,6 @@ import React from "react";
 
 import Head from "next/head";
 
-
-
-
 const Home = () => {
   return (
     <div>
@@ -26,12 +23,11 @@ const Home = () => {
             minHeight: "calc(100vh - 101px)",
           }}
         >
-         <h1>Content</h1>
+          <h1>Content</h1>
         </div>
       </div>
     </div>
   );
 };
-
 
 export default Home;

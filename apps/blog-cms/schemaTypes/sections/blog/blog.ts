@@ -68,6 +68,8 @@ export const blog = defineType({
         },
         {type: 'card'},
         {type: 'latestBlogBanner'},
+        {type: 'postFeedLayout'},
+        {type: 'blogFeedLayout'},
       ],
     }),
   ],

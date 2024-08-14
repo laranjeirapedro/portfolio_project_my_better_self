@@ -1,56 +1,11 @@
 import { useEffect, useState } from "react";
 import { Caption, Heading, Image, Link, Paragraph } from "../../atoms";
-import styled from "@emotion/styled";
-import { borderRadius, spacing } from "@app/styles";
+import * as Styled from "./LatestBlogBanner.styles";
 import { useGetLatestBlog } from "@app/hooks";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { format } from "date-fns";
 import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
 import { useRouter } from "next/navigation";
-
-const Container = styled.div`
-  padding-top: ${spacing.s}px;
-`;
-
-const BlogWrapper = styled.div`
-  cursor: pointer;
-`;
-
-const ImageWrapper = styled.div`
-  border-radius: ${borderRadius.s}px;
-  overflow: hidden;
-`;
-
-const ContentWraper = styled.div`
-  margin-bottom: ${spacing.xxs}px;
-`;
-
-const ProfileImageWrapper = styled.div`
-  overflow: hidden;
-  border-radius: 50%;
-  margin-right: ${spacing.xxs}px;
-`;
-
-const AuthorWrapper = styled.div`
-  margin-top: ${spacing.xxs}px;
-  margin-bottom: ${spacing.xxs}px;
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const IconWrapper = styled.div`
-  margin-right: ${spacing.xxs}px;
-`;
-
-const SocialIconsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: ${spacing.s}px;
-`;
 
 export const LatestBlogBanner = () => {
   const [blogData, setBlogData] = useState<BlogProps | null>();
@@ -73,13 +28,13 @@ export const LatestBlogBanner = () => {
   };
 
   return (
-    <Container>
-      <BlogWrapper onClick={onClick}>
-        <ContentWraper>
+    <Styled.Container>
+      <Styled.BlogWrapper onClick={onClick}>
+        <Styled.ContentWraper>
           <Heading text={blogData.title} />
           <Paragraph text={blogData.shortDescription} />
-        </ContentWraper>
-        <ImageWrapper>
+        </Styled.ContentWraper>
+        <Styled.ImageWrapper>
           <Image
             data={{
               image: {
@@ -89,11 +44,11 @@ export const LatestBlogBanner = () => {
               height: 300,
             }}
           />
-        </ImageWrapper>
-      </BlogWrapper>
-      <AuthorWrapper>
-        <Row>
-          <ProfileImageWrapper>
+        </Styled.ImageWrapper>
+      </Styled.BlogWrapper>
+      <Styled.AuthorWrapper>
+        <Styled.Row>
+          <Styled.ProfileImageWrapper>
             <Image
               data={{
                 image: {
@@ -104,32 +59,32 @@ export const LatestBlogBanner = () => {
                 width: 60,
               }}
             />
-          </ProfileImageWrapper>
+          </Styled.ProfileImageWrapper>
           <div>
-            <Row>
+            <Styled.Row>
               <Paragraph style={{ fontWeight: "bold" }} text="Author name" />
-              <SocialIconsWrapper>
-                <IconWrapper>
+              <Styled.SocialIconsWrapper>
+                <Styled.IconWrapper>
                   <Link {...{ path: { current: "https://facebook.com" } }}>
                     <SiFacebook />
                   </Link>
-                </IconWrapper>
-                <IconWrapper>
+                </Styled.IconWrapper>
+                <Styled.IconWrapper>
                   <Link path={{ current: "https://instagram.com" }}>
                     <SiInstagram />
                   </Link>
-                </IconWrapper>
-                <IconWrapper>
+                </Styled.IconWrapper>
+                <Styled.IconWrapper>
                   <Link path={{ current: "https://linkedin.com" }}>
                     <SiLinkedin />
                   </Link>
-                </IconWrapper>
-              </SocialIconsWrapper>
-            </Row>
+                </Styled.IconWrapper>
+              </Styled.SocialIconsWrapper>
+            </Styled.Row>
             <Caption text={format(blogData._createdAt, "do 'de' MMMM yyyy")} />
           </div>
-        </Row>
-      </AuthorWrapper>
-    </Container>
+        </Styled.Row>
+      </Styled.AuthorWrapper>
+    </Styled.Container>
   );
 };

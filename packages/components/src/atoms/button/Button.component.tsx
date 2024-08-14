@@ -18,6 +18,6 @@ export const Button = (data: ButtonProps) => {
   return createElement(
     StyledButton[type],
     { onClick: onButtonClick },
-    label?.toUpperCase()
+    label?.toUpperCase(),
   );
 };

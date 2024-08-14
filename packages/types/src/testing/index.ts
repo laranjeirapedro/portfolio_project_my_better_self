@@ -1,1 +1,1 @@
-export * from "./componentsTestIds"
+export * from "./componentsTestIds";

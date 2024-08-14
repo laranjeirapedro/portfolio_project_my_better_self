@@ -37,7 +37,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
       ...commonLinks,
       ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
     ],
-    []
+    [],
   );
 
   const onLogoClick = useCallback(() => {
