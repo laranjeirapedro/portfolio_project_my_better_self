@@ -8,15 +8,13 @@ import {
   LinksContainer,
   LoginLink,
   LogoContainer,
-  SubscribeLink,
-  LinkWrapper,
   RightLinksContainer,
-  SearchButton,
   MenuList,
+  MenuWrapper,
 } from "./Header.desktop.styles";
-import { Link, LinkProps } from "../../../../atoms";
-import Image from "next/image";
+import { Link, LinkProps, Spacer, Image } from "../../../../atoms";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { spacing } from "@app/styles";
 
 export type HeaderProps = {
   logo: any;
@@ -58,57 +56,57 @@ export const HeaderDesktop = (data: HeaderProps) => {
 
   return (
     <HeaderContainer id={siteName}>
-      <ContentContainer id="ContentContainer">
-        <TopBarContainer id="TopBarContainer">
-          <LeftLinksContainer id="LeftLinksContainer">
-            <SubscribeLink id="SubscribeLink">
-              <a>Subscribe</a>
-            </SubscribeLink>
-            <LoginLink id="LoginLink">
+      <ContentContainer>
+        <TopBarContainer>
+          <LeftLinksContainer>
+            <LoginLink>
               {loginLinks.length > 0 &&
                 loginLinks.map((link, index) => (
-                  <LinkWrapper
-                    key={`${link.path.current}-${index}`}
-                    id="LinkWrapper"
-                  >
-                    <Link {...link} />
-                  </LinkWrapper>
+                  <>
+                    {index !== 0 && <Spacer width={spacing.s} />}
+                    <React.Fragment key={`${link.path.current}-${index}`}>
+                      <Link {...link} />
+                    </React.Fragment>
+                  </>
                 ))}
             </LoginLink>
           </LeftLinksContainer>
-          <LogoContainer onClick={onLogoClick} id="LogoContainer">
+          <LogoContainer onClick={onLogoClick}>
             <Image
-              src={logo.asset.url}
-              alt={logo.asset.originalFilename}
-              width={120}
-              height={120}
-              style={{ objectFit: "contain" }}
-              id="Image"
+              data={{
+                ...logo.asset,
+                image: { ...logo.asset },
+                width: 120,
+                height: 60,
+              }}
             />
           </LogoContainer>
           <RightLinksContainer>
-            <SearchButton id="SubscribeLink">Find a blog</SearchButton>
-            <div onClick={toggleMenu}>
+            {/* Should this be a search text input instead? */}
+            {/* <SearchButton id="SubscribeLink">Find a blog</SearchButton> */}
+            <MenuWrapper onClick={toggleMenu}>
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </div>
+            </MenuWrapper>
             {isOpen && (
+              // TODO: Get this from CMS using actual links
+              // TODO: This menu is too simple, we should revisit this design, maybe reuse the mobile menu
               <MenuList>
-                  <div>Home</div>
-                  <div>About</div>
-                  <div>Blog</div>
+                <div>Home</div>
+                <div>About</div>
+                <div>Blog</div>
               </MenuList>
             )}
           </RightLinksContainer>
         </TopBarContainer>
-        <LinksContainer id="LinksContainer">
+        <LinksContainer>
           {selectedLinks.length > 0 &&
             selectedLinks.map((link, index) => (
-              <LinkWrapper
-                key={`${link.path.current}-${index}`}
-                id="LinkWrapper"
-              >
-                <Link {...link} />
-              </LinkWrapper>
+              <>
+                {index !== 0 && <Spacer width={spacing.s} />}
+                <React.Fragment key={`${link.path.current}-${index}`}>
+                  <Link {...link} />
+                </React.Fragment>
+              </>
             ))}
         </LinksContainer>
       </ContentContainer>
