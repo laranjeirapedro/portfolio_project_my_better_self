@@ -1,9 +1,9 @@
-import { GetServerSidePropsContext } from "next";
+import { GetStaticPaths, GetStaticPropsContext } from "next";
 import React from "react";
 
 import Head from "next/head";
 
-import { useGetPages } from "@app/hooks";
+import { useGetPagePaths, useGetPages } from "@app/hooks";
 import { Block } from "@app/components";
 
 type PageProps = {
@@ -18,6 +18,8 @@ type PageProps = {
 };
 
 const Page = ({ data }: PageProps) => {
+  if (!data) return null;
+
   return (
     <div>
       <Head>
@@ -47,11 +49,24 @@ const Page = ({ data }: PageProps) => {
   );
 };
 
+export const getStaticPaths = (async (test) => {
+  const data = (await useGetPagePaths()) ?? null;
+
+  const slugs: any = data.map((page: any) =>
+    page.slug.current.substring(1).split("/")
+  );
+
+  return {
+    paths: [
+      { params: { slug: undefined } },
+      ...slugs.map((slug: string) => ({ params: { slug } })),
+    ],
+    fallback: "blocking", // false or "blocking"
+  };
+}) satisfies GetStaticPaths;
+
 // This gets called on every request
-export async function getServerSideProps({
-  resolvedUrl,
-  res,
-}: GetServerSidePropsContext) {
+export async function getStaticProps({ params }: GetStaticPropsContext) {
   // This value is considered fresh for ten seconds (s-maxage=300).
   // If a request is repeated within the next 5 minutes, the previously
   // cached value will still be fresh. If the request is repeated before 20 minutes,
@@ -59,19 +74,21 @@ export async function getServerSideProps({
   //
   // In the background, a revalidation request will be made to populate the cache
   // with a fresh value. If you refresh the page, you will see the new value.
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=300, stale-while-revalidate=1200",
-  );
+  // res.setHeader(
+  //   "Cache-Control",
+  //   "public, s-maxage=300, stale-while-revalidate=1200"
+  // );
 
-  const data = (await useGetPages(resolvedUrl)) ?? null;
+  const path = `/${Array(params?.slug).join("/") ?? ""}`;
+
+  const data = (await useGetPages(path)) ?? null;
 
   if (!data) {
     return { notFound: true };
   }
 
   // Pass data to the page via props
-  return { props: { resolvedUrl, data } };
+  return { props: { resolvedUrl: path, data } };
 }
 
 export default Page;

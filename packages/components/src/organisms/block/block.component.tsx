@@ -10,7 +10,6 @@ import { Button, Image, Link } from "../../atoms";
 import { ButtonProps } from "../../atoms/button/Button.types";
 
 export const Block = ({ content }: any) => {
-  console.log(content);
   const myPortableTextComponents = useMemo(
     () =>
       ({
@@ -47,7 +46,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    [],
+    []
   );
 
   return <PortableText value={content} components={myPortableTextComponents} />;
