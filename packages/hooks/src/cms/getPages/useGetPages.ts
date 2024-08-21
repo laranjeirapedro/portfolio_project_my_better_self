@@ -6,6 +6,13 @@ export const useGetPages = async (slug: string) => {
     await client.fetch(`*[_type == "page" && slug.current=="${slug}"]{
     title,
     slug,
+    contentTop[]{
+      ...,
+      content[]{
+        ...,
+        ${image}
+      }
+    },
     content[]{
       ...,
       content[]{

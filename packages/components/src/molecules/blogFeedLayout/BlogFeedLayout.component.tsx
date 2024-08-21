@@ -1,15 +1,13 @@
-import { Block } from "../../organisms";
+import { Block, Section } from "../../organisms";
 import * as Styled from "./BlogFeedLayout.styles";
 
-export const BlogFeedLayout = ({ data }: any) => {
+export const BlogFeedLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Styled.Container>
-      <Styled.MainContainer>
-        <Block content={data.mainContent} />
-      </Styled.MainContainer>
-      <Styled.SideContainer>
-        <Block content={data.rightContent} />
-      </Styled.SideContainer>
-    </Styled.Container>
+    <Section>
+      <Styled.Container>
+        <Styled.MainContainer>{children}</Styled.MainContainer>
+        <Styled.SideContainer>other posts</Styled.SideContainer>
+      </Styled.Container>
+    </Section>
   );
 };

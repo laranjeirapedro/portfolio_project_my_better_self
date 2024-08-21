@@ -4,7 +4,7 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetBlogs, useGetPostPaths } from "@app/hooks";
-import { Block, BlogBanner } from "@app/components";
+import { Block, BlogBanner, PostFeedLayout } from "@app/components";
 
 type BlogProps = {
   data: {
@@ -42,7 +42,9 @@ const Blog = ({ data, header }: BlogProps) => {
           }}
         >
           <BlogBanner blogData={data as never} />
-          <Block content={data.content} />
+          <PostFeedLayout>
+            <Block content={data.content} />
+          </PostFeedLayout>
         </div>
       </div>
     </div>
