@@ -4,7 +4,7 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetPagePaths, useGetPages } from "@app/hooks";
-import { Block } from "@app/components";
+import { Block, BlogFeedLayout } from "@app/components";
 
 type PageProps = {
   data: {
@@ -13,6 +13,7 @@ type PageProps = {
       current: string;
       _type: string;
     };
+    contentTop: Array<any>;
     content: Array<any>;
   };
   header: {
@@ -42,7 +43,10 @@ const Page = ({ data, header }: PageProps) => {
           minHeight: "calc(100vh - 101px)",
         }}
       >
-        <Block content={data.content} />
+        <Block content={data.contentTop} />
+        <BlogFeedLayout>
+          <Block content={data.content} />
+        </BlogFeedLayout>
       </div>
     </div>
   );

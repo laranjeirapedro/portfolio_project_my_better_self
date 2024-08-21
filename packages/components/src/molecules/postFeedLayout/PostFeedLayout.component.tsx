@@ -1,18 +1,14 @@
 import * as Styled from "./PostFeedLayout.styles";
-import { Block } from "../../organisms";
+import { Block, Section } from "../../organisms";
 
-export const PostFeedLayout = ({ data }: any) => {
+export const PostFeedLayout = ({ children }: any) => {
   return (
-    <Styled.Container>
-      <Styled.SideContainer>
-        <Block content={data.leftContent} />
-      </Styled.SideContainer>
-      <Styled.MainContainer>
-        <Block content={data.mainContent} />
-      </Styled.MainContainer>
-      <Styled.SideContainer>
-        <Block content={data.rightContent} />
-      </Styled.SideContainer>
-    </Styled.Container>
+    <Section>
+      <Styled.Container>
+        <Styled.SideContainer>ads</Styled.SideContainer>
+        <Styled.MainContainer>{children}</Styled.MainContainer>
+        <Styled.SideContainer>other posts</Styled.SideContainer>
+      </Styled.Container>
+    </Section>
   );
 };
