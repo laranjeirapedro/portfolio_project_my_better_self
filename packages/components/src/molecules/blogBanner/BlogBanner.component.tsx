@@ -22,8 +22,6 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
     router.push(`/blog/${blogData.slug.current}`);
   };
 
-  console.log(blogData.author);
-
   const iconsMap: Record<string, IconType> = {
     logo_linkedin: SiLinkedin,
     logo_facebook: SiFacebook,

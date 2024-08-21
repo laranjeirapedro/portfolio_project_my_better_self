@@ -7,6 +7,7 @@ import {
 } from "@app/hooks";
 
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -30,13 +31,22 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!siteData) return null;
 
   return (
-    <SanityClientProvider>
-      <SettingsProvider data={siteData.settings}>
-        <Header {...(siteData.header as HeaderProps)} />
-        <Component {...pageProps} {...siteData} />
-        <Footer />
-      </SettingsProvider>
-    </SanityClientProvider>
+    <>
+      <Head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8361311161311634"
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
+      <SanityClientProvider>
+        <SettingsProvider data={siteData.settings}>
+          <Header {...(siteData.header as HeaderProps)} />
+          <Component {...pageProps} {...siteData} />
+          <Footer />
+        </SettingsProvider>
+      </SanityClientProvider>
+    </>
   );
 };
 

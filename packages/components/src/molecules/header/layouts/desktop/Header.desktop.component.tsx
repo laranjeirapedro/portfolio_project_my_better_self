@@ -61,12 +61,10 @@ export const HeaderDesktop = (data: HeaderProps) => {
             <LoginLink>
               {loginLinks.length > 0 &&
                 loginLinks.map((link, index) => (
-                  <>
+                  <React.Fragment key={`${link.path.current}-${index}`}>
                     {index !== 0 && <Spacer width={spacing.s} />}
-                    <React.Fragment key={`${link.path.current}-${index}`}>
-                      <Link {...link} />
-                    </React.Fragment>
-                  </>
+                    <Link {...link} />
+                  </React.Fragment>
                 ))}
             </LoginLink>
           </LeftLinksContainer>
@@ -100,12 +98,10 @@ export const HeaderDesktop = (data: HeaderProps) => {
         <LinksContainer>
           {selectedLinks.length > 0 &&
             selectedLinks.map((link, index) => (
-              <>
+              <React.Fragment key={`${link.path.current}-${index}`}>
                 {index !== 0 && <Spacer width={spacing.s} />}
-                <React.Fragment key={`${link.path.current}-${index}`}>
-                  <Link {...link} />
-                </React.Fragment>
-              </>
+                <Link {...link} />
+              </React.Fragment>
             ))}
         </LinksContainer>
       </ContentContainer>
