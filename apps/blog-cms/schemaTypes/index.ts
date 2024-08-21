@@ -11,9 +11,10 @@ import {
   latestBlogBanner,
   postFeedLayout,
   blogFeedLayout,
+  author,
 } from './components'
 import {header, color, font, footer} from './layout'
-import {fontObject} from './objects/fonts/font'
+import {socialIcons, fontObject} from './objects'
 
 export const schemaTypes = [
   // Layout
@@ -23,9 +24,11 @@ export const schemaTypes = [
   footer,
   postFeedLayout,
   blogFeedLayout,
+  author,
   // Objects
   latestBlogBanner,
   fontObject,
+  socialIcons,
   // Sections
   page,
   blog,

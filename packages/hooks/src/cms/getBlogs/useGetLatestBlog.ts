@@ -20,7 +20,24 @@ export const useGetLatestBlog = async () => {
                 }
             }
         },
-    author,
+    author{
+      _type == 'reference' => @->{
+        ...,
+        profilePicture{
+        ...asset {
+              _type == 'reference' => @->{
+                url,
+                originalFilename,
+                "dimensions":metadata{
+                    ...dimensions{
+                        ...
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     content[]{
       ...,
       content[]{
@@ -28,7 +45,7 @@ export const useGetLatestBlog = async () => {
         ${image}
       }
     }
-  }[0]`);
+  } | order(_createdAt desc)[0]`);
 
   return page;
 };

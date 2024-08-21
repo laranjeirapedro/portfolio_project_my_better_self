@@ -8,6 +8,7 @@ export const HeaderContainer = styled.div`
   @media screen and (min-width: ${breakpoints.tablet}px) {
     display: none;
   }
+  z-index: 10;
 `;
 
 export const ContentContainer = styled.div`
@@ -58,12 +59,14 @@ export const MenuContainer = styled.div<{
   menuWidth: number;
 }>`
   position: fixed;
+  z-index: 11;
   top: 0;
-  background-color: ${colors.darkGrey[400]};
-  box-shadow: 0px 0px 4px ${colors.darkGrey[900]};
-  transition: 0.3s ease-in-out;
+  background-color: ${colors.offWhite["050"]};
+  box-shadow: 0px 0px 4px ${colors.darkGrey[600]};
+  transition: 0.2s ease-in-out;
   width: ${({ menuWidth }) => menuWidth}px;
   height: 100vh;
-  right: ${({ isActive, menuWidth }) => (isActive ? 0 : -menuWidth - 2)}px;
-  padding: ${spacing.s}px ${spacing.none}px ${spacing.none}px;
+  right: ${({ isActive, menuWidth }) =>
+    isActive ? 0 : -menuWidth - spacing.m - 2}px;
+  padding: ${spacing.s}px ${spacing.none}px ${spacing.none}px ${spacing.m}px;
 `;

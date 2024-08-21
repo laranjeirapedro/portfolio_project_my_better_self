@@ -5,9 +5,11 @@ export const Container = styled.div`
   padding-top: ${spacing.s}px;
 `;
 
-export const BlogWrapper = styled.div`
-  cursor: pointer;
-`;
+export const BlogWrapper = styled.div<{ isClickable?: boolean }>(
+  ({ isClickable }) => ({
+    cursor: isClickable ? "pointer" : "cursor",
+  })
+);
 
 export const ImageWrapper = styled.div`
   border-radius: ${borderRadius.s}px;

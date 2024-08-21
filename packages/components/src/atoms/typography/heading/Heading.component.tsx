@@ -11,9 +11,9 @@ export const Heading = ({ text }: HeadingProps) => {
 
   return (
     <StyledHeading
-      color={fonts?.["heading"]?.color.hex}
-      fontFamily={fonts?.["heading"]?.fontFamily}
-      fontSize={fonts?.["heading"]?.fontSize}
+      color={fonts?.["fontHeading"]?.color.hex}
+      fontFamily={fonts?.["fontHeading"]?.fontFamily}
+      fontSize={fonts?.["fontHeading"]?.fontSize}
     >
       {text}
     </StyledHeading>

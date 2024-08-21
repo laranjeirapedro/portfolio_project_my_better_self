@@ -9,7 +9,7 @@ import {
   MenuContainer,
   MenuIconContainer,
 } from "./Header.mobile.styles";
-import { Link, LinkProps } from "../../../../atoms";
+import { Link, LinkProps, SubHeading } from "../../../../atoms";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
@@ -46,7 +46,7 @@ export const HeaderMobile = (data: HeaderProps) => {
       ...commonLinks,
       ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
     ],
-    [],
+    []
   );
 
   const onLogoClick = useCallback(() => {
@@ -55,11 +55,11 @@ export const HeaderMobile = (data: HeaderProps) => {
 
   const toggleMenu = useCallback(
     () => setIsActive((curr: boolean) => !curr),
-    [],
+    []
   );
 
   return (
-    <HeaderContainer id={siteName}>
+    <HeaderContainer>
       <ContentContainer>
         <LogoContainer onClick={onLogoClick}>
           <Image
@@ -77,6 +77,7 @@ export const HeaderMobile = (data: HeaderProps) => {
         <MenuIconContainer onClick={toggleMenu}>
           <IoCloseOutline size={fontSize.xl} />
         </MenuIconContainer>
+        <SubHeading text="Menu" />
         <LinksContainer>
           {selectedLinks.length > 0 &&
             selectedLinks.map((link, index) => (

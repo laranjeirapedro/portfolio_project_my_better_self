@@ -11,9 +11,9 @@ export const SubHeading = ({ text }: SubHeadingProps) => {
 
   return (
     <StyledSubHeading
-      color={fonts?.["subHeading"]?.color.hex}
-      fontFamily={fonts?.["subHeading"]?.fontFamily}
-      fontSize={fonts?.["subHeading"]?.fontSize}
+      color={fonts?.["fontSubHeading"]?.color.hex}
+      fontFamily={fonts?.["fontSubHeading"]?.fontFamily}
+      fontSize={fonts?.["fontSubHeading"]?.fontSize}
     >
       {text}
     </StyledSubHeading>

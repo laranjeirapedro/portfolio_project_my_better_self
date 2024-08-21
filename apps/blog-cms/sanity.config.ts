@@ -18,8 +18,6 @@ import {
   siteUrl,
 } from './src/environments'
 
-console.log(sanityProjectId)
-
 export default defineConfig({
   name: 'default',
   title: 'arcanehut-app',

@@ -15,41 +15,40 @@ type PageProps = {
     };
     content: Array<any>;
   };
+  header: {
+    siteName: string;
+  };
 };
 
-const Page = ({ data }: PageProps) => {
+const Page = ({ data, header }: PageProps) => {
   if (!data) return null;
 
   return (
     <div>
       <Head>
-        {/* TODO: update this value to come from CMS Settings */}
-        <title>{`My Better Self | ${data.title}`}</title>
-        {/* TODO: update this value to come from CMS Settings */}
+        <title>{`${header?.siteName ?? ""} | ${data.title}`}</title>
         <meta
           property="og:title"
-          content={`My Better Self | ${data.title}`}
+          content={`${header?.siteName ?? ""} | ${data.title}`}
           key={data.title}
         />
       </Head>
-      <div>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "auto",
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "calc(100vh - 101px)",
-          }}
-        >
-          <Block content={data.content} />
-        </div>
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: "auto",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "calc(100vh - 101px)",
+        }}
+      >
+        <Block content={data.content} />
       </div>
     </div>
   );
 };
 
-export const getStaticPaths = (async (test) => {
+export const getStaticPaths = (async () => {
   const data = (await useGetPagePaths()) ?? null;
 
   const slugs: any = data.map((page: any) =>
@@ -65,20 +64,7 @@ export const getStaticPaths = (async (test) => {
   };
 }) satisfies GetStaticPaths;
 
-// This gets called on every request
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-  // This value is considered fresh for ten seconds (s-maxage=300).
-  // If a request is repeated within the next 5 minutes, the previously
-  // cached value will still be fresh. If the request is repeated before 20 minutes,
-  // the cached value will be stale but still render (stale-while-revalidate=1200).
-  //
-  // In the background, a revalidation request will be made to populate the cache
-  // with a fresh value. If you refresh the page, you will see the new value.
-  // res.setHeader(
-  //   "Cache-Control",
-  //   "public, s-maxage=300, stale-while-revalidate=1200"
-  // );
-
   const path = `/${Array(params?.slug).join("/") ?? ""}`;
 
   const data = (await useGetPages(path)) ?? null;

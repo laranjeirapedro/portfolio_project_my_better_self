@@ -27,7 +27,6 @@ export type HeaderProps = {
 export const HeaderDesktop = (data: HeaderProps) => {
   const {
     logo,
-    siteName,
     commonLinks = [],
     authenticatedLinks = [],
     unauthenticatedLinks = [],
@@ -55,7 +54,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
   };
 
   return (
-    <HeaderContainer id={siteName}>
+    <HeaderContainer>
       <ContentContainer>
         <TopBarContainer>
           <LeftLinksContainer>
@@ -83,7 +82,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
           </LogoContainer>
           <RightLinksContainer>
             {/* Should this be a search text input instead? */}
-            {/* <SearchButton id="SubscribeLink">Find a blog</SearchButton> */}
+            {/* <SearchButton>Find a blog</SearchButton> */}
             <MenuWrapper onClick={toggleMenu}>
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </MenuWrapper>

@@ -6,6 +6,39 @@ export const useGetBlogs = async (slug: string) => {
     await client.fetch(`*[_type == "blog" && slug.current=="${slug}"]{
     title,
     slug,
+    shortDescription,
+    _createdAt,
+    blogImage{
+            ...asset {
+                _type == 'reference' => @->{
+                    url,
+                    originalFilename,
+                    "dimensions":metadata{
+                        ...dimensions{
+                            ...
+                        }
+                    }
+                }
+            }
+        },
+     author{
+      _type == 'reference' => @->{
+        ...,
+        profilePicture{
+        ...asset {
+              _type == 'reference' => @->{
+                url,
+                originalFilename,
+                "dimensions":metadata{
+                    ...dimensions{
+                        ...
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     content[]{
       ...,
       content[]{
