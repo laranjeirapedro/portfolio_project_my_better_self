@@ -18,9 +18,10 @@ type BlogProps = {
   header: {
     siteName: string;
   };
+  resolvedUrl: string;
 };
 
-const Blog = ({ data, header }: BlogProps) => {
+const Blog = ({ data, resolvedUrl, header }: BlogProps) => {
   return (
     <div>
       <Head>
@@ -42,7 +43,7 @@ const Blog = ({ data, header }: BlogProps) => {
           }}
         >
           <BlogBanner blogData={data as never} />
-          <PostFeedLayout>
+          <PostFeedLayout path={resolvedUrl}>
             <Block content={data.content} />
           </PostFeedLayout>
         </div>

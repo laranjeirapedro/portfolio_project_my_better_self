@@ -25,7 +25,7 @@ export const BlogFeedLayout = ({ children }: any) => {
           {children}
           <Styled.PostContainer>
             {posts?.map((post, index) => (
-              <Styled.PostWrapper>
+              <Styled.PostWrapper key={post.slug.current}>
                 <PostCard key={index} data={post} />
               </Styled.PostWrapper>
             ))}
