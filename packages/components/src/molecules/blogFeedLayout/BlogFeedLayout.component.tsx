@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Block, Section } from "../../organisms";
+import { Section } from "../../organisms";
 import * as Styled from "./BlogFeedLayout.styles";
 import { PostCard } from "../postCard";
 import { useGetBlogs } from "@app/hooks";
 import { BlogProps } from "../../../../types/src/models/blog";
 
 export const BlogFeedLayout = ({ children }: any) => {
-  const [posts, setPosts] = useState<BlogProps | null>();
+  const [posts, setPosts] = useState<BlogProps[] | null>();
 
   useEffect(() => {
     const getPosts = async () => {

@@ -6,7 +6,7 @@ import { BlogProps } from "../../../../types/src/models/blog";
 import { SubHeading } from "../../atoms";
 
 export const PostFeedLayout = ({ children }: any) => {
-  const [posts, setPosts] = useState<BlogProps | null>();
+  const [posts, setPosts] = useState<BlogProps[] | null>();
   const [currentPage, setCurrentPage] = useState<string>();
   const pageSlug = children._owner.memoizedProps.resolvedUrl;
 
