@@ -5,19 +5,24 @@ import { useGetBlogs } from "@app/hooks";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { SubHeading } from "../../atoms";
 
-export const PostFeedLayout = ({ children }: any) => {
+export const PostFeedLayout = ({
+  children,
+  path,
+}: {
+  children: React.ReactNode;
+  path: string;
+}) => {
   const [posts, setPosts] = useState<BlogProps[] | null>();
   const [currentPage, setCurrentPage] = useState<string>();
-  const pageSlug = children._owner.memoizedProps.resolvedUrl;
 
   const getPosts = async () => {
-    await useGetBlogs(pageSlug).then((res) => {
-      setCurrentPage(pageSlug);
+    await useGetBlogs(path).then((res) => {
+      setCurrentPage(path);
       res && setPosts(res);
     });
   };
 
-  (!posts || currentPage != pageSlug) && getPosts();
+  (!posts || currentPage != path) && getPosts();
 
   return (
     <Styled.Container>
