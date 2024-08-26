@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const BlogWrapper = styled.div<{ isClickable?: boolean }>(
   ({ isClickable }) => ({
     cursor: isClickable ? "pointer" : "cursor",
-  })
+  }),
 );
 
 export const ImageWrapper = styled.div`

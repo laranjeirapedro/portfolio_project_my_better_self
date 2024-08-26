@@ -6,84 +6,8 @@ export const postFeedLayout = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'leftContent',
-      title: 'Left Content',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Heading', value: 'h1'},
-            {title: 'Subheading', value: 'h2'},
-            {title: 'Paragraph', value: 'normal'},
-          ],
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Underline', value: 'underline'},
-            ],
-            // Support annotating text with a reference to an author
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'link',
-                fields: [
-                  {
-                    name: 'url',
-                    type: 'url',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-        {type: 'card'},
-        {type: 'latestBlogBanner'},
-      ],
-    }),
-    defineField({
       name: 'mainContent',
       title: 'Main Content',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Heading', value: 'h1'},
-            {title: 'Subheading', value: 'h2'},
-            {title: 'Paragraph', value: 'normal'},
-          ],
-          marks: {
-            // Only allow these decorators
-            decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Underline', value: 'underline'},
-            ],
-            // Support annotating text with a reference to an author
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'link',
-                fields: [
-                  {
-                    name: 'url',
-                    type: 'url',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-        {type: 'card'},
-        {type: 'latestBlogBanner'},
-      ],
-    }),
-    defineField({
-      name: 'rightContent',
-      title: 'Right Content',
       type: 'array',
       of: [
         {

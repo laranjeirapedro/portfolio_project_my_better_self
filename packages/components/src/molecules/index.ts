@@ -1,4 +1,5 @@
 export * from "./card";
+export * from "./postCard";
 export * from "./header";
 export * from "./footer";
 export * from "./latestBlogBanner";

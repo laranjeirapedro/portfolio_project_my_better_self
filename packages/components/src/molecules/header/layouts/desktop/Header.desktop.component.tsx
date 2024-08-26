@@ -41,7 +41,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
 
   const loginLinks = useMemo(
     () => [...(isAuth ? authenticatedLinks : unauthenticatedLinks)],
-    []
+    [],
   );
 
   const onLogoClick = useCallback(() => {

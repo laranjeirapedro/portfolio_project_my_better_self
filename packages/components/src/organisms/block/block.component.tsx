@@ -39,7 +39,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    []
+    [],
   );
 
   return <PortableText value={content} components={myPortableTextComponents} />;

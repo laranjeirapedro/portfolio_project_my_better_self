@@ -10,7 +10,13 @@ export const Image = ({ data }: any) => {
       $height={data.height}
       $width={data.width}
     >
-      <NextImage src={url} alt={originalFilename} fill priority />
+      <NextImage
+        $borderRadius={data.borderRadius}
+        src={url}
+        alt={originalFilename}
+        fill
+        priority
+      />
     </ImageWraper>
   );
 };

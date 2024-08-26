@@ -31,3 +31,17 @@ export const MainContainer = styled.div`
     width: 100%;
   }
 `;
+
+export const PostContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: ${spacing.xxs}px;
+`;
+
+export const PostWrapper = styled.div`
+  width: 48%;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+`;

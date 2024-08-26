@@ -3,7 +3,7 @@ import React from "react";
 
 import Head from "next/head";
 
-import { useGetBlogs, useGetPostPaths } from "@app/hooks";
+import { useGetBlog, useGetPostPaths } from "@app/hooks";
 import { Block, BlogBanner, PostFeedLayout } from "@app/components";
 
 type BlogProps = {
@@ -68,7 +68,7 @@ export const getStaticPaths = (async () => {
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   const path = `${Array(params?.slug).join("/") ?? ""}`;
 
-  const data = (await useGetBlogs(path)) ?? null;
+  const data = (await useGetBlog(path)) ?? null;
 
   if (!data) {
     return { notFound: true };
