@@ -13,7 +13,7 @@ export const fontObject = defineType({
         list: [
           {title: 'Arial', value: 'arial'},
           {title: 'Helvetica', value: 'helvetica'},
-          {title: 'Gotham', value: 'gotham'},
+          {title: 'Roboto', value: 'roboto'},
         ],
       },
       initialValue: 'arial',
