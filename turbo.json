@@ -1,12 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [
-    "SANITY_STUDIO_SITE_TITLE",
-    "SANITY_STUDIO_CLIENT_APP_ID",
-    "SANITY_STUDIO_BUILD_HOOK_ID",
-    "SANITY_STUDIO_CLIENT_NAME",
-    "SANITY_STUDIO_CLIENT_URL"
-  ],
+
   "globalDependencies": [".env"],
   "tasks": {
     "build": {
