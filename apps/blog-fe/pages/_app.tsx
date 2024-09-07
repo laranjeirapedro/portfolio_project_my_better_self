@@ -1,5 +1,5 @@
 import "../src/styles/global.css";
-import { Footer, Header, HeaderProps } from "@app/components";
+import { Footer, FooterProps, Header, HeaderProps } from "@app/components";
 import {
   SanityClientProvider,
   SettingsProvider,
@@ -42,7 +42,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <SettingsProvider data={siteData.settings}>
           <Header {...(siteData.header as HeaderProps)} />
           <Component {...pageProps} {...siteData} />
-          <Footer />
+          <Footer {...(siteData.footer as FooterProps)} />
         </SettingsProvider>
       </SanityClientProvider>
     </>

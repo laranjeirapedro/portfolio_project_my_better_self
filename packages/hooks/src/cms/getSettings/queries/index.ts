@@ -29,5 +29,20 @@ export const queryColors = `
 "colors": *[_type == "colorSettings"]{
     primaryColor,
     secondaryColor,
-    }[0],
+    }[0]
+`;
+
+export const queryFooter = `
+"footer": *[_type == "footer"]{
+    'logo':
+        logo{
+            asset{
+               _type == 'reference' => @->
+            }
+    },
+    shortDescription,
+    links,
+    siteCopyright,
+    socialIcons
+    }[0]
 `;

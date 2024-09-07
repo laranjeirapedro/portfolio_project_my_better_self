@@ -7,13 +7,15 @@ import {
   LeftLinksContainer,
   LinksContainer,
   LoginLink,
+  CommonLinks,
   LogoContainer,
+  Divider,
   RightLinksContainer,
   MenuList,
   MenuWrapper,
 } from "./Header.desktop.styles";
 import { Link, LinkProps, Spacer, Image } from "../../../../atoms";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { spacing } from "@app/styles";
 
 export type HeaderProps = {
@@ -41,7 +43,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
 
   const loginLinks = useMemo(
     () => [...(isAuth ? authenticatedLinks : unauthenticatedLinks)],
-    [],
+    []
   );
 
   const onLogoClick = useCallback(() => {
@@ -58,52 +60,57 @@ export const HeaderDesktop = (data: HeaderProps) => {
       <ContentContainer>
         <TopBarContainer>
           <LeftLinksContainer>
-            <LoginLink>
-              {loginLinks.length > 0 &&
-                loginLinks.map((link, index) => (
-                  <React.Fragment key={`${link.path.current}-${index}`}>
-                    {index !== 0 && <Spacer width={spacing.s} />}
-                    <Link {...link} />
-                  </React.Fragment>
-                ))}
-            </LoginLink>
+            <LogoContainer onClick={onLogoClick}>
+              <Image
+                data={{
+                  ...logo.asset,
+                  image: { ...logo.asset },
+                  width: 130,
+                  height: 60,
+                }}
+              />
+            </LogoContainer>
           </LeftLinksContainer>
-          <LogoContainer onClick={onLogoClick}>
-            <Image
-              data={{
-                ...logo.asset,
-                image: { ...logo.asset },
-                width: 120,
-                height: 60,
-              }}
-            />
-          </LogoContainer>
+
           <RightLinksContainer>
             {/* Should this be a search text input instead? */}
             {/* <SearchButton>Find a blog</SearchButton> */}
             <MenuWrapper onClick={toggleMenu}>
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isOpen ? (
+                <FaUserCircle size={48} color="#193829" />
+              ) : (
+                <FaRegUserCircle size={48} color="#193829" />
+              )}
             </MenuWrapper>
             {isOpen && (
               // TODO: Get this from CMS using actual links
               // TODO: This menu is too simple, we should revisit this design, maybe reuse the mobile menu
               <MenuList>
-                <div>Home</div>
-                <div>About</div>
-                <div>Blog</div>
+                <LinksContainer>
+                  <CommonLinks>
+                    {selectedLinks.length > 0 &&
+                      selectedLinks.map((link, index) => (
+                        <React.Fragment key={`${link.path.current}-${index}`}>
+                          {index !== 0 && <Spacer width={spacing.s} />}
+                          <Link {...link} />
+                        </React.Fragment>
+                      ))}
+                  </CommonLinks>
+                  <Divider />
+                  <LoginLink>
+                    {loginLinks.length > 0 &&
+                      loginLinks.map((link, index) => (
+                        <React.Fragment key={`${link.path.current}-${index}`}>
+                          {index !== 0 && <Spacer width={spacing.s} />}
+                          <Link {...link} />
+                        </React.Fragment>
+                      ))}
+                  </LoginLink>
+                </LinksContainer>
               </MenuList>
             )}
           </RightLinksContainer>
         </TopBarContainer>
-        <LinksContainer>
-          {selectedLinks.length > 0 &&
-            selectedLinks.map((link, index) => (
-              <React.Fragment key={`${link.path.current}-${index}`}>
-                {index !== 0 && <Spacer width={spacing.s} />}
-                <Link {...link} />
-              </React.Fragment>
-            ))}
-        </LinksContainer>
       </ContentContainer>
     </HeaderContainer>
   );
