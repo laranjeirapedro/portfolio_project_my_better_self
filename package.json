@@ -17,6 +17,7 @@
     "@app/eslint-config": "*",
     "@app/typescript-config": "*",
     "dotenv-cli": "latest",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "prettier": "^3.2.5",
     "turbo": "^2.0.4"
   },

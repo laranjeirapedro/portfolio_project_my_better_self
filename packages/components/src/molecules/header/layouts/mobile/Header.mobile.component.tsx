@@ -26,7 +26,7 @@ export const HeaderMobile = (data: HeaderProps) => {
     authenticatedLinks = [],
     unauthenticatedLinks = [],
     isAuth = false,
-  } = data;
+  } = useMemo(() => data, [data]);
 
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
@@ -36,7 +36,7 @@ export const HeaderMobile = (data: HeaderProps) => {
       ...commonLinks,
       ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
     ],
-    []
+    [isAuth, authenticatedLinks, commonLinks, unauthenticatedLinks]
   );
 
   const onLogoClick = useCallback(() => {
