@@ -1,15 +1,7 @@
 import React from "react";
-
-import { LinkProps } from "../../atoms";
+import { HeaderProps } from "./Header.types";
 
 import { Header as LHeader } from "./layouts";
-export type HeaderProps = {
-  logo: any;
-  siteName: string;
-  commonLinks: LinkProps[];
-  authenticatedLinks: LinkProps[];
-  unauthenticatedLinks: LinkProps[];
-};
 
 export const Header = (data: HeaderProps) => {
   return (

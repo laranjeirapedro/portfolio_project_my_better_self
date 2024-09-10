@@ -34,20 +34,10 @@ const Page = ({ data, header }: PageProps) => {
           key={data.title}
         />
       </Head>
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "auto",
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "calc(100vh - 101px)",
-        }}
-      >
-        <Block content={data.contentTop} />
-        <BlogFeedLayout>
-          <Block content={data.content} />
-        </BlogFeedLayout>
-      </div>
+      <Block content={data.contentTop} />
+      <BlogFeedLayout>
+        <Block content={data.content} />
+      </BlogFeedLayout>
     </div>
   );
 };
@@ -56,7 +46,7 @@ export const getStaticPaths = (async () => {
   const data = (await useGetPagePaths()) ?? null;
 
   const slugs: any = data.map((page: any) =>
-    page.slug.current.substring(1).split("/"),
+    page.slug.current.substring(1).split("/")
   );
 
   return {

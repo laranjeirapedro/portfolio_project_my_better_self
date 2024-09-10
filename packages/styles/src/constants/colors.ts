@@ -90,4 +90,8 @@ export const colors = {
     "900": "#F2F2CF",
     default: "#F5F5DC",
   },
+  red: {
+    "700": "#f44336",
+    default: "#f44336",
+  },
 };

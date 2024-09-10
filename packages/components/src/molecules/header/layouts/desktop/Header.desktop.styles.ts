@@ -5,7 +5,8 @@ export const HeaderContainer = styled.div`
   margin: ${spacing.none};
   height: ${spacing.xxxxxl}px;
   padding: ${spacing.none}px ${spacing.s}px;
-  box-shadow: ${spacing.none}px ${spacing.none}px ${spacing.xxxs}px ${colors.darkGrey[900]};
+  box-shadow: ${spacing.none}px ${spacing.none}px ${spacing.xxxs}px
+    ${colors.darkGrey[900]};
   @media screen and (max-width: ${breakpoints.tablet}px) {
     display: none;
     height: auto;
@@ -45,7 +46,7 @@ export const LeftLinksContainer = styled.div`
 
 export const LinksContainer = styled.div`
   justify-content: center;
-  margin: ${spacing.s}px ${spacing.none}px;
+  margin: ${spacing.none}px;
 `;
 
 export const CommonLinks = styled.div`
@@ -76,14 +77,16 @@ export const MenuList = styled.div`
   justify-self: center;
   text-align: left;
   position: absolute;
-  border: ${spacing.xxxxs}px solid ${colors.darkGrey[200]};
-  border-radius: ${spacing.xxxs}px;
+  border: 1px solid ${colors.darkGrey[200]};
+  border-radius: ${spacing.xxs}px;
   background-color: white;
   top: ${spacing.xxxl}px;
   right: -${spacing.xs}px;
   z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -${spacing.m}px;
     right: ${spacing.m}px;
@@ -92,12 +95,39 @@ export const MenuList = styled.div`
     border-color: transparent transparent white transparent;
   }
   a {
-    padding: ${spacing.xs}px;
-    color: black;
+    display: flex;
+    padding: ${spacing.xxxxs}px ${spacing.xxs}px;
+    color: ${colors.primary.default};
+    font-weight: 700;
     text-decoration: none;
+    &:hover {
+      background-color: ${colors.primary["050"]};
+      color: ${colors.secondary[600]};
+    }
   }
 `;
 
 export const MenuWrapper = styled.div`
   cursor: pointer;
+`;
+
+export const IconWrapper = styled.div<{ isOpen: boolean }>`
+  & svg {
+    color: ${({ isOpen }) =>
+      isOpen ? colors.secondary[800] : colors.primary.default};
+    &:hover {
+      color: ${({ isOpen }) =>
+        isOpen ? colors.secondary[300] : colors.primary[300]};
+    }
+  }
+`;
+
+export const Overlay = styled.div<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 `;
