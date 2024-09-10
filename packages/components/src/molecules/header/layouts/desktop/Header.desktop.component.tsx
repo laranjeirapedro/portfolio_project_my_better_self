@@ -13,18 +13,13 @@ import {
   RightLinksContainer,
   MenuList,
   MenuWrapper,
+  IconWrapper,
+  Overlay,
 } from "./Header.desktop.styles";
-import { Link, LinkProps, Spacer, Image } from "../../../../atoms";
+import { Link, Spacer, Image } from "../../../../atoms";
 import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { spacing } from "@app/styles";
-
-export type HeaderProps = {
-  logo: any;
-  siteName: string;
-  commonLinks: LinkProps[];
-  authenticatedLinks: LinkProps[];
-  unauthenticatedLinks: LinkProps[];
-};
+import { HeaderProps } from "../../Header.types";
 
 export const HeaderDesktop = (data: HeaderProps) => {
   const {
@@ -32,12 +27,10 @@ export const HeaderDesktop = (data: HeaderProps) => {
     commonLinks = [],
     authenticatedLinks = [],
     unauthenticatedLinks = [],
+    isAuth = false,
   } = data;
 
   const router = useRouter();
-
-  // TODO: replace this with authentication logic when implemented
-  const isAuth = false;
 
   const selectedLinks = useMemo(() => [...commonLinks], []);
 
@@ -55,8 +48,13 @@ export const HeaderDesktop = (data: HeaderProps) => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <HeaderContainer>
+      <Overlay isOpen={isOpen} onClick={closeMenu} />
       <ContentContainer>
         <TopBarContainer>
           <LeftLinksContainer>
@@ -76,17 +74,19 @@ export const HeaderDesktop = (data: HeaderProps) => {
             {/* Should this be a search text input instead? */}
             {/* <SearchButton>Find a blog</SearchButton> */}
             <MenuWrapper onClick={toggleMenu}>
-              {isOpen ? (
-                <FaUserCircle size={48} color="#193829" />
-              ) : (
-                <FaRegUserCircle size={48} color="#193829" />
-              )}
+              <IconWrapper isOpen={isOpen}>
+                {isOpen ? (
+                  <FaUserCircle size={32} />
+                ) : (
+                  <FaRegUserCircle size={32} />
+                )}
+              </IconWrapper>
             </MenuWrapper>
             {isOpen && (
               // TODO: Get this from CMS using actual links
               // TODO: This menu is too simple, we should revisit this design, maybe reuse the mobile menu
               <MenuList>
-                <LinksContainer>
+                <LinksContainer onClick={() => setIsOpen(false)}>
                   <CommonLinks>
                     {selectedLinks.length > 0 &&
                       selectedLinks.map((link, index) => (

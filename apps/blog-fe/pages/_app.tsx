@@ -9,10 +9,15 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { ContentWrapper } from "../components";
+import AuthGuard from "../components/authGuard/AuthGuard.component";
+import { useAuth } from "../hooks/useAuth";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [siteData, setSiteData] = useState<any>();
   const settingsData = useGetSettings();
+
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (!siteData) {
@@ -31,7 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!siteData) return null;
 
   return (
-    <>
+    <AuthGuard>
       <Head>
         <meta
           name="google-adsense-account"
@@ -40,12 +45,17 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <SanityClientProvider>
         <SettingsProvider data={siteData.settings}>
-          <Header {...(siteData.header as HeaderProps)} />
-          <Component {...pageProps} {...siteData} />
+          <Header
+            {...(siteData.header as HeaderProps)}
+            isAuth={isAuthenticated}
+          />
+          <ContentWrapper>
+            <Component {...pageProps} {...siteData} />
+          </ContentWrapper>
           <Footer {...(siteData.footer as FooterProps)} />
         </SettingsProvider>
       </SanityClientProvider>
-    </>
+    </AuthGuard>
   );
 };
 

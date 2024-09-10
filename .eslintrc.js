@@ -1,10 +1,18 @@
 // This configuration only applies to the package manager root.
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  ignorePatterns: ["apps/**", "packages/**"],
-  extends: ["@app/eslint-config/library.js"],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: true,
+  extends: [
+  "@app/eslint-config/library.js",
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { 
+        'argsIgnorePattern': '^_', 
+        'varsIgnorePattern': '^_' 
+      }
+    ],
   },
 };

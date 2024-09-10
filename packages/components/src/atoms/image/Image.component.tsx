@@ -11,11 +11,15 @@ export const Image = ({ data }: any) => {
       $width={data.width}
     >
       <NextImage
-        $borderRadius={data.borderRadius}
+        borderradius={data.borderRadius}
         src={url}
         alt={originalFilename}
         fill
         priority
+        sizes={JSON.stringify({
+          width: data.width,
+          height: data.height,
+        })}
       />
     </ImageWraper>
   );

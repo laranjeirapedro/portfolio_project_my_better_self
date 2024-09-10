@@ -9,19 +9,12 @@ import {
   MenuContainer,
   MenuIconContainer,
 } from "./Header.mobile.styles";
-import { Link, LinkProps, SubHeading } from "../../../../atoms";
+import { Link, SubHeading } from "../../../../atoms";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
 import { fontSize } from "@app/styles";
-
-export type HeaderProps = {
-  logo: any;
-  siteName: string;
-  commonLinks: LinkProps[];
-  authenticatedLinks: LinkProps[];
-  unauthenticatedLinks: LinkProps[];
-};
+import { HeaderProps } from "../../Header.types";
 
 // TODO: get from cms
 const MENU_WIDTH = 300;
@@ -29,24 +22,21 @@ const MENU_WIDTH = 300;
 export const HeaderMobile = (data: HeaderProps) => {
   const {
     logo,
-    siteName,
     commonLinks = [],
     authenticatedLinks = [],
     unauthenticatedLinks = [],
+    isAuth = false,
   } = data;
 
   const router = useRouter();
   const [isActive, setIsActive] = useState(false);
-
-  // TODO: replace this with authentication logic when implemented
-  const isAuth = false;
 
   const selectedLinks = useMemo(
     () => [
       ...commonLinks,
       ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
     ],
-    [],
+    []
   );
 
   const onLogoClick = useCallback(() => {
@@ -55,7 +45,7 @@ export const HeaderMobile = (data: HeaderProps) => {
 
   const toggleMenu = useCallback(
     () => setIsActive((curr: boolean) => !curr),
-    [],
+    []
   );
 
   return (
