@@ -6,17 +6,25 @@ import { CSSObject } from "@emotion/styled";
 export type ParagraphProps = {
   text: string;
   style?: CSSObject;
+  color?: string;
+  className?: string;
 };
 
-export const Paragraph = ({ text, style }: ParagraphProps) => {
+export const Paragraph = ({
+  text,
+  style,
+  color,
+  className,
+}: ParagraphProps) => {
   const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledParagraph
-      color={fonts?.["paragraph"]?.color.hex}
+      color={color ?? fonts?.["paragraph"]?.color.hex}
       fontFamily={fonts?.["paragraph"]?.fontFamily}
       fontSize={fonts?.["paragraph"]?.fontSize}
       style={style as never}
+      className={className}
     >
       {text}
     </StyledParagraph>

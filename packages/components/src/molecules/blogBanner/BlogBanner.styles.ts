@@ -1,15 +1,33 @@
 import styled from "@emotion/styled";
-import { borderRadius, spacing } from "@app/styles";
+import { borderRadius, colors, fontSize, spacing } from "@app/styles";
+import { Heading, Paragraph } from "../../atoms";
 
-export const Container = styled.div`
-  padding-top: ${spacing.s}px;
+export const Container = styled.div<{ isClickable?: boolean }>`
+  padding: ${spacing.s}px ${spacing.none}px;
+  display: flex;
+  position: relative;
+  min-height: 300px;
+  cursor: ${({ isClickable }) => (isClickable ? "pointer" : "cursor")};
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(${({ isClickable }) => (isClickable ? 120 : 100)}%);
+  }
 `;
 
-export const BlogWrapper = styled.div<{ isClickable?: boolean }>(
-  ({ isClickable }) => ({
-    cursor: isClickable ? "pointer" : "cursor",
-  }),
-);
+export const BackgroundImageContainer = styled.div`
+  top: 0;
+  position: absolute;
+  left: calc((100vw - 1280px) * -1 / 2);
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  filter: brightness(50%);
+
+  @media (max-width: 1280px) {
+    left: 0;
+  }
+`;
 
 export const ImageWrapper = styled.div`
   border-radius: ${borderRadius.s}px;
@@ -17,7 +35,11 @@ export const ImageWrapper = styled.div`
 `;
 
 export const ContentWraper = styled.div`
-  margin-bottom: ${spacing.xxs}px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: auto;
+  padding: ${spacing.none}px ${spacing.s}px;
 `;
 
 export const ProfileImageWrapper = styled.div`
@@ -29,6 +51,7 @@ export const ProfileImageWrapper = styled.div`
 export const AuthorWrapper = styled.div`
   margin-top: ${spacing.xxs}px;
   margin-bottom: ${spacing.xxs}px;
+  padding: ${spacing.none}px ${spacing.s}px;
 `;
 
 export const Row = styled.div`
@@ -45,4 +68,15 @@ export const SocialIconsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: ${spacing.s}px;
+`;
+
+export const BannerHeading = styled(Heading)`
+  color: ${colors.offWhite["050"]};
+  text-align: center;
+  font-size: ${fontSize.xxxl}px;
+`;
+export const BannerParagraph = styled(Paragraph)`
+  color: ${colors.offWhite["050"]};
+  font-size: ${fontSize.l}px;
+  text-align: center;
 `;

@@ -1,4 +1,5 @@
-import { Paragraph, Link, Image } from "../../atoms";
+import { fontSize, spacing } from "@app/styles";
+import { Paragraph, Link, Image, Spacer } from "../../atoms";
 import {
   SideContentCardWrapper,
   MainContentCardWrapper,
@@ -37,7 +38,15 @@ export const PostCard = ({ data, isSideContent }: PostCardProps) => {
           }}
         />
         <MainContentTextWrapper>
-          <Paragraph text={data.title} style={{ fontWeight: "bold" }} />
+          <Paragraph
+            text={data.title}
+            style={{
+              fontWeight: "bold",
+              fontSize: fontSize.m,
+              letterSpacing: "0.04em",
+            }}
+          />
+          <Spacer height={spacing.xxs} />
           <Paragraph text={data.shortDescription} />
         </MainContentTextWrapper>
       </MainContentCardWrapper>

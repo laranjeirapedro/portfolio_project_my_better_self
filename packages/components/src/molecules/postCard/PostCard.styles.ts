@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
 import { colors, spacing, borderRadius } from "@app/styles";
 import { css } from "@emotion/react";
+
 const WrapperCommon = css`
-  box-shadow: 0px 0px 2px ${colors.primary[300]};
+  box-shadow: 0px 2px 4px ${colors.darkGrey[400]};
   border-radius: ${borderRadius.s}px;
+  transition: filter 0.2s;
+  &:hover {
+    filter: brightness(120%);
+  }
 `;
 
 const CardPadding = css`
@@ -21,5 +26,5 @@ export const MainContentCardWrapper = styled.div`
 `;
 
 export const MainContentTextWrapper = styled.div`
-  ${CardPadding}
+  padding: ${spacing.xxs}px;
 `;

@@ -8,13 +8,14 @@ export const LatestBlogBanner = () => {
 
   useEffect(() => {
     const getLatestBlog = async () => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       await useGetLatestBlog().then((res) => {
         res && setBlogData(res);
       });
     };
 
     !blogData && getLatestBlog();
-  }, []);
+  }, [blogData]);
 
   if (!blogData) return null;
 

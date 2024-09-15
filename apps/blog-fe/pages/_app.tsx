@@ -42,6 +42,10 @@ const App = ({ Component, pageProps }: AppProps) => {
           name="google-adsense-account"
           content="ca-pub-8361311161311634"
         ></meta>
+        {/* <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script> */}
       </Head>
       <SanityClientProvider>
         <SettingsProvider data={siteData.settings}>

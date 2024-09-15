@@ -3,10 +3,11 @@ import { spacing } from "@app/styles";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: ${spacing.s}px;
+  margin: ${spacing.s}px auto;
   display: flex;
   flex-direction: row;
   gap: ${spacing.s}px;
+
   @media (max-width: 420px) {
     flex-direction: column;
   }
