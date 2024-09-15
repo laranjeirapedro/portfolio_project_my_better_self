@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {colorInput} from '@sanity/color-input'
+import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
 import {iconPicker} from 'sanity-plugin-icon-picker'
 import {dashboardTool} from '@sanity/dashboard'
 import {netlifyWidget} from 'sanity-plugin-dashboard-widget-netlify'
@@ -51,6 +52,7 @@ export default defineConfig({
     }),
     visionTool(),
     colorInput(),
+    simplerColorInput(),
     iconPicker(),
   ],
 
