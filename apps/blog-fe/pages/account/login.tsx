@@ -3,6 +3,7 @@ import { auth } from "../../utils/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/router";
 import { Login as LoginModule } from "@app/components";
+import { ContentWrapper } from "../../components";
 
 const Login = () => {
   const router = useRouter();
@@ -39,12 +40,14 @@ const Login = () => {
   };
 
   return (
-    <LoginModule
-      onSubmit={handleEmailLogin}
-      error={error}
-      handleEmailChanged={handleEmailChanged}
-      handlePasswordChanged={handlePasswordChanged}
-    />
+    <ContentWrapper>
+      <LoginModule
+        onSubmit={handleEmailLogin}
+        error={error}
+        handleEmailChanged={handleEmailChanged}
+        handlePasswordChanged={handlePasswordChanged}
+      />
+    </ContentWrapper>
   );
 };
 
