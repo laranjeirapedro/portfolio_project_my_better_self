@@ -38,7 +38,7 @@ export const BlogFeedLayout = ({ children }: any) => {
           <Adsense
             client="ca-pub-8361311161311634"
             slot="222222"
-            style={{ width: "100%", height: 600 }}
+            style={{ width: "100%", height: 600, display: "block" }}
           />
         </Styled.SideContainer>
       </Styled.Container>
