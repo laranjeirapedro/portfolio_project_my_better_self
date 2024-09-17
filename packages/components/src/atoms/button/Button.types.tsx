@@ -10,4 +10,5 @@ export type ButtonProps = {
   url?: { current: string };
   onClick: () => void;
   buttonType?: ButtonTypes;
+  disabled?: boolean;
 };

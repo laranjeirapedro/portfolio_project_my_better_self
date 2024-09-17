@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/useAuth";
 const guarderRoutes = ["/account/dashboard"];
 
 const AuthGuard = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, isEmailVerified } = useAuth();
   const router = useRouter();
 
   const isRouteGuarded = (route: string): boolean => {
@@ -18,6 +18,15 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     if (!loading && !isAuthenticated && isRouteGuarded(currentRoute)) {
       // Redirect to login page if not authenticated
       router.push("/account/login");
+    }
+    if (
+      !loading &&
+      isAuthenticated &&
+      isRouteGuarded(currentRoute) &&
+      !isEmailVerified
+    ) {
+      // Redirect to login page if not authenticated
+      router.push("/account/email-verification");
     }
   }, [isAuthenticated, loading, router]);
 

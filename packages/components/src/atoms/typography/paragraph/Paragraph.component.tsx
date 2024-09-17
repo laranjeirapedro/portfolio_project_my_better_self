@@ -8,6 +8,7 @@ export type ParagraphProps = {
   style?: CSSObject;
   color?: string;
   className?: string;
+  textAlign?: "center" | "left" | "right";
 };
 
 export const Paragraph = ({
@@ -15,6 +16,7 @@ export const Paragraph = ({
   style,
   color,
   className,
+  textAlign = "left",
 }: ParagraphProps) => {
   const { fonts } = useSettingsContext() ?? {};
 
@@ -25,6 +27,7 @@ export const Paragraph = ({
       fontSize={fonts?.["paragraph"]?.fontSize}
       style={style as never}
       className={className}
+      textAlign={textAlign}
     >
       {text}
     </StyledParagraph>

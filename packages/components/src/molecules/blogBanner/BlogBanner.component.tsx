@@ -32,7 +32,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
   return (
     <>
       <Styled.Container {...(isClickable && { onClick, isClickable })}>
-        <Styled.BackgroundImageContainer id="background">
+        <Styled.BackgroundImageContainer>
           <NextImage
             src={blogData.blogImage.url}
             alt={blogData.blogImage.originalFilename}

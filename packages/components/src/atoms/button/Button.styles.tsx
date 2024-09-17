@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { ButtonTypes } from "./Button.types";
 import { colors, fontSize, spacing } from "@app/styles";
 
-const Primary = styled.div`
+const Primary = styled.div<{ disabled: boolean }>`
   max-height: 32px;
   border-radius: 8px;
   padding: ${spacing.s}px;
@@ -11,14 +11,18 @@ const Primary = styled.div`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${colors.primary.default};
-  color: ${colors.offWhite[700]};
-  cursor: pointer;
+  background-color: ${({ disabled }) =>
+    disabled ? colors.darkGrey[500] : colors.primary.default};
+  color: ${({ disabled }) =>
+    disabled ? colors.offWhite["050"] : colors.offWhite[700]};
+  cursor: ${({ disabled }) => (disabled ? "arrow" : "pointer")};
   font-size: ${fontSize.m}px;
   font-weight: bold;
   &:hover {
-    background-color: ${colors.primary[300]};
-    color: ${colors.darkGreen[800]};
+    background-color: ${({ disabled }) =>
+      disabled ? colors.darkGrey[500] : colors.primary[300]};
+    color: ${({ disabled }) =>
+      disabled ? colors.offWhite["050"] : colors.darkGreen[800]};
   }
 `;
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useGetBlogs } from "@app/hooks";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { SubHeading } from "../../atoms";
+import { Adsense } from "@ctrl/react-adsense";
 
 export const PostFeedLayout = ({
   children,
@@ -16,6 +17,7 @@ export const PostFeedLayout = ({
   const [currentPage, setCurrentPage] = useState<string>();
 
   const getPosts = async () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await useGetBlogs(path).then((res) => {
       setCurrentPage(path);
       res && setPosts(res);
@@ -26,7 +28,14 @@ export const PostFeedLayout = ({
 
   return (
     <Styled.Container>
-      <Styled.SideContainer>ads</Styled.SideContainer>
+      {/* temporary background until ads gets approved by google */}
+      <Styled.SideContainer style={{ backgroundColor: "#ddd" }}>
+        <Adsense
+          client="ca-pub-8361311161311634"
+          slot="222222"
+          style={{ width: "100%", height: 600, display: "block" }}
+        />
+      </Styled.SideContainer>
       <Styled.MainContainer>{children}</Styled.MainContainer>
       <Styled.SideContainer>
         <SubHeading text="Other Posts" />
