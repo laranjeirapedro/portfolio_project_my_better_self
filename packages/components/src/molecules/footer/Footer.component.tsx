@@ -12,7 +12,14 @@ import {
   IconWrapper,
   CopyrightContainer,
 } from "./Footer.desktop.styles";
-import { Link, LinkProps, Spacer, Image, Paragraph, Caption } from "../../atoms";
+import {
+  Link,
+  LinkProps,
+  Spacer,
+  Image,
+  Paragraph,
+  Caption,
+} from "../../atoms";
 import { IconType } from "react-icons";
 import { SiFacebook, SiInstagram } from "react-icons/si";
 import { colors, spacing, fontSize, imageSize } from "@app/styles";
@@ -83,7 +90,7 @@ export const Footer = (data: FooterProps) => {
                             })}
                           </Link>
                         </IconWrapper>
-                      )
+                      ),
                   )}
                 </SocialIconsWrapper>
               </div>

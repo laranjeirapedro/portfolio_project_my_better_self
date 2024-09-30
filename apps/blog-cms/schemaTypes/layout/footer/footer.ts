@@ -19,7 +19,7 @@ export const footer = defineType({
       name: 'links',
       title: 'Links',
       type: 'array',
-      of: [{ type: 'link' }],
+      of: [{type: 'link'}],
     }),
     defineField({
       name: 'siteCopyright',

@@ -37,6 +37,15 @@ export const Block = ({ content }: any) => {
               />
             );
           },
+          rightTextAlign: ({ children }: { children: string[] }) => {
+            return <div style={{ textAlign: "right" }}>{children}</div>;
+          },
+          leftTextAlign: ({ children }: { children: string[] }) => {
+            return <div style={{ textAlign: "left" }}>{children}</div>;
+          },
+          centerTextAlign: ({ children }: { children: string[] }) => {
+            return <div style={{ textAlign: "center" }}>{children}</div>;
+          },
         },
       }) as unknown as PortableTextReactComponents,
     [],

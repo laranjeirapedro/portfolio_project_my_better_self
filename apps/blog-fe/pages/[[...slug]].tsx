@@ -46,7 +46,7 @@ export const getStaticPaths = (async () => {
   const data = (await useGetPagePaths()) ?? null;
 
   const slugs: any = data.map((page: any) =>
-    page.slug.current.substring(1).split("/")
+    page.slug.current.substring(1).split("/"),
   );
 
   return {

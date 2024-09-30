@@ -36,7 +36,7 @@ const Signup = () => {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const user = userCredential.user;
 
@@ -55,14 +55,14 @@ const Signup = () => {
     (e: any) => {
       setEmail(e.target.value);
     },
-    [setEmail]
+    [setEmail],
   );
 
   const onPasswordChanged = useCallback(
     (e: any) => {
       setPassword(e.target.value);
     },
-    [setPassword]
+    [setPassword],
   );
 
   return (

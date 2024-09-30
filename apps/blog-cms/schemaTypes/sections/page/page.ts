@@ -1,5 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {MdWeb as icon} from 'react-icons/md'
+import {PanelLeftIcon, PanelRightIcon, InlineIcon} from '@sanity/icons'
+import {LeftTextAlign, RightTextAlign, CenterTextAlign} from '../../../schema'
 
 export const page = defineType({
   name: 'page',
@@ -38,6 +40,24 @@ export const page = defineType({
             decorators: [
               {title: 'Strong', value: 'strong'},
               {title: 'Underline', value: 'underline'},
+              {
+                title: 'Left Text Align',
+                value: 'leftTextAlign',
+                icon: PanelLeftIcon,
+                component: LeftTextAlign,
+              },
+              {
+                title: 'Center Text Align',
+                value: 'centerTextAlign',
+                icon: InlineIcon,
+                component: CenterTextAlign,
+              },
+              {
+                title: 'Right Text Align',
+                value: 'rightTextAlign',
+                icon: PanelRightIcon,
+                component: RightTextAlign,
+              },
             ],
             // Support annotating text with a reference to an author
             annotations: [

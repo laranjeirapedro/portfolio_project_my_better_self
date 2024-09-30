@@ -1,4 +1,4 @@
-import { fontObject } from './../../../../../apps/blog-cms/schemaTypes/objects/fonts/font';
+import { fontObject } from "./../../../../../apps/blog-cms/schemaTypes/objects/fonts/font";
 import styled from "@emotion/styled";
 import { breakpoints, colors, spacing, fontSize } from "@app/styles";
 
@@ -41,7 +41,7 @@ export const RightContainer = styled.div`
 `;
 
 export const LinksContainer = styled.div`
-  line-height: ${spacing.l}px; 
+  line-height: ${spacing.l}px;
 `;
 
 export const SocialIconsWrapper = styled.div`
