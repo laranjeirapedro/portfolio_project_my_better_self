@@ -39,14 +39,6 @@ export const structure = (S: StructureBuilder) =>
                 .title('Footer')
                 .child(S.document().title('Footer').schemaType('footer').documentId('footer'))
                 .icon(FaHardHat),
-              S.listItem()
-                .title('Button')
-                .child(S.document().title('Button').schemaType('button').documentId('button'))
-                .icon(IoIosRadioButtonOn),
-              S.listItem()
-                .title('Card')
-                .child(S.document().title('Card').schemaType('card').documentId('card'))
-                .icon(BsCardList),
             ]),
         )
         .icon(BsGearFill),

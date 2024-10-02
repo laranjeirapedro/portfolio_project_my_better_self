@@ -1,10 +1,6 @@
 import { fontSize, spacing } from "@app/styles";
 import { Paragraph, Link, Image, Spacer } from "../../atoms";
-import {
-  SideContentCardWrapper,
-  MainContentCardWrapper,
-  MainContentTextWrapper,
-} from "./PostCard.styles";
+import * as Styled from "./PostCard.styles";
 import { useRouter } from "next/navigation";
 
 export type PostCardProps = {
@@ -26,7 +22,7 @@ export const PostCard = ({ data, isSideContent }: PostCardProps) => {
 
   if (!isSideContent) {
     return (
-      <MainContentCardWrapper onClick={onClickPost}>
+      <Styled.MainContentCardWrapper onClick={onClickPost}>
         <Image
           data={{
             image: {
@@ -37,27 +33,30 @@ export const PostCard = ({ data, isSideContent }: PostCardProps) => {
             borderRadius: "8px 8px 0px 0px",
           }}
         />
-        <MainContentTextWrapper>
-          <Paragraph
-            text={data.title}
-            style={{
-              fontWeight: "bold",
-              fontSize: fontSize.m,
-              letterSpacing: "0.04em",
-            }}
-          />
+        <Styled.MainContentTextWrapper>
+          <Styled.TitleWrapper>
+            <Paragraph
+              text={data.title}
+              style={{
+                fontWeight: "bold",
+                fontSize: fontSize.m,
+                letterSpacing: "0.04em",
+              }}
+              numberOfLines={2}
+            />
+          </Styled.TitleWrapper>
           <Spacer height={spacing.xxs} />
-          <Paragraph text={data.shortDescription} />
-        </MainContentTextWrapper>
-      </MainContentCardWrapper>
+          <Paragraph text={data.shortDescription} numberOfLines={2} />
+        </Styled.MainContentTextWrapper>
+      </Styled.MainContentCardWrapper>
     );
   }
 
   return (
-    <SideContentCardWrapper>
+    <Styled.SideContentCardWrapper>
       <Paragraph text={data.title} style={{ fontWeight: "bold" }} />
       <Paragraph text={data.shortDescription} />
       <Link linkText="Read More >" path={data.slug} />
-    </SideContentCardWrapper>
+    </Styled.SideContentCardWrapper>
   );
 };

@@ -6,6 +6,7 @@ const WrapperCommon = css`
   box-shadow: 0px 2px 4px ${colors.darkGrey[400]};
   border-radius: ${borderRadius.s}px;
   transition: filter 0.2s;
+
   &:hover {
     filter: brightness(120%);
   }
@@ -22,9 +23,17 @@ export const SideContentCardWrapper = styled.div`
 
 export const MainContentCardWrapper = styled.div`
   ${WrapperCommon}
+  display:flex;
+  flex-direction: column;
   cursor: pointer;
+  width: 100%;
 `;
 
 export const MainContentTextWrapper = styled.div`
   padding: ${spacing.xxs}px;
+`;
+
+export const TitleWrapper = styled.div`
+  height: 2rem;
+  margin-bottom: ${spacing.xxxs}px;
 `;

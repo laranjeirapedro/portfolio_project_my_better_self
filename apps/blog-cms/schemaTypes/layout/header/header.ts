@@ -16,6 +16,12 @@ export const header = defineType({
       type: 'image',
     }),
     defineField({
+      name: 'authSwitch',
+      title: 'Auth Switch',
+      description: 'Turns auth in and off',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'commonLinks',
       title: 'Common Links',
       description: 'Links shown to everybody.',

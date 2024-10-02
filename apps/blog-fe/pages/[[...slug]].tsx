@@ -5,6 +5,7 @@ import Head from "next/head";
 
 import { useGetPagePaths, useGetPages } from "@app/hooks";
 import { Block, BlogFeedLayout } from "@app/components";
+import { ContentWrapper } from "../components";
 
 type PageProps = {
   data: {
@@ -34,10 +35,9 @@ const Page = ({ data, header }: PageProps) => {
           key={data.title}
         />
       </Head>
-      <Block content={data.contentTop} />
-      <BlogFeedLayout>
+      <ContentWrapper>
         <Block content={data.content} />
-      </BlogFeedLayout>
+      </ContentWrapper>
     </div>
   );
 };
@@ -46,7 +46,7 @@ export const getStaticPaths = (async () => {
   const data = (await useGetPagePaths()) ?? null;
 
   const slugs: any = data.map((page: any) =>
-    page.slug.current.substring(1).split("/"),
+    page.slug.current.substring(1).split("/")
   );
 
   return {
