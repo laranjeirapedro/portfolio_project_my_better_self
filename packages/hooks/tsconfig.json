@@ -1,7 +1,15 @@
 {
   "extends": "@app/typescript-config/react-library.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "rootDir": "./src", // Specify the root directory for the compiler
+    "outDir": "./dist", // Ensure outDir is also set
+    "strict": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "include": ["./src/index.ts"],
   "exclude": ["node_modules", "dist", "build"]

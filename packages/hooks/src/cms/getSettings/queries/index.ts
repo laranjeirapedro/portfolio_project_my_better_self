@@ -12,6 +12,7 @@ export const queryHeader = `
     commonLinks,
     authenticatedLinks,
     unauthenticatedLinks,
+    authSwitch,
       }[0]
 `;
 

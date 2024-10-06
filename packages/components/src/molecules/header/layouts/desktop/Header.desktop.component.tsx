@@ -28,6 +28,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
     authenticatedLinks = [],
     unauthenticatedLinks = [],
     isAuth = false,
+    authSwitch = false,
   } = useMemo(() => data, [data]);
 
   const router = useRouter();
@@ -36,7 +37,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
 
   const loginLinks = useMemo(
     () => [...(isAuth ? authenticatedLinks : unauthenticatedLinks)],
-    [authenticatedLinks, isAuth, unauthenticatedLinks],
+    [authenticatedLinks, isAuth, unauthenticatedLinks]
   );
 
   const onLogoClick = useCallback(() => {
@@ -66,6 +67,7 @@ export const HeaderDesktop = (data: HeaderProps) => {
                   width: 130,
                   height: 60,
                 }}
+                objectFit="contain"
               />
             </LogoContainer>
           </LeftLinksContainer>
@@ -83,7 +85,6 @@ export const HeaderDesktop = (data: HeaderProps) => {
               </IconWrapper>
             </MenuWrapper>
             {isOpen && (
-              // TODO: Get this from CMS using actual links
               // TODO: This menu is too simple, we should revisit this design, maybe reuse the mobile menu
               <MenuList>
                 <LinksContainer onClick={() => setIsOpen(false)}>
@@ -96,16 +97,22 @@ export const HeaderDesktop = (data: HeaderProps) => {
                         </React.Fragment>
                       ))}
                   </CommonLinks>
-                  <Divider />
-                  <LoginLink>
-                    {loginLinks.length > 0 &&
-                      loginLinks.map((link, index) => (
-                        <React.Fragment key={`${link.path.current}-${index}`}>
-                          {index !== 0 && <Spacer width={spacing.s} />}
-                          <Link {...link} />
-                        </React.Fragment>
-                      ))}
-                  </LoginLink>
+                  {authSwitch && (
+                    <>
+                      <Divider />
+                      <LoginLink>
+                        {loginLinks.length > 0 &&
+                          loginLinks.map((link, index) => (
+                            <React.Fragment
+                              key={`${link.path.current}-${index}`}
+                            >
+                              {index !== 0 && <Spacer width={spacing.s} />}
+                              <Link {...link} />
+                            </React.Fragment>
+                          ))}
+                      </LoginLink>
+                    </>
+                  )}
                 </LinksContainer>
               </MenuList>
             )}

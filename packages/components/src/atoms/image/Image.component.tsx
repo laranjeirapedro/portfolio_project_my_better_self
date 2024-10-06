@@ -1,7 +1,13 @@
 import React from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
 
-export const Image = ({ data }: any) => {
+export const Image = ({
+  data,
+  objectFit = "cover",
+}: {
+  data: any;
+  objectFit?: "cover" | "contain";
+}) => {
   const { url, originalFilename } = data.image;
 
   return (
@@ -20,6 +26,7 @@ export const Image = ({ data }: any) => {
           width: data.width,
           height: data.height,
         })}
+        objectFit={objectFit}
       />
     </ImageWraper>
   );

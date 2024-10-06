@@ -3,7 +3,10 @@ import { StyledSubHeading } from "./SubHeading.styles";
 import React from "react";
 
 export type SubHeadingProps = {
-  text: string;
+  text: string | string[];
+  color?: string;
+  className?: string;
+  textAlign?: "center" | "left" | "right";
 };
 
 export const SubHeading = ({ text }: SubHeadingProps) => {

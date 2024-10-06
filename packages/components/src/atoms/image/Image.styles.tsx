@@ -7,9 +7,12 @@ export const ImageWraper = styled.div<{ $height?: number; $width?: number }>`
   height: ${({ $height = 100 }) => $height}px;
 `;
 
-export const NextImage = styled(Image)<{ borderradius?: string }>`
+export const NextImage = styled(Image)<{
+  borderradius?: string;
+  objectFit: "cover" | "contain";
+}>`
   position: center;
   // TODO: Add property to cms
-  object-fit: cover;
+  object-fit: ${({ objectFit }) => objectFit};
   border-radius: ${({ borderradius }) => borderradius};
 `;

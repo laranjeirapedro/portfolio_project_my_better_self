@@ -15,7 +15,7 @@ export const Container = styled.div<{ isClickable?: boolean }>`
   }
 `;
 
-export const BackgroundImageContainer = styled.div`
+export const BackgroundImageContainer = styled.div<{ uri: string }>`
   top: 0;
   position: absolute;
   left: calc((100vw - 1280px) * -1 / 2);
@@ -23,13 +23,17 @@ export const BackgroundImageContainer = styled.div`
   height: 100%;
   z-index: -1;
   filter: brightness(50%);
+  overflow: hidden;
+  background-image: url(${({ uri }) => uri});
+  background-size: cover; /* Adjust the size of the image */
+  background-position: center; /* Center the image */
 
   @media (max-width: 1280px) {
     left: 0;
   }
 `;
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div<{ scrollY?: number }>`
   border-radius: ${borderRadius.s}px;
   overflow: hidden;
 `;

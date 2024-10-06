@@ -1,3 +1,4 @@
+import { colors, fontSize as _fontSize, spacing } from "@app/styles";
 import styled from "@emotion/styled";
 
 export const StyledHeading = styled.p<{
@@ -6,10 +7,11 @@ export const StyledHeading = styled.p<{
   fontSize?: number;
   textAlign?: "center" | "left" | "right";
 }>(({ color, fontFamily, fontSize, textAlign }) => ({
-  // TODO: use fallback fontSize from packages/styles (TBD)
-  fontSize: fontSize ?? 26,
-  // TODO: use fallback COLORS.BLACK from packages/styles (TBD)
-  color: color ?? "#000000",
+  fontSize: fontSize ?? _fontSize.xl,
+  color: color ?? colors.darkGrey[900],
+  lineHeight: `${(fontSize ?? _fontSize.xl) + spacing.xxs}px`,
+  minHeight: `${(fontSize ?? _fontSize.xl) + spacing.xxs}px`,
+  margin: `${spacing.xxs}px 0px`,
   ...(fontFamily && { fontFamily }),
   textAlign,
 }));

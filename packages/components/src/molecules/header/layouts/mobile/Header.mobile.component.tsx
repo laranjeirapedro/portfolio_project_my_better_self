@@ -26,6 +26,7 @@ export const HeaderMobile = (data: HeaderProps) => {
     authenticatedLinks = [],
     unauthenticatedLinks = [],
     isAuth = false,
+    authSwitch = false,
   } = useMemo(() => data, [data]);
 
   const router = useRouter();
@@ -34,9 +35,13 @@ export const HeaderMobile = (data: HeaderProps) => {
   const selectedLinks = useMemo(
     () => [
       ...commonLinks,
-      ...(isAuth ? authenticatedLinks : unauthenticatedLinks),
+      ...(authSwitch
+        ? isAuth
+          ? authenticatedLinks
+          : unauthenticatedLinks
+        : []),
     ],
-    [isAuth, authenticatedLinks, commonLinks, unauthenticatedLinks],
+    [isAuth, authenticatedLinks, commonLinks, unauthenticatedLinks]
   );
 
   const onLogoClick = useCallback(() => {
@@ -45,7 +50,7 @@ export const HeaderMobile = (data: HeaderProps) => {
 
   const toggleMenu = useCallback(
     () => setIsActive((curr: boolean) => !curr),
-    [],
+    []
   );
 
   return (

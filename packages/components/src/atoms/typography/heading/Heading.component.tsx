@@ -3,7 +3,7 @@ import { StyledHeading } from "./Heading.styles";
 import React from "react";
 
 export type HeadingProps = {
-  text: string;
+  text: string | string[];
   color?: string;
   className?: string;
   textAlign?: "center" | "left" | "right";

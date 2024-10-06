@@ -5,6 +5,7 @@ import Head from "next/head";
 
 import { useGetBlog, useGetPostPaths } from "@app/hooks";
 import { Block, BlogBanner, PostFeedLayout } from "@app/components";
+import { ContentWrapper } from "../../components";
 
 type BlogProps = {
   data: {
@@ -32,22 +33,12 @@ const Blog = ({ data, resolvedUrl, header }: BlogProps) => {
           key={data.title}
         />
       </Head>
-      <div>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "auto",
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "calc(100vh - 101px)",
-          }}
-        >
-          <BlogBanner blogData={data as never} />
-          <PostFeedLayout path={resolvedUrl}>
-            <Block content={data.content} />
-          </PostFeedLayout>
-        </div>
-      </div>
+      <ContentWrapper>
+        <BlogBanner blogData={data as never} />
+        <PostFeedLayout path={resolvedUrl}>
+          <Block content={data.content} />
+        </PostFeedLayout>
+      </ContentWrapper>
     </div>
   );
 };

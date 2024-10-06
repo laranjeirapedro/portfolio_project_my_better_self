@@ -4,7 +4,13 @@ import { useAuth } from "../../hooks/useAuth";
 
 const guarderRoutes = ["/account/dashboard"];
 
-const AuthGuard = ({ children }: { children: React.ReactNode }) => {
+const AuthGuard = ({
+  children,
+  authSwitch,
+}: {
+  children: React.ReactNode;
+  authSwitch?: boolean;
+}) => {
   const { isAuthenticated, loading, isEmailVerified } = useAuth();
   const router = useRouter();
 
@@ -15,6 +21,10 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const currentRoute = router.pathname;
 
   useEffect(() => {
+    if (currentRoute.includes("/account/") && authSwitch === false) {
+      router.push("/");
+    }
+
     if (!loading && !isAuthenticated && isRouteGuarded(currentRoute)) {
       // Redirect to login page if not authenticated
       router.push("/account/login");
@@ -34,6 +44,12 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     // Show a loading indicator while checking authentication
     return <div>Loading...</div>;
   }
+
+  if (
+    typeof authSwitch === "undefined" ||
+    (authSwitch === false && currentRoute.includes("/account/"))
+  )
+    return null;
 
   return <>{children}</>;
 };

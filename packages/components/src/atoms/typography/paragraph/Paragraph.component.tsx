@@ -4,7 +4,7 @@ import React from "react";
 import { CSSObject } from "@emotion/styled";
 
 export type ParagraphProps = {
-  text: string;
+  text: string | string[];
   style?: CSSObject;
   color?: string;
   className?: string;

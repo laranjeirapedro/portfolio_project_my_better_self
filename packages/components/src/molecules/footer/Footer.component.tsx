@@ -1,17 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import {
-  FooterContainer,
-  ContentContainer,
-  GridContainer,
-  LogoContainer,
-  MidContainer,
-  RightContainer,
-  LinksContainer,
-  SocialIconsWrapper,
-  IconWrapper,
-  CopyrightContainer,
-} from "./Footer.desktop.styles";
+import * as Styled from "./Footer.desktop.styles";
 import {
   Link,
   LinkProps,
@@ -22,7 +11,7 @@ import {
 } from "../../atoms";
 import { IconType } from "react-icons";
 import { SiFacebook, SiInstagram } from "react-icons/si";
-import { colors, spacing, fontSize, imageSize } from "@app/styles";
+import { colors, spacing, fontSize } from "@app/styles";
 
 export type FooterProps = {
   logo: any;
@@ -50,57 +39,56 @@ export const Footer = (data: FooterProps) => {
     logo_instagram: SiInstagram,
   };
   return (
-    <React.Fragment>
-      <FooterContainer>
-        <ContentContainer>
-          <GridContainer>
-            <LogoContainer>
-              <Image
-                data={{
-                  image: { ...logo.asset },
-                  width: imageSize.width["l"],
-                  height: imageSize.height["s"],
-                }}
-              />
-            </LogoContainer>
-            <MidContainer>
-              <Paragraph text={shortDescription} />
-            </MidContainer>
-            <RightContainer>
-              <div>
-                {links.length > 0 && (
-                  <LinksContainer>
-                    {links.map((link, index) => (
-                      <React.Fragment key={`${link.path.current}-${index}`}>
-                        {index !== 0 && <Spacer width={spacing.s} />}
-                        <Link {...link} />
-                      </React.Fragment>
-                    ))}
-                  </LinksContainer>
+    <Styled.FooterContainer>
+      <Styled.ContentContainer>
+        <Styled.RowContainer>
+          <Styled.LogoContainer>
+            <Image
+              data={{
+                image: { ...logo.asset },
+                width: 130,
+                height: 60,
+              }}
+              objectFit="contain"
+            />
+          </Styled.LogoContainer>
+          <Styled.MidContainer>
+            <Paragraph text={shortDescription} />
+          </Styled.MidContainer>
+          <Styled.RightContainer>
+            <div>
+              {links.length > 0 && (
+                <Styled.LinksContainer>
+                  {links.map((link, index) => (
+                    <React.Fragment key={`${link.path.current}-${index}`}>
+                      {index !== 0 && <Spacer width={spacing.s} />}
+                      <Link {...link} />
+                    </React.Fragment>
+                  ))}
+                </Styled.LinksContainer>
+              )}
+              <Styled.SocialIconsWrapper>
+                {socialIcons.map(
+                  (icon) =>
+                    iconsMap[icon.icon.name] && (
+                      <Styled.IconWrapper key={icon.url}>
+                        <Link {...{ path: { current: icon.url } }}>
+                          {iconsMap[icon.icon.name]?.({
+                            size: fontSize.m,
+                            color: colors.primary["700"],
+                          })}
+                        </Link>
+                      </Styled.IconWrapper>
+                    )
                 )}
-                <SocialIconsWrapper>
-                  {socialIcons.map(
-                    (icon) =>
-                      iconsMap[icon.icon.name] && (
-                        <IconWrapper key={icon.url}>
-                          <Link {...{ path: { current: icon.url } }}>
-                            {iconsMap[icon.icon.name]?.({
-                              size: fontSize.m,
-                              color: colors.primary["700"],
-                            })}
-                          </Link>
-                        </IconWrapper>
-                      ),
-                  )}
-                </SocialIconsWrapper>
-              </div>
-            </RightContainer>
-          </GridContainer>
-          <CopyrightContainer>
-            <Caption text={siteCopyright} />
-          </CopyrightContainer>
-        </ContentContainer>
-      </FooterContainer>
-    </React.Fragment>
+              </Styled.SocialIconsWrapper>
+            </div>
+          </Styled.RightContainer>
+        </Styled.RowContainer>
+        <Styled.CopyrightContainer>
+          <Caption text={siteCopyright} />
+        </Styled.CopyrightContainer>
+      </Styled.ContentContainer>
+    </Styled.FooterContainer>
   );
 };

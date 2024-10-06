@@ -1,4 +1,3 @@
-import { fontObject } from "./../../../../../apps/blog-cms/schemaTypes/objects/fonts/font";
 import styled from "@emotion/styled";
 import { breakpoints, colors, spacing, fontSize } from "@app/styles";
 
@@ -10,38 +9,60 @@ export const FooterContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  display: inline;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
   padding: ${spacing.xxs}px;
+  max-width: calc(${breakpoints.desktop}px - ${spacing.s * 2}px);
+  width: 100%;
+  margin: auto;
 `;
 
-export const GridContainer = styled.div`
+export const RowContainer = styled.div`
   display: flex;
-  gap: ${spacing.xs}px;
+  gap: ${spacing.m}px;
+
+  @media screen and (max-width: ${breakpoints.tablet}px) {
+    flex-direction: column;
+  }
 `;
 
 export const LogoContainer = styled.div`
   padding-bottom: ${spacing.xxxxs}px;
-  flex: 1;
+
+  @media screen and (max-width: ${breakpoints.tablet}px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const MidContainer = styled.div`
   text-align: center;
-  flex: 2;
+  flex: 1;
 `;
 
 export const RightContainer = styled.div`
   display: flex;
   justify-content: right;
   text-align: right;
-  flex: 1;
+
+  @media screen and (max-width: ${breakpoints.tablet}px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const LinksContainer = styled.div`
   line-height: ${spacing.l}px;
+
+  @media screen and (max-width: ${breakpoints.tablet}px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const SocialIconsWrapper = styled.div`
@@ -50,6 +71,10 @@ export const SocialIconsWrapper = styled.div`
   margin-left: ${spacing.s}px;
   margin-top: ${spacing.xxxs}px;
   justify-content: right;
+
+  @media screen and (max-width: ${breakpoints.tablet}px) {
+    justify-content: center;
+  }
 `;
 
 export const IconWrapper = styled.div`

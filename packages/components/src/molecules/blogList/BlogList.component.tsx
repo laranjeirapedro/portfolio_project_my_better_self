@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Section } from "../../organisms";
 import * as Styled from "./BlogList.styles";
 import { PostCard } from "../postCard";
 import { useGetBlogs } from "@app/hooks";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { spacing } from "@app/styles";
-
 
 export const BlogList = ({ children }: any) => {
   const [posts, setPosts] = useState<BlogProps[]>([]);

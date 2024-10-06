@@ -4,7 +4,7 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetPagePaths, useGetPages } from "@app/hooks";
-import { Block, BlogFeedLayout } from "@app/components";
+import { Block } from "@app/components";
 import { ContentWrapper } from "../components";
 
 type PageProps = {

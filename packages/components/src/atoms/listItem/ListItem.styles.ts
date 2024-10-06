@@ -1,17 +1,17 @@
+import React from "react";
+
 import { colors, spacing, fontSize as _fontSize } from "@app/styles";
 import styled from "@emotion/styled";
 
-export const StyledParagraph = styled.p<{
+export const StyledListItem = styled.li<{
   color?: string;
   fontFamily?: string;
   fontSize?: number;
-  textAlign?: "center" | "left" | "right";
   numberOfLines?: number;
-}>(({ color, fontFamily, fontSize, textAlign, numberOfLines }) => ({
+}>(({ color, fontFamily, fontSize, numberOfLines }) => ({
   fontSize: fontSize ?? _fontSize.m,
   color: color ?? colors.darkGrey[900],
   ...(fontFamily && { fontFamily }),
-  textAlign,
   lineHeight: `${(fontSize ?? _fontSize.m) + spacing.xxs}px`,
   minHeight: `${(fontSize ?? _fontSize.m) + spacing.xxs}px`,
   ...(numberOfLines && {

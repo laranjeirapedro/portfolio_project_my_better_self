@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Caption, Image, Link, Paragraph, Spacer } from "../..";
 import NextImage from "next/image";
 import * as Styled from "./BlogBanner.styles";
@@ -16,6 +16,7 @@ type BlogBannerProps = {
 
 export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
   const router = useRouter();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   if (!blogData) return null;
 
@@ -23,22 +24,38 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
     router.push(`/blog/${blogData.slug.current}`);
   };
 
+  // Icons Map
   const iconsMap: Record<string, IconType> = {
     logo_linkedin: SiLinkedin,
     logo_facebook: SiFacebook,
     logo_instagram: SiInstagram,
   };
 
+  // Handle scroll effect for parallax
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Styled.Container {...(isClickable && { onClick, isClickable })}>
-        <Styled.BackgroundImageContainer>
+        <Styled.BackgroundImageContainer uri={blogData.blogImage.url}>
           <NextImage
             src={blogData.blogImage.url}
             alt={blogData.blogImage.originalFilename}
             fill
             priority
             objectFit="cover"
+            style={{
+              transform: `translateY(${scrollPosition * 0.3}px)`,
+              transition: "0.1s",
+            }}
           />
         </Styled.BackgroundImageContainer>
         <Styled.ContentWraper>
@@ -83,7 +100,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      ),
+                      )
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>

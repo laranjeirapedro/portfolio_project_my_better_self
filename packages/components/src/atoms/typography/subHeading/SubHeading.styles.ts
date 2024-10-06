@@ -1,3 +1,4 @@
+import { colors, fontSize as _fontSize, spacing } from "@app/styles";
 import styled from "@emotion/styled";
 
 export const StyledSubHeading = styled.p<{
@@ -5,9 +6,10 @@ export const StyledSubHeading = styled.p<{
   fontFamily?: string;
   fontSize?: number;
 }>(({ color, fontFamily, fontSize }) => ({
-  // TODO: use fontSize from packages/styles (TBD)
-  fontSize: fontSize ?? 22,
-  // TODO: use COLORS.BLACK from packages/styles (TBD)
-  color: color ?? "#000000",
+  fontSize: fontSize ?? _fontSize.l,
+  color: color ?? colors.darkGrey[900],
+  lineHeight: `${(fontSize ?? _fontSize.l) + spacing.xxs}px`,
+  minHeight: `${(fontSize ?? _fontSize.l) + spacing.xxs}px`,
+  margin: `${spacing.xxxs}px 0px`,
   ...(fontFamily && { fontFamily }),
 }));

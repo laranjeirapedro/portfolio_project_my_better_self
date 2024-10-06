@@ -36,7 +36,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!siteData) return null;
 
   return (
-    <AuthGuard>
+    <AuthGuard authSwitch={siteData.header.authSwitch}>
       <Head>
         <meta
           name="google-adsense-account"

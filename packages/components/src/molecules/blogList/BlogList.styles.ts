@@ -20,7 +20,6 @@ export const PostContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   gap: ${spacing.s}px;
-  justify-content: space-between;
 
   @media (max-width: ${breakpoints.mobile}px) {
     flex-direction: column;
@@ -28,18 +27,18 @@ export const PostContainer = styled.div`
 `;
 
 export const PostWrapper = styled.div<{ gap: number }>`
-  width: calc(25% - ${spacing.s}px);
+  width: calc(25% - ${(spacing.s * 3) / 4}px); /* Size minus gap */
   box-sizing: border-box; /* Ensures padding is included in the width */
   justify-content: space-between;
   height: 100%;
   display: flex;
 
   @media (max-width: ${breakpoints.desktop}px) {
-    width: calc(${100 / 3}% - ${spacing.s}px);
+    width: calc(${100 / 3}% - ${(spacing.s * 2) / 3}px); /* Size minus gap */
   }
 
   @media (max-width: ${breakpoints.tablet}px) {
-    width: calc(50% - ${spacing.s}px);
+    width: calc(50% - ${spacing.s / 2}px); /* Size minus gap */
   }
 
   @media (max-width: ${breakpoints.mobile}px) {
