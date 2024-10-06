@@ -8,18 +8,18 @@ import {
   IconContainer,
   MenuContainer,
   MenuIconContainer,
-} from "./Header.mobile.styles";
-import { Link, SubHeading } from "../../../../atoms";
+} from "./HeaderTypeA.mobile.styles";
+import { Link, SubHeading } from "../../../../../atoms";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { IoMenu, IoCloseOutline } from "react-icons/io5";
 import { fontSize } from "@app/styles";
-import { HeaderProps } from "../../Header.types";
+import { HeaderProps } from "../../../Header.types";
 
 // TODO: get from cms
 const MENU_WIDTH = 300;
 
-export const HeaderMobile = (data: HeaderProps) => {
+export const HeaderTypeAMobile = (data: HeaderProps) => {
   const {
     logo,
     commonLinks = [],
@@ -41,7 +41,7 @@ export const HeaderMobile = (data: HeaderProps) => {
           : unauthenticatedLinks
         : []),
     ],
-    [isAuth, authenticatedLinks, commonLinks, unauthenticatedLinks]
+    [commonLinks, authSwitch, isAuth, authenticatedLinks, unauthenticatedLinks]
   );
 
   const onLogoClick = useCallback(() => {

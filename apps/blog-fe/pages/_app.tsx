@@ -1,5 +1,5 @@
 import "../src/styles/global.css";
-import { Footer, FooterProps, Header, HeaderProps } from "@app/components";
+import { Footer, FooterProps, Header } from "@app/components";
 import {
   SanityClientProvider,
   SettingsProvider,
@@ -38,6 +38,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <AuthGuard authSwitch={siteData.header.authSwitch}>
       <Head>
+        {Boolean(siteData.header.favicon.asset.url) && (
+          <link rel="icon" href={siteData.header.favicon.asset.url} />
+        )}
         <meta
           name="google-adsense-account"
           content="ca-pub-8361311161311634"
@@ -50,10 +53,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <SanityClientProvider>
         <SettingsProvider data={siteData.settings}>
-          <Header
-            {...(siteData.header as HeaderProps)}
-            isAuth={isAuthenticated}
-          />
+          <Header {...(siteData.header)} isAuth={isAuthenticated} />
           <ContentWrapper>
             <Component {...pageProps} {...siteData} />
           </ContentWrapper>

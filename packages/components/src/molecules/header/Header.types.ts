@@ -8,4 +8,5 @@ export type HeaderProps = {
   unauthenticatedLinks: LinkProps[];
   isAuth?: boolean;
   authSwitch?: boolean;
+  headerType?: "typeA" | "typeB";
 };

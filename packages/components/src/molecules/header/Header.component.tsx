@@ -1,13 +1,18 @@
-import React from "react";
+import { useMemo } from "react";
 import { HeaderProps } from "./Header.types";
-
-import { Header as LHeader } from "./layouts";
+import { HeaderTypeA } from "./typeA";
+import React from "react";
+import { HeaderTypeB } from "./typeB";
 
 export const Header = (data: HeaderProps) => {
-  return (
-    <React.Fragment>
-      <LHeader.Mobile {...data} />
-      <LHeader.Desktop {...data} />
-    </React.Fragment>
-  );
+  const { headerType } = useMemo(() => data, [data]);
+
+  switch (headerType) {
+    case "typeA":
+      return <HeaderTypeA {...data} />;
+    case "typeB":
+      return <HeaderTypeB {...data} />;
+    default:
+      return <HeaderTypeA {...data} />;
+  }
 };

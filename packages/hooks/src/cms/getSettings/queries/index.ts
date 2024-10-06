@@ -8,6 +8,13 @@ export const queryHeader = `
                _type == 'reference' => @->
             }
     },
+    'favicon':
+        favicon{
+            asset{
+               _type == 'reference' => @->
+            }
+    },
+    headerType,
     siteName,
     commonLinks,
     authenticatedLinks,

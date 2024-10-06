@@ -15,13 +15,13 @@ import {
   MenuWrapper,
   IconWrapper,
   Overlay,
-} from "./Header.desktop.styles";
-import { Link, Spacer, Image } from "../../../../atoms";
+} from "./HeaderTypeA.desktop.styles";
+import { Link, Spacer, Image } from "../../../../../atoms";
 import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { spacing } from "@app/styles";
-import { HeaderProps } from "../../Header.types";
+import { HeaderProps } from "../../../Header.types";
 
-export const HeaderDesktop = (data: HeaderProps) => {
+export const HeaderTypeADesktop = (data: HeaderProps) => {
   const {
     logo,
     commonLinks = [],
