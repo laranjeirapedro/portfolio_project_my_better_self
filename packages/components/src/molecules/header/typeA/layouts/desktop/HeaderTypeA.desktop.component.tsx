@@ -37,7 +37,7 @@ export const HeaderTypeADesktop = (data: HeaderProps) => {
 
   const loginLinks = useMemo(
     () => [...(isAuth ? authenticatedLinks : unauthenticatedLinks)],
-    [authenticatedLinks, isAuth, unauthenticatedLinks]
+    [authenticatedLinks, isAuth, unauthenticatedLinks],
   );
 
   const onLogoClick = useCallback(() => {

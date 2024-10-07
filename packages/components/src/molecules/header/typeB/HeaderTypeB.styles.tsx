@@ -14,7 +14,7 @@ export const HeaderContainer = styled.div<{ menuOpened: boolean }>(
     height: "80px",
     boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.1)",
     zIndex: 89,
-  })
+  }),
 );
 
 export const MainSection = styled.div({
@@ -74,7 +74,7 @@ export const MenuIconBar = styled.div<{ menuOpened: boolean }>(
         width: ICON_DIAGONAL,
       }),
     },
-  })
+  }),
 );
 
 export const ExpandableMenu = styled.div<{ menuOpened: boolean }>(
@@ -90,7 +90,7 @@ export const ExpandableMenu = styled.div<{ menuOpened: boolean }>(
     zIndex: 90,
     transition: `top ${ANIMATION_DURATION}s ease`,
     transitionDelay: menuOpened ? "0s" : `${ANIMATION_DURATION}s`,
-  })
+  }),
 );
 
 export const ExpandableMenuMain = styled.div({
@@ -133,7 +133,7 @@ export const ExpandableLinkContainer = styled.div<{ menuOpened: boolean }>(
 
     transition: `${ANIMATION_DURATION}s`,
     transitionDelay: menuOpened ? `${ANIMATION_DURATION}s` : "0s",
-  })
+  }),
 );
 
 export const ExpandableLink = styled(Link)<{ active: boolean }>(
@@ -146,7 +146,7 @@ export const ExpandableLink = styled(Link)<{ active: boolean }>(
     "&:hover": {
       ...(!active && { color: colors.primary[500] }),
     },
-  })
+  }),
 );
 
 export const Divider = styled.div<{ menuOpened: boolean }>(
@@ -158,5 +158,5 @@ export const Divider = styled.div<{ menuOpened: boolean }>(
     margin: `${spacing.s}px auto`,
     transition: `${ANIMATION_DURATION}s`,
     transitionDelay: menuOpened ? `${ANIMATION_DURATION}s` : "0s",
-  })
+  }),
 );

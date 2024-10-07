@@ -53,7 +53,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <SanityClientProvider>
         <SettingsProvider data={siteData.settings}>
-          <Header {...(siteData.header)} isAuth={isAuthenticated} />
+          <Header {...siteData.header} isAuth={isAuthenticated} />
           <ContentWrapper>
             <Component {...pageProps} {...siteData} />
           </ContentWrapper>

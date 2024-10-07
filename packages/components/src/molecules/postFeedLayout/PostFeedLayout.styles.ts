@@ -20,7 +20,7 @@ export const SideContainer = styled.div`
   display: flex;
   flex: 20% 0 1;
   flex-direction: column;
-  gap: ${spacing.xxs}px;
+  gap: ${spacing.xs}px;
 
   @media (max-width: ${breakpoints.tablet}px) {
     flex: 1;

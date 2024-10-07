@@ -41,7 +41,7 @@ export const HeaderTypeAMobile = (data: HeaderProps) => {
           : unauthenticatedLinks
         : []),
     ],
-    [commonLinks, authSwitch, isAuth, authenticatedLinks, unauthenticatedLinks]
+    [commonLinks, authSwitch, isAuth, authenticatedLinks, unauthenticatedLinks],
   );
 
   const onLogoClick = useCallback(() => {
@@ -50,7 +50,7 @@ export const HeaderTypeAMobile = (data: HeaderProps) => {
 
   const toggleMenu = useCallback(
     () => setIsActive((curr: boolean) => !curr),
-    []
+    [],
   );
 
   return (

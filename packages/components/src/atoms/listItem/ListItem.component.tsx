@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useSettingsContext } from "@app/hooks";
 import { StyledListItem } from "./ListItem.styles";
 
 type Props = {
@@ -8,7 +8,13 @@ type Props = {
 };
 
 export const ListItem = ({ children, type = "disc" }: Props) => {
+  const { fonts } = useSettingsContext() ?? {};
   return (
-    <StyledListItem style={{ listStyleType: type }}>{children}</StyledListItem>
+    <StyledListItem
+      fontFamily={fonts?.["paragraph"]?.fontFamily}
+      style={{ listStyleType: type }}
+    >
+      {children}
+    </StyledListItem>
   );
 };

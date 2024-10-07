@@ -38,7 +38,7 @@ export const PostFeedLayout = ({
         </Styled.ContentAdsContainer>
       </Styled.MainContainer>
       <Styled.SideContainer>
-        <SubHeading text="Other Posts" />
+        <SubHeading text="You May Also Like" />
         {posts?.map((post, index) => (
           <PostCard key={index} data={post} isSideContent={true} />
         ))}

@@ -18,7 +18,11 @@ const CardPadding = css`
 
 export const SideContentCardWrapper = styled.div`
   ${WrapperCommon}
-  ${CardPadding}
+  display:flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 100%;
+  cursor: pointer;
 `;
 
 export const MainContentCardWrapper = styled.div`
@@ -27,13 +31,14 @@ export const MainContentCardWrapper = styled.div`
   flex-direction: column;
   cursor: pointer;
   width: 100%;
+  height: 380px;
 `;
 
 export const MainContentTextWrapper = styled.div`
-  padding: ${spacing.xxs}px;
+  padding: ${spacing.xs}px ${spacing.s}px;
 `;
 
 export const TitleWrapper = styled.div`
-  height: 2rem;
+  height: 3.5rem;
   margin-bottom: ${spacing.xxxs}px;
 `;

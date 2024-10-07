@@ -86,7 +86,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    []
+    [],
   );
 
   return (

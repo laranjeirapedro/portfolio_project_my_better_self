@@ -12,4 +12,5 @@ export const StyledLink = styled(Link)<{
   // TODO: use fallback COLORS.BLACK from packages/styles (TBD)
   color: color ?? "#000000",
   ...(fontFamily && { fontFamily }),
+  textDecoration: "none"
 }));

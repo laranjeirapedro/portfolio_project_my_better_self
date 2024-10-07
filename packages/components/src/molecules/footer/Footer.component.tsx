@@ -79,7 +79,7 @@ export const Footer = (data: FooterProps) => {
                           })}
                         </Link>
                       </Styled.IconWrapper>
-                    )
+                    ),
                 )}
               </Styled.SocialIconsWrapper>
             </div>
