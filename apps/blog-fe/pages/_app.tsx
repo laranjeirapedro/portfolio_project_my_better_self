@@ -39,8 +39,28 @@ const App = ({ Component, pageProps }: AppProps) => {
     <AuthGuard authSwitch={siteData.header.authSwitch}>
       <Head>
         {Boolean(siteData.header.favicon.asset.url) && (
-          <link rel="icon" href={siteData.header.favicon.asset.url} />
+          <>
+            <link
+              rel="icon"
+              href={siteData.header.favicon.asset.url}
+              type="image/png"
+            />
+            <link
+              rel="apple-touch-icon"
+              href={siteData.header.favicon.asset.url}
+            />
+            <link
+              rel="icon"
+              href={siteData.header.favicon.asset.url}
+              type="image/x-icon"
+            />
+          </>
         )}
+
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
         <meta
           name="google-adsense-account"
           content="ca-pub-8361311161311634"
