@@ -1,4 +1,9 @@
-import { colors, spacing, fontSize as _fontSize } from "@app/styles";
+import {
+  colors,
+  spacing,
+  fontSize as _fontSize,
+  breakpoints,
+} from "@app/styles";
 import styled from "@emotion/styled";
 
 export const StyledParagraph = styled.p<{
@@ -23,4 +28,7 @@ export const StyledParagraph = styled.p<{
     maxHeight: `calc(1.2em * ${numberOfLines})`,
     lineHeight: "1.2em",
   }),
+  [`@media (max-width: ${breakpoints.tablet}px)`]: {
+    fontSize: fontSize ? fontSize - 2 : _fontSize.s,
+  },
 }));

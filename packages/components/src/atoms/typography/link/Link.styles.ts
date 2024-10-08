@@ -1,3 +1,4 @@
+import { breakpoints, fontSize as _fontSize, colors } from "@app/styles";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
@@ -8,9 +9,11 @@ export const StyledLink = styled(Link)<{
   fontSize?: number;
 }>(({ color, fontFamily, fontSize }) => ({
   // TODO: use fallback fontSize from packages/styles (TBD)
-  fontSize: fontSize ?? 16,
+  fontSize: fontSize ?? _fontSize.m,
   // TODO: use fallback COLORS.BLACK from packages/styles (TBD)
-  color: color ?? "#000000",
+  color: color ?? colors.darkGrey[900],
   ...(fontFamily && { fontFamily }),
-  textDecoration: "none"
+  [`@media (max-width: ${breakpoints.tablet}px)`]: {
+    fontSize: fontSize ? fontSize - 2 : _fontSize.s,
+  },
 }));

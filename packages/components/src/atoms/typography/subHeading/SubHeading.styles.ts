@@ -1,4 +1,9 @@
-import { colors, fontSize as _fontSize, spacing } from "@app/styles";
+import {
+  colors,
+  fontSize as _fontSize,
+  spacing,
+  breakpoints,
+} from "@app/styles";
 import styled from "@emotion/styled";
 
 export const StyledSubHeading = styled.p<{
@@ -12,4 +17,7 @@ export const StyledSubHeading = styled.p<{
   minHeight: `${(fontSize ?? _fontSize.l) + spacing.xxs}px`,
   margin: `${spacing.xxxs}px 0px`,
   ...(fontFamily && { fontFamily }),
+  [`@media (max-width: ${breakpoints.tablet}px)`]: {
+    fontSize: fontSize ? fontSize - 2 : _fontSize.m,
+  },
 }));

@@ -2,11 +2,14 @@ import styled from "@emotion/styled";
 import { borderRadius, colors, fontSize, spacing } from "@app/styles";
 import { Heading, Paragraph } from "../../atoms";
 
-export const Container = styled.div<{ isClickable?: boolean }>`
+export const Container = styled.div<{
+  isClickable?: boolean;
+  bannerHeight?: number;
+}>`
   padding: ${spacing.s}px ${spacing.none}px;
   display: flex;
   position: relative;
-  min-height: 300px;
+  min-height: ${({ bannerHeight = 300 }) => bannerHeight}px;
   cursor: ${({ isClickable }) => (isClickable ? "pointer" : "cursor")};
   transition: filter 0.2s;
 
@@ -15,7 +18,7 @@ export const Container = styled.div<{ isClickable?: boolean }>`
   }
 `;
 
-export const BackgroundImageContainer = styled.div<{ uri: string }>`
+export const BackgroundImageContainer = styled.div`
   top: 0;
   position: absolute;
   left: calc((100vw - 1280px) * -1 / 2);
@@ -24,9 +27,6 @@ export const BackgroundImageContainer = styled.div<{ uri: string }>`
   z-index: -1;
   filter: brightness(50%);
   overflow: hidden;
-  background-image: url(${({ uri }) => uri});
-  background-size: cover; /* Adjust the size of the image */
-  background-position: center; /* Center the image */
 
   @media (max-width: 1280px) {
     left: 0;

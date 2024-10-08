@@ -18,11 +18,9 @@ const CardPadding = css`
 
 export const SideContentCardWrapper = styled.div`
   ${WrapperCommon}
-  display:flex;
-  flex-direction: column;
-  cursor: pointer;
-  width: 100%;
-  cursor: pointer;
+  ${CardPadding}
+  /* Space for box-shadow propagate */
+  margin: 4px 0px;
 `;
 
 export const MainContentCardWrapper = styled.div`

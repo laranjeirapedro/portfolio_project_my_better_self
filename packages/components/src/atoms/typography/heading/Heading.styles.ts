@@ -1,4 +1,9 @@
-import { colors, fontSize as _fontSize, spacing } from "@app/styles";
+import {
+  colors,
+  fontSize as _fontSize,
+  spacing,
+  breakpoints,
+} from "@app/styles";
 import styled from "@emotion/styled";
 
 export const StyledHeading = styled.p<{
@@ -14,4 +19,7 @@ export const StyledHeading = styled.p<{
   margin: `${spacing.xxs}px 0px`,
   ...(fontFamily && { fontFamily }),
   textAlign,
+  [`@media (max-width: ${breakpoints.tablet}px)`]: {
+    fontSize: fontSize ? fontSize - 4 : _fontSize.l,
+  },
 }));

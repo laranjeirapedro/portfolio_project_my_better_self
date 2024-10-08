@@ -8,17 +8,17 @@ import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
 import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { colors, fontSize, spacing } from "@app/styles";
+import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 type BlogBannerProps = {
   blogData: BlogProps;
   isClickable?: boolean;
 };
 
+const BANNER_HEIGHT = 300;
+
 export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
   const router = useRouter();
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  if (!blogData) return null;
 
   const onClick = () => {
     router.push(`/blog/${blogData.slug.current}`);
@@ -31,21 +31,51 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
     logo_instagram: SiInstagram,
   };
 
-  // Handle scroll effect for parallax
+  const [windowWidth, setWindowWidth] = useState(0);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+    // Define a function to handle window resize events
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    // Set the initial width when the component mounts
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  if (!blogData) return null;
+
   return (
     <>
-      <Styled.Container {...(isClickable && { onClick, isClickable })}>
-        <Styled.BackgroundImageContainer uri={blogData.blogImage.url}>
+      <Styled.Container
+        {...(isClickable && { onClick, isClickable })}
+        bannerHeight={BANNER_HEIGHT}
+      >
+        <Styled.BackgroundImageContainer>
+          <ParallaxBanner style={{ aspectRatio: windowWidth / BANNER_HEIGHT }}>
+            <ParallaxBannerLayer image={blogData.blogImage.url} speed={-20} />
+          </ParallaxBanner>
+          {/* <NextImage
+            src={blogData.blogImage.url}
+            alt={blogData.blogImage.originalFilename}
+            fill
+            priority
+            objectFit="cover"
+            style={{
+              transform: `translateY(${scrollPosition * 0.3}px)`,
+              transition: "0.1s",
+            }}
+          /> */}
+        </Styled.BackgroundImageContainer>
+        {/* <Styled.BackgroundImageContainer uri={blogData.blogImage.url}>
           <NextImage
             src={blogData.blogImage.url}
             alt={blogData.blogImage.originalFilename}
@@ -57,7 +87,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
               transition: "0.1s",
             }}
           />
-        </Styled.BackgroundImageContainer>
+        </Styled.BackgroundImageContainer> */}
         <Styled.ContentWraper>
           <Styled.BannerHeading text={blogData.title} />
           <Spacer height={spacing.xxxs} />
