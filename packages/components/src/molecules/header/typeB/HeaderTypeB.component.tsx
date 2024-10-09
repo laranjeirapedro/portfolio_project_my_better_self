@@ -82,7 +82,7 @@ export const HeaderTypeB = (data: HeaderProps) => {
                   originalFilename: logo.asset.originalFilename,
                 },
                 width: 130,
-                height: 64,
+                height: 52,
               }}
               objectFit="contain"
             />
