@@ -1,0 +1,95 @@
+import React, { useCallback, useState } from "react";
+import MailchimpSubscribe from "react-mailchimp-subscribe";
+import * as Styled from "./NewsletterCard.styles";
+import {
+  SubHeading,
+  Paragraph,
+  Link,
+  Image,
+  Spacer,
+  Button,
+} from "../../atoms";
+import NewsletterImage from "./assets/newsletter.jpg";
+
+export type NewsletterCardProps = {
+  title?: string;
+  description?: string;
+};
+
+export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
+  const [email, setEmail] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const onEmailChanged = useCallback(
+    (e: any) => {
+      setEmail(e.target.value);
+    },
+    [setEmail],
+  );
+  const getButtonLabel = useCallback(
+    (status: "error" | "success" | "sending" | null) => {
+      switch (status) {
+        case "sending":
+          return "Sending...";
+        case "success":
+          return "Subscribed!";
+        default:
+          return "Subscribe";
+      }
+    },
+    [],
+  );
+
+  return (
+    <MailchimpSubscribe
+      url={process.env.NEXT_PUBLIC_MAILCHIMP_NEWSLETTER_FORM_URL ?? ""}
+      render={({ subscribe, status, message }) => {
+        const errorMessage =
+          status == "error" ? "Please provide a valid email." : undefined;
+        if (isButtonDisabled && errorMessage) {
+          setIsButtonDisabled(false);
+        }
+        return (
+          <Styled.StyledForm>
+            <Styled.TextContainer>
+              <Styled.StyledTitle text={title ?? "Stay Up to Date!"} />
+              <Paragraph
+                text={
+                  description ??
+                  "Subscribe to recieve our articles and other information on this topic. You can unsubscribe anytime!"
+                }
+              />
+              <Spacer height={12} />
+              <Styled.StyledTextInputTitle text="Email" />
+              <Styled.StyledTextInput
+                type="email"
+                value={email}
+                handleChange={onEmailChanged as never}
+                error={errorMessage}
+              />
+              <Button
+                disabled={isButtonDisabled}
+                label={getButtonLabel(status)}
+                onClick={() => {
+                  setIsButtonDisabled(true);
+                  subscribe({ EMAIL: email });
+                }}
+              />
+            </Styled.TextContainer>
+            <Styled.ImageContainer>
+              <Image
+                data={{
+                  image: {
+                    url: NewsletterImage,
+                    originalFilename: "Newsletter Image",
+                  },
+                  height: "100%",
+                  borderRadius: "0px 8px 8px 0px",
+                }}
+              />
+            </Styled.ImageContainer>
+          </Styled.StyledForm>
+        );
+      }}
+    />
+  );
+};

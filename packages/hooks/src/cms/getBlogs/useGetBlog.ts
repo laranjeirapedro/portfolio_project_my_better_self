@@ -46,7 +46,7 @@ export const useGetBlog = async (slug: string) => {
         ...,
         ${image}
         },
-        ${amazonProduct}
+        ${amazonProduct},
     }
   }[0]`);
 

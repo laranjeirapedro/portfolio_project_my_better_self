@@ -8,3 +8,4 @@ export * from "./blogFeedLayout";
 export * from "./blogBanner";
 export * from "./blogList";
 export * from "./amazonProductCard";
+export * from "./newsletterCard";

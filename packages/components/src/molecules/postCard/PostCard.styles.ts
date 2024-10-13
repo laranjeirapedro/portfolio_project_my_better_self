@@ -19,9 +19,9 @@ const CardPadding = css`
 
 export const SideContentCardWrapper = styled.div`
   ${WrapperCommon}
-  ${CardPadding}
   /* Space for box-shadow propagate */
   margin: 4px 0px;
+  cursor: pointer;
 `;
 
 export const MainContentCardWrapper = styled.div`

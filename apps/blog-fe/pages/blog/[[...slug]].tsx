@@ -4,7 +4,12 @@ import React from "react";
 import Head from "next/head";
 
 import { useGetBlog, useGetPostPaths } from "@app/hooks";
-import { Block, BlogBanner, PostFeedLayout } from "@app/components";
+import {
+  Block,
+  BlogBanner,
+  NewsletterCard,
+  PostFeedLayout,
+} from "@app/components";
 import { ContentWrapper } from "../../components";
 
 type BlogProps = {
@@ -38,6 +43,7 @@ const Blog = ({ data, resolvedUrl, header }: BlogProps) => {
         <PostFeedLayout path={resolvedUrl}>
           <Block content={data.content} />
         </PostFeedLayout>
+        <NewsletterCard />
       </ContentWrapper>
     </div>
   );
