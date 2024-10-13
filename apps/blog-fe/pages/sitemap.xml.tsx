@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
           .map((post: { slug: { current: string }; updatedAt: string }) => {
             return `
           <url>
-            <loc>${baseUrl}${post.slug.current}</loc>
+            <loc>${baseUrl}/${post.slug.current}</loc>
             <lastmod>${post.updatedAt}</lastmod>
             <priority>0.80</priority>
           </url>
