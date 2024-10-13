@@ -1,14 +1,7 @@
 import React, { useCallback, useState } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 import * as Styled from "./NewsletterCard.styles";
-import {
-  SubHeading,
-  Paragraph,
-  Link,
-  Image,
-  Spacer,
-  Button,
-} from "../../atoms";
+import { Image, Spacer, Button } from "../../atoms";
 import NewsletterImage from "./assets/newsletter.jpg";
 
 export type NewsletterCardProps = {
@@ -49,17 +42,17 @@ export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
           setIsButtonDisabled(false);
         }
         return (
-          <Styled.StyledForm>
+          <Styled.Form>
             <Styled.TextContainer>
-              <Styled.StyledTitle text={title ?? "Stay Up to Date!"} />
-              <Paragraph
+              <Styled.Title text={title ?? "Stay Up to Date!"} />
+              <Styled.Description
                 text={
                   description ??
                   "Subscribe to recieve our articles and other information on this topic. You can unsubscribe anytime!"
                 }
               />
               <Spacer height={12} />
-              <Styled.StyledTextInputTitle text="Email" />
+              <Styled.TextInputTitle text="Email" />
               <Styled.StyledTextInput
                 type="email"
                 value={email}
@@ -87,7 +80,7 @@ export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
                 }}
               />
             </Styled.ImageContainer>
-          </Styled.StyledForm>
+          </Styled.Form>
         );
       }}
     />
