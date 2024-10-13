@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import { BlogList, Card, LatestBlogBanner } from "../../molecules";
+import {
+  AmazonProductCard,
+  BlogList,
+  Card,
+  LatestBlogBanner,
+} from "../../molecules";
 import {
   Button,
   Heading,
@@ -58,6 +63,7 @@ export const Block = ({ content }: any) => {
           blogList: () => <BlogList />,
           button: ({ value }: { value: ButtonProps }) =>
             ComponentWrapper(<Button {...value} />),
+          amazonProduct: ({ value }: any) => <AmazonProductCard {...value} />,
         },
         marks: {
           link: ({
@@ -86,7 +92,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    [],
+    []
   );
 
   return (

@@ -1,5 +1,6 @@
 import { client } from "@app/hooks";
 import { image } from "./queries";
+import { amazonProduct } from "../getPages/queries";
 
 /*
  * name: useGetBlogs
@@ -51,7 +52,8 @@ export const useGetBlogs = async (slug?: string) => {
         content[]{
           ...,
           ${image}
-        }
+        },
+      ${amazonProduct},
       }
   }`);
 

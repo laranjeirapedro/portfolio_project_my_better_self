@@ -7,16 +7,26 @@ export type SubHeadingProps = {
   color?: string;
   className?: string;
   textAlign?: "center" | "left" | "right";
+  numberOfLines?: number;
 };
 
-export const SubHeading = ({ text }: SubHeadingProps) => {
+export const SubHeading = ({
+  text,
+  color,
+  className,
+  textAlign,
+  numberOfLines,
+}: SubHeadingProps) => {
   const { fonts } = useSettingsContext() ?? {};
 
   return (
     <StyledSubHeading
-      color={fonts?.["fontSubHeading"]?.color.hex}
+      color={color ?? fonts?.["fontSubHeading"]?.color.hex}
       fontFamily={fonts?.["fontSubHeading"]?.fontFamily}
       fontSize={fonts?.["fontSubHeading"]?.fontSize}
+      textAlign={textAlign}
+      className={className}
+      numberOfLines={numberOfLines}
     >
       {text}
     </StyledSubHeading>

@@ -12,6 +12,8 @@ export const Container = styled.div<{
   min-height: ${({ bannerHeight = 300 }) => bannerHeight}px;
   cursor: ${({ isClickable }) => (isClickable ? "pointer" : "cursor")};
   transition: filter 0.2s;
+  background-color: ${colors.offWhite["050"]};
+  filter: brightness(100%);
 
   &:hover {
     filter: brightness(${({ isClickable }) => (isClickable ? 120 : 100)}%);

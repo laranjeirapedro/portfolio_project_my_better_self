@@ -13,3 +13,10 @@ export const image = `
             }
         }
 `;
+
+export const amazonProduct = `
+_type == 'reference' => @->{
+    ...,
+    ${image},
+}
+`;

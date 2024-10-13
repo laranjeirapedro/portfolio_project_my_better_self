@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
 
 export const Image = ({
-  data,
+  data = { width: 200, height: 200, image: { url: "", originalFilename: "" } },
   objectFit = "cover",
 }: {
-  data: any;
+  data: {
+    image: {
+      url: string;
+      originalFilename: string;
+    };
+    height?: number;
+    width?: number;
+    borderRadius?: string;
+  };
   objectFit?: "cover" | "contain";
 }) => {
-  const { url, originalFilename } = data.image;
+  const { url, originalFilename } = useMemo(() => data.image, [data]);
+
+  if (!url) return null;
 
   return (
     <ImageWraper

@@ -78,6 +78,7 @@ export const page = defineType({
         {type: 'blogList'},
         {type: 'card'},
         {type: 'latestBlogBanner'},
+        {type: 'reference', to: {type: 'amazonProduct'}},
       ],
     }),
   ],

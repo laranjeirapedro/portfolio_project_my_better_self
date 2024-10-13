@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import { breakpoints, colors, spacing, fontSize } from "@app/styles";
+import { breakpoints, colors, spacing } from "@app/styles";
 
 export const FooterContainer = styled.div`
   margin: 0;
   padding: 0px ${spacing.s}px;
   box-shadow: 0px 0px ${spacing.xxxxs}px ${colors.darkGrey[900]};
   display: flex;
+  background-color: ${colors.offWhite["050"]};
 `;
 
 export const ContentContainer = styled.div`

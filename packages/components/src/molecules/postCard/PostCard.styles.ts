@@ -6,6 +6,7 @@ const WrapperCommon = css`
   box-shadow: 0px 2px 4px ${colors.darkGrey[400]};
   border-radius: ${borderRadius.s}px;
   transition: filter 0.2s;
+  background-color: ${colors.offWhite["050"]};
 
   &:hover {
     filter: brightness(120%);

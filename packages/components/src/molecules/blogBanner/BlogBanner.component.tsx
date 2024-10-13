@@ -60,34 +60,13 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
         bannerHeight={BANNER_HEIGHT}
       >
         <Styled.BackgroundImageContainer>
-          <ParallaxBanner style={{ aspectRatio: windowWidth / BANNER_HEIGHT }}>
+          <ParallaxBanner
+            style={{ aspectRatio: windowWidth / BANNER_HEIGHT, height: "100%" }}
+          >
             <ParallaxBannerLayer image={blogData.blogImage.url} speed={-20} />
           </ParallaxBanner>
-          {/* <NextImage
-            src={blogData.blogImage.url}
-            alt={blogData.blogImage.originalFilename}
-            fill
-            priority
-            objectFit="cover"
-            style={{
-              transform: `translateY(${scrollPosition * 0.3}px)`,
-              transition: "0.1s",
-            }}
-          /> */}
         </Styled.BackgroundImageContainer>
-        {/* <Styled.BackgroundImageContainer uri={blogData.blogImage.url}>
-          <NextImage
-            src={blogData.blogImage.url}
-            alt={blogData.blogImage.originalFilename}
-            fill
-            priority
-            objectFit="cover"
-            style={{
-              transform: `translateY(${scrollPosition * 0.3}px)`,
-              transition: "0.1s",
-            }}
-          />
-        </Styled.BackgroundImageContainer> */}
+
         <Styled.ContentWraper>
           <Styled.BannerHeading text={blogData.title} />
           <Spacer height={spacing.xxxs} />
@@ -130,7 +109,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      ),
+                      )
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>
