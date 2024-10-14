@@ -14,6 +14,7 @@ import {
   author,
   blogList,
   amazonProduct,
+  newsletter,
 } from './components'
 import {header, color, font, footer} from './layout'
 import {socialIcons, fontObject} from './objects'
@@ -28,6 +29,7 @@ export const schemaTypes = [
   blogFeedLayout,
   author,
   amazonProduct,
+  newsletter,
   // Objects
   latestBlogBanner,
   blogList,

@@ -1,6 +1,6 @@
 import { client } from "@app/hooks";
 import { image } from "./queries";
-import { amazonProduct } from "../getPages/queries";
+import { amazonProduct, newsletterRef } from "../getPages/queries";
 
 export const useGetBlog = async (slug: string) => {
   const page =
@@ -46,7 +46,8 @@ export const useGetBlog = async (slug: string) => {
         ...,
         ${image}
         },
-        ${amazonProduct}
+        ${amazonProduct},
+        ${newsletterRef},
     }
   }[0]`);
 

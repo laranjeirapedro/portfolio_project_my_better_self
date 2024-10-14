@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export const Image = ({
   data = { width: 200, height: 200, image: { url: "", originalFilename: "" } },
@@ -7,10 +8,10 @@ export const Image = ({
 }: {
   data: {
     image: {
-      url: string;
+      url: string | StaticImport;
       originalFilename: string;
     };
-    height?: number;
+    height?: number | string;
     width?: number;
     borderRadius?: string;
   };
@@ -21,11 +22,7 @@ export const Image = ({
   if (!url) return null;
 
   return (
-    <ImageWraper
-      style={{ height: data.height }}
-      $height={data.height}
-      $width={data.width}
-    >
+    <ImageWraper style={{ height: data.height }} $width={data.width}>
       <NextImage
         borderradius={data.borderRadius}
         src={url}

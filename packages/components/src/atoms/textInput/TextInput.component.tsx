@@ -10,6 +10,7 @@ const Container = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   margin-top: ${spacing.xxs}px;
+  flex-direction: column;
 `;
 
 const Label = styled.label<{ $hasError: boolean }>`
@@ -51,7 +52,7 @@ const ErrorText = styled.span`
 // TextInput component
 
 export type TextInputProps = {
-  label: string;
+  label?: string;
   error?: string;
   required?: boolean;
   value: string;
@@ -69,9 +70,11 @@ export const TextInput = ({
 }: TextInputProps) => {
   return (
     <Container>
-      <Label $hasError={!!error}>
-        {label} {required && "*"}
-      </Label>
+      {label && (
+        <Label $hasError={!!error}>
+          {label} {required && "*"}
+        </Label>
+      )}
       <Input
         $hasError={!!error}
         value={value}

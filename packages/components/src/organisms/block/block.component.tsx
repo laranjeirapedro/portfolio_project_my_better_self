@@ -5,6 +5,7 @@ import {
   BlogList,
   Card,
   LatestBlogBanner,
+  NewsletterCard,
 } from "../../molecules";
 import {
   Button,
@@ -64,6 +65,7 @@ export const Block = ({ content }: any) => {
           button: ({ value }: { value: ButtonProps }) =>
             ComponentWrapper(<Button {...value} />),
           amazonProduct: ({ value }: any) => <AmazonProductCard {...value} />,
+          newsletter: ({ value }: any) => <NewsletterCard {...value} />,
         },
         marks: {
           link: ({
@@ -92,7 +94,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    []
+    [],
   );
 
   return (
