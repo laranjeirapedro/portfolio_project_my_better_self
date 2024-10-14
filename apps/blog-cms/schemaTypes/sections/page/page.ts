@@ -79,7 +79,7 @@ export const page = defineType({
         {type: 'card'},
         {type: 'latestBlogBanner'},
         {type: 'reference', to: {type: 'amazonProduct'}},
-        {type: 'newsletter'},
+        {name: 'newsletterRef', type: 'reference', to: {type: 'newsletter'}},
       ],
     }),
   ],

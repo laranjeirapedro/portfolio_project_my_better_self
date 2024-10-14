@@ -20,3 +20,10 @@ _type == 'reference' => @->{
     ${image},
 }
 `;
+
+export const newsletterRef = `
+_type == 'newsletterRef' => @->{
+    ...,
+    ${image},
+}
+`;

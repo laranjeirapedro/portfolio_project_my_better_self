@@ -3,13 +3,19 @@ import MailchimpSubscribe from "react-mailchimp-subscribe";
 import * as Styled from "./NewsletterCard.styles";
 import { Image, Spacer, Button } from "../../atoms";
 import NewsletterImage from "./assets/newsletter.jpg";
+import { ButtonTypes } from "../../atoms/button/Button.types";
 
 export type NewsletterCardProps = {
   title?: string;
   description?: string;
+  image?: { url: string };
 };
 
-export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
+export const NewsletterCard = ({
+  title,
+  description,
+  image,
+}: NewsletterCardProps) => {
   const [email, setEmail] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const onEmailChanged = useCallback(
@@ -31,7 +37,6 @@ export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
     },
     [],
   );
-
   return (
     <MailchimpSubscribe
       url={process.env.NEXT_PUBLIC_MAILCHIMP_NEWSLETTER_FORM_URL ?? ""}
@@ -66,13 +71,14 @@ export const NewsletterCard = ({ title, description }: NewsletterCardProps) => {
                   setIsButtonDisabled(true);
                   subscribe({ EMAIL: email });
                 }}
+                buttonType={ButtonTypes.TERTIARY}
               />
             </Styled.TextContainer>
             <Styled.ImageContainer>
               <Image
                 data={{
                   image: {
-                    url: NewsletterImage,
+                    url: image?.url ?? NewsletterImage,
                     originalFilename: "Newsletter Image",
                   },
                   height: "100%",

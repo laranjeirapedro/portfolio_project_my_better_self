@@ -96,7 +96,7 @@ export const blog = defineType({
         },
         {type: 'card'},
         {type: 'reference', to: {type: 'amazonProduct'}},
-        {type: 'newsletter'},
+        {name: 'newsletterRef', type: 'reference', to: {type: 'newsletter'}},
       ],
     }),
   ],

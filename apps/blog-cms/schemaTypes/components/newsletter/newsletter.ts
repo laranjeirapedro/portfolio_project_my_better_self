@@ -15,5 +15,10 @@ export const newsletter = defineType({
       title: 'Description',
       type: 'string',
     }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+    }),
   ],
 })
