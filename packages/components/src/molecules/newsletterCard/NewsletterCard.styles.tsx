@@ -15,7 +15,7 @@ export const Form = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: ${borderRadius.m}px;
-  background-color: ${colors.warmBrown["050"]};
+  background-color: ${colors.offWhite["050"]};
   box-shadow: 0px 2px 4px ${colors.darkGrey[400]};
   margin: ${spacing.m}px auto;
 `;
