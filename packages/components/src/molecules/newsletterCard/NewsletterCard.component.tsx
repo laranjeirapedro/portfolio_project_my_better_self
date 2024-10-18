@@ -22,7 +22,7 @@ export const NewsletterCard = ({
     (e: any) => {
       setEmail(e.target.value);
     },
-    [setEmail],
+    [setEmail]
   );
   const getButtonLabel = useCallback(
     (status: "error" | "success" | "sending" | null) => {
@@ -35,7 +35,7 @@ export const NewsletterCard = ({
           return "Subscribe";
       }
     },
-    [],
+    []
   );
   return (
     <MailchimpSubscribe
@@ -78,7 +78,7 @@ export const NewsletterCard = ({
               <Image
                 data={{
                   image: {
-                    url: image?.url ?? NewsletterImage,
+                    url: image?.url ? image?.url + "?w=300" : NewsletterImage,
                     originalFilename: "Newsletter Image",
                   },
                   height: "100%",

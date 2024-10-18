@@ -37,6 +37,15 @@ const Blog = ({ data, resolvedUrl, header }: BlogProps) => {
           content={`${header.siteName} | ${data.title}`}
           key={data.title}
         />
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-8361311161311634"
+        ></meta>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8361311161311634"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <ContentWrapper>
         <BlogBanner blogData={data as never} />

@@ -63,7 +63,10 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
           <ParallaxBanner
             style={{ aspectRatio: windowWidth / BANNER_HEIGHT, height: "100%" }}
           >
-            <ParallaxBannerLayer image={blogData.blogImage.url} speed={-20} />
+            <ParallaxBannerLayer
+              image={blogData.blogImage.url + "?h=300"}
+              speed={-20}
+            />
           </ParallaxBanner>
         </Styled.BackgroundImageContainer>
 
@@ -84,7 +87,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                 <Image
                   data={{
                     image: {
-                      url: blogData.author.profilePicture.url,
+                      url: blogData.author.profilePicture.url + "?h=300",
                       originalFilename:
                         blogData.author.profilePicture.originalFilename,
                     },
@@ -109,7 +112,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      ),
+                      )
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>

@@ -29,7 +29,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
           <Image
             data={{
               image: {
-                url: image.url,
+                url: image.url + "?h=200",
                 originalFilename: title,
               },
               height: 200,

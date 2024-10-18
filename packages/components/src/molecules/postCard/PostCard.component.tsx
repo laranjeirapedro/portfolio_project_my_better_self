@@ -26,7 +26,7 @@ export const PostCard = ({ data, isSideContent }: PostCardProps) => {
         <Image
           data={{
             image: {
-              url: data.blogImage.url,
+              url: data.blogImage.url + "?h=180",
               originalFilename: data.blogImage.originalFilename,
             },
             height: 200,
@@ -57,7 +57,7 @@ export const PostCard = ({ data, isSideContent }: PostCardProps) => {
       <Image
         data={{
           image: {
-            url: data.blogImage.url,
+            url: data.blogImage.url + "?h=150",
             originalFilename: data.blogImage.originalFilename,
           },
           height: 100,
