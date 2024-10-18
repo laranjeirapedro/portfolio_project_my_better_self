@@ -104,7 +104,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                   text={blogData.author.fullName}
                 />
                 <Styled.SocialIconsWrapper>
-                  {blogData.author.socialIcons.map(
+                  {blogData.author.socialIcons?.map(
                     (icon) =>
                       iconsMap[icon.icon.name] && (
                         <Styled.IconWrapper key={icon.url}>
