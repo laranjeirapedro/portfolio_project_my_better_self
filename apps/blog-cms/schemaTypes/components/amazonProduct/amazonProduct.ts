@@ -30,6 +30,16 @@ export const amazonProduct = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'promoPrice',
+      title: 'Promo Price',
+      type: 'number',
+    }),
+    defineField({
+      name: 'promoDueDate',
+      title: 'Promo Due Date',
+      type: 'date',
+    }),
+    defineField({
       name: 'rating',
       title: 'Rating',
       type: 'number',

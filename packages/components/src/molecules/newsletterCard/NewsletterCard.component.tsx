@@ -22,7 +22,7 @@ export const NewsletterCard = ({
     (e: any) => {
       setEmail(e.target.value);
     },
-    [setEmail]
+    [setEmail],
   );
   const getButtonLabel = useCallback(
     (status: "error" | "success" | "sending" | null) => {
@@ -35,7 +35,7 @@ export const NewsletterCard = ({
           return "Subscribe";
       }
     },
-    []
+    [],
   );
   return (
     <MailchimpSubscribe

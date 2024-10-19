@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import * as Styled from "./AmazonProductCard.styles";
 import { Image, SubHeading } from "../..";
 import { Star } from "./Star";
-import { useRouter } from "next/router";
 
 export type AmazonProductCardProps = {
   title: string;
@@ -10,16 +9,30 @@ export type AmazonProductCardProps = {
   rating: number;
   siteStripeUrl: string;
   price: number;
-  updatedAt: string;
+  _updatedAt: string;
+  promoPrice?: number;
+  promoDueDate?: string;
 };
 
 export const AmazonProductCard = (data: AmazonProductCardProps) => {
-  const { title, image, rating, siteStripeUrl, price, updatedAt } = data;
+  const {
+    title,
+    image,
+    rating,
+    siteStripeUrl,
+    price,
+    _updatedAt,
+    promoDueDate,
+    promoPrice,
+  } = data;
 
-  const router = useRouter();
+  const shouldSeePromo =
+    promoPrice && promoDueDate && new Date(promoDueDate) >= new Date();
+
+  const currentPrice = shouldSeePromo ? promoPrice : price;
 
   const onButtonClick = useCallback(() => {
-    router.push(siteStripeUrl);
+    window.open(siteStripeUrl);
   }, []);
 
   return (
@@ -54,14 +67,23 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
           </Styled.RatingWrapper>
           <Styled.PriceWrapper>
             <Styled.PriceSup text={"$"} />
-            <SubHeading text={`${Math.floor(price)}`} />
+            <SubHeading text={`${Math.floor(currentPrice)}`} />
             <Styled.PriceSup
-              text={`${(price % Math.floor(price)).toFixed(2).substring(2, 4)}`}
+              text={`${(currentPrice % Math.floor(currentPrice)).toFixed(2).substring(2, 4)}`}
             />
+            {shouldSeePromo && (
+              <>
+                <Styled.OriginalPriceText text={`Typical Price:`} />
+                <Styled.OriginalPrice text={`$${price}`} />
+              </>
+            )}
           </Styled.PriceWrapper>
           <Styled.AmazonButton onClick={onButtonClick}>
             <span>Visit</span>
           </Styled.AmazonButton>
+          <Styled.OriginalPriceText
+            text={`Updated At: ${new Date(_updatedAt).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric" })}`}
+          />
         </Styled.ContentWrapper>
       </Styled.CardWrapper>
     </Styled.CardContainer>

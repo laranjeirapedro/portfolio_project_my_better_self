@@ -18,16 +18,28 @@ export const Form = styled.div`
   background-color: ${colors.offWhite["050"]};
   box-shadow: 0px 2px 4px ${colors.darkGrey[400]};
   margin: ${spacing.m}px auto;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    flex-direction: column;
+    width: 94%;
+  }
 `;
 
 export const ImageContainer = styled.div`
   width: 50%;
+  @media (max-width: ${breakpoints.tablet}px) {
+    width: auto;
+  }
 `;
 
 export const TextContainer = styled.div`
   width: 50%;
   padding: ${spacing.s}px;
   font-family: helvetica;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    width: auto;
+  }
 `;
 
 export const StyledTextInput = styled(TextInput)`

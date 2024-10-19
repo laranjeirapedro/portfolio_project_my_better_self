@@ -56,7 +56,7 @@ export const useGetBlogs = async (slug?: string) => {
       ${amazonProduct},
       ${newsletterRef},
       }
-  }`);
+  } | order(_createdAt desc)`);
 
   return page;
 };

@@ -1,6 +1,15 @@
 import { breakpoints, colors, fontSize, spacing } from "@app/styles";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { SubHeading } from "../../atoms";
+
+const OriginalPriceStyle = css`
+  font-size: ${fontSize.l * 0.6}px;
+  color: ${colors.darkGrey[300]};
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${fontSize.l * 0.7}px;
+  }
+`;
 
 export const CardContainer = styled.div`
   max-width: 950px;
@@ -65,6 +74,18 @@ export const RatingIcon = styled.div`
 export const PriceWrapper = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+export const OriginalPriceText = styled(SubHeading)`
+  ${OriginalPriceStyle}
+  margin-left: ${spacing.xxs}px;
+  text-align: right;
+`;
+
+export const OriginalPrice = styled(SubHeading)`
+  ${OriginalPriceStyle}
+  margin-left: ${spacing.xxxs}px;
+  text-decoration: line-through;
 `;
 
 export const PriceSup = styled(SubHeading)`
