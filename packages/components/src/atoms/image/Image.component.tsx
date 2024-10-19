@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
+const LOADER_QUALITY = 25;
+
 export const Image = ({
   data = { width: 200, height: 200, image: { url: "", originalFilename: "" } },
   objectFit = "cover",
@@ -17,8 +19,7 @@ export const Image = ({
   };
   objectFit?: "cover" | "contain";
 }) => {
-  const { url, originalFilename } = useMemo(() => data.image, [data]);
-
+  const { url, originalFilename } = useMemo(() => data.image ?? {}, [data]);
   if (!url) return null;
 
   return (
@@ -28,7 +29,6 @@ export const Image = ({
         src={url}
         alt={originalFilename}
         fill
-        priority
         sizes={JSON.stringify({
           width: data.width,
           height: data.height,

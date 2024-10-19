@@ -2,6 +2,8 @@ import { fontSize, spacing } from "@app/styles";
 import { SubHeading, Paragraph, Link, Image, Spacer } from "../../atoms";
 import * as Styled from "./PostCard.styles";
 import { useRouter } from "next/navigation";
+import { linkClickedAnalytics } from "@app/hooks";
+import { useMemo } from "react";
 
 export type PostCardProps = {
   data: {
@@ -16,8 +18,12 @@ export type PostCardProps = {
 export const PostCard = ({ data, isSideContent }: PostCardProps) => {
   const router = useRouter();
 
+  const path = useMemo(() => `/blog/${data.slug.current}`, []);
+
   const onClickPost = () => {
-    router.push(`/blog/${data.slug.current}`);
+    linkClickedAnalytics({ path });
+
+    router.push(path);
   };
 
   if (!isSideContent) {

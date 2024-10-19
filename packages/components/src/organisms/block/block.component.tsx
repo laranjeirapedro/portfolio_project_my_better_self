@@ -57,7 +57,6 @@ export const Block = ({ content }: any) => {
           // TODO: replace types with image type props when vailable
           image: ({ value }: any) => ComponentWrapper(<Image data={value} />),
           images: ({ value }: any) => ComponentWrapper(<Image data={value} />),
-
           // TODO: replace types with card type props when vailable
           card: ({ value }: any) => <Card data={value} />,
           latestBlogBanner: () => <LatestBlogBanner />,
@@ -94,7 +93,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    [],
+    []
   );
 
   return (

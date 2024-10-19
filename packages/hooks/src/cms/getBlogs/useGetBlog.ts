@@ -42,6 +42,22 @@ export const useGetBlog = async (slug: string) => {
     },
     content[]{
       ...,
+      ${image},
+      _type == 'image' =>{
+      ...,
+      "image":   asset {
+        ...,
+          _type == 'reference' => @->{
+              url,
+              originalFilename,
+              "dimensions":metadata{
+                  ...dimensions{
+                      ...
+                  }
+                }
+              }
+          }           
+      },
       content[]{
         ...,
         ${image}

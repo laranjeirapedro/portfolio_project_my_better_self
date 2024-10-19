@@ -1,7 +1,7 @@
 import { StyledLink } from "./Link.styles";
-import React from "react";
+import React, { useCallback } from "react";
 
-import { useSettingsContext } from "@app/hooks";
+import { linkClickedAnalytics, useSettingsContext } from "@app/hooks";
 
 export type LinkProps = {
   linkText?: string;
@@ -14,6 +14,11 @@ export type LinkProps = {
 export const Link = (data: LinkProps) => {
   const { fonts } = useSettingsContext() ?? {};
   const { path, linkText, styleOverride, className } = data;
+
+  const onLinkClicked = useCallback(() => {
+    linkClickedAnalytics({ path: path.current });
+  }, [path]);
+
   return (
     <StyledLink
       href={path.current ?? "#"}
@@ -22,6 +27,7 @@ export const Link = (data: LinkProps) => {
       fontSize={fonts?.["link"]?.fontSize}
       style={styleOverride}
       className={className}
+      onClick={onLinkClicked}
     >
       {data.children ?? linkText ?? ""}
     </StyledLink>

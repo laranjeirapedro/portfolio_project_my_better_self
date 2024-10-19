@@ -13,10 +13,16 @@ import { ContentWrapper } from "../components";
 import AuthGuard from "../components/authGuard/AuthGuard.component";
 import { useAuth } from "../hooks/useAuth";
 import { ParallaxProvider } from "react-scroll-parallax";
+import ReactGA from "react-ga4";
+import { useRouter } from "next/router";
+
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_ANALYTICS_GA4 ?? "";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [siteData, setSiteData] = useState<any>();
   const settingsData = useGetSettings();
+
+  const router = useRouter();
 
   const { isAuthenticated } = useAuth();
 
@@ -33,6 +39,21 @@ const App = ({ Component, pageProps }: AppProps) => {
       getSettings();
     }
   }, [settingsData]);
+
+  useEffect(() => {
+    ReactGA.initialize(GA_TRACKING_ID);
+
+    const handleRouteChange = (url: string) => {
+      ReactGA.send({ hitType: "pageview", page: url });
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   if (!siteData) return null;
 

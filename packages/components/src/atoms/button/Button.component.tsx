@@ -2,6 +2,7 @@ import React, { createElement, useCallback } from "react";
 import { StyledButton } from "./Button.styles";
 import { ButtonProps, ButtonTypes } from "./Button.types";
 import { useRouter } from "next/router";
+import { buttonClickedAnalytics } from "@app/hooks";
 
 export const Button = (data: ButtonProps) => {
   const {
@@ -14,6 +15,7 @@ export const Button = (data: ButtonProps) => {
   const router = useRouter();
 
   const onButtonClick = useCallback(() => {
+    buttonClickedAnalytics();
     if (onClick) {
       onClick();
     } else {
@@ -24,6 +26,6 @@ export const Button = (data: ButtonProps) => {
   return createElement(
     StyledButton[type],
     { ...(!disabled && { onClick: onButtonClick }), disabled },
-    label?.toUpperCase(),
+    label?.toUpperCase()
   );
 };

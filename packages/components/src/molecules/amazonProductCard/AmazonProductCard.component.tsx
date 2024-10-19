@@ -2,6 +2,8 @@ import React, { useCallback } from "react";
 import * as Styled from "./AmazonProductCard.styles";
 import { Image, SubHeading } from "../..";
 import { Star } from "./Star";
+import { amazonProductClickedAnalytics } from "@app/hooks";
+import { useRouter } from "next/router";
 
 export type AmazonProductCardProps = {
   title: string;
@@ -31,9 +33,16 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
 
   const currentPrice = shouldSeePromo ? promoPrice : price;
 
+  const router = useRouter();
+
   const onButtonClick = useCallback(() => {
     window.open(siteStripeUrl);
-  }, []);
+    amazonProductClickedAnalytics({
+      origin: router.asPath,
+      path: siteStripeUrl,
+      title,
+    });
+  }, [router, siteStripeUrl, title]);
 
   return (
     <Styled.CardContainer>
@@ -78,9 +87,16 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
               </>
             )}
           </Styled.PriceWrapper>
-          <Styled.AmazonButton onClick={onButtonClick}>
-            <span>Visit</span>
-          </Styled.AmazonButton>
+          <a
+            href={siteStripeUrl}
+            target="_blank"
+            onClick={onButtonClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Styled.AmazonButton>
+              <span>Visit</span>
+            </Styled.AmazonButton>
+          </a>
           <Styled.OriginalPriceText
             text={`Updated At: ${new Date(_updatedAt).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric" })}`}
           />

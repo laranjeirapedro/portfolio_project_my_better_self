@@ -3,6 +3,7 @@ import { HeaderProps } from "../Header.types";
 import * as Styled from "./HeaderTypeB.styles";
 import { Image, Spacer } from "../../../atoms";
 import { useRouter } from "next/router";
+import { linkClickedAnalytics } from "@app/hooks";
 
 export const HeaderTypeB = (data: HeaderProps) => {
   const {
@@ -30,6 +31,7 @@ export const HeaderTypeB = (data: HeaderProps) => {
 
   const onLogoClick = useCallback(() => {
     setMenuOpened(false);
+    linkClickedAnalytics({ path: "/" });
     router.push("/");
   }, [router]);
 

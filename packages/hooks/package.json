@@ -12,7 +12,8 @@
   "types": "./src/index.ts",
   "dependencies": {
     "@sanity/client": "^6.18.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "react-ga4": "^2.1.0"
   },
   "devDependencies": {
     "@app/eslint-config": "*",

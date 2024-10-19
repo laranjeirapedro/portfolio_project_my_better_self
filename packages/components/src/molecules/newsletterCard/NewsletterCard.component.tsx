@@ -4,6 +4,7 @@ import * as Styled from "./NewsletterCard.styles";
 import { Image, Spacer, Button } from "../../atoms";
 import NewsletterImage from "./assets/newsletter.jpg";
 import { ButtonTypes } from "../../atoms/button/Button.types";
+import { buttonClickedAnalytics } from "@app/hooks";
 
 export type NewsletterCardProps = {
   title?: string;
@@ -18,12 +19,16 @@ export const NewsletterCard = ({
 }: NewsletterCardProps) => {
   const [email, setEmail] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const MAILCHIMP_URL =
+    process.env.NEXT_PUBLIC_MAILCHIMP_NEWSLETTER_FORM_URL ?? "";
+
   const onEmailChanged = useCallback(
     (e: any) => {
       setEmail(e.target.value);
     },
     [setEmail],
   );
+
   const getButtonLabel = useCallback(
     (status: "error" | "success" | "sending" | null) => {
       switch (status) {
@@ -37,10 +42,11 @@ export const NewsletterCard = ({
     },
     [],
   );
+
   return (
     <MailchimpSubscribe
-      url={process.env.NEXT_PUBLIC_MAILCHIMP_NEWSLETTER_FORM_URL ?? ""}
-      render={({ subscribe, status, message }) => {
+      url={MAILCHIMP_URL}
+      render={({ subscribe, status }) => {
         const errorMessage =
           status == "error" ? "Please provide a valid email." : undefined;
         if (isButtonDisabled && errorMessage) {
@@ -69,6 +75,7 @@ export const NewsletterCard = ({
                 label={getButtonLabel(status)}
                 onClick={() => {
                   setIsButtonDisabled(true);
+                  buttonClickedAnalytics({ label: "newsletter" });
                   subscribe({ EMAIL: email });
                 }}
                 buttonType={ButtonTypes.TERTIARY}

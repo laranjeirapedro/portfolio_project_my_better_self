@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { colors, fontSize, spacing } from "@app/styles";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
+import { linkClickedAnalytics } from "@app/hooks";
 
 type BlogBannerProps = {
   blogData: BlogProps;
@@ -21,6 +22,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
   const router = useRouter();
 
   const onClick = () => {
+    linkClickedAnalytics({ path: `/blog/${blogData.slug.current}` });
     router.push(`/blog/${blogData.slug.current}`);
   };
 
@@ -64,8 +66,8 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
             style={{ aspectRatio: windowWidth / BANNER_HEIGHT, height: "100%" }}
           >
             <ParallaxBannerLayer
-              image={blogData.blogImage.url + "?h=300"}
-              speed={-20}
+              image={blogData.blogImage.url + "?h=500"}
+              speed={-10}
             />
           </ParallaxBanner>
         </Styled.BackgroundImageContainer>
@@ -112,7 +114,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      ),
+                      )
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>
