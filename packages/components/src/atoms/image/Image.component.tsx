@@ -34,6 +34,8 @@ export const Image = ({
           height: data.height,
         })}
         objectFit={objectFit}
+        quality={75}
+        placeholder={`data:image/${url}`}
       />
     </ImageWraper>
   );

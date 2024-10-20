@@ -42,6 +42,10 @@ export const PostFeedLayout = ({
         {posts?.map((post, index) => (
           <PostCard key={index} data={post} isSideContent={true} />
         ))}
+        {!posts &&
+          Array(3)
+            .fill(0)
+            .map(() => <PostCard isSideContent={true} />)}
       </Styled.SideContainer>
     </Styled.Container>
   );

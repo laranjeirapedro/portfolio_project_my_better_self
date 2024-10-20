@@ -17,7 +17,5 @@ export const LatestBlogBanner = () => {
     !blogData && getLatestBlog();
   }, [blogData]);
 
-  if (!blogData) return null;
-
-  return <BlogBanner blogData={blogData} isClickable />;
+  return <BlogBanner blogData={blogData as never} isClickable />;
 };

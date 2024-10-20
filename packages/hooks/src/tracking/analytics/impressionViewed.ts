@@ -15,6 +15,6 @@ export const impressionViewedAnalytics = ({
     },
     {
       origin,
-    }
+    },
   );
 };

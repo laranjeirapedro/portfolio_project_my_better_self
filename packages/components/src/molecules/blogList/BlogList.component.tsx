@@ -30,6 +30,14 @@ export const BlogList = ({ children }: any) => {
               <PostCard key={index} data={post} />
             </Styled.PostWrapper>
           ))}
+          {posts.length === 0 &&
+            Array(4)
+              .fill(0)
+              .map(() => (
+                <Styled.PostWrapper gap={spacing.s}>
+                  <PostCard />
+                </Styled.PostWrapper>
+              ))}
         </Styled.PostContainer>
       </Styled.Container>
     </Section>

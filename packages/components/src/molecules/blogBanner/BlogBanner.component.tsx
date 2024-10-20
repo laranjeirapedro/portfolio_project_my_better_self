@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { Caption, Image, Link, Paragraph, Spacer } from "../..";
 import NextImage from "next/image";
 import * as Styled from "./BlogBanner.styles";
@@ -12,7 +14,7 @@ import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { linkClickedAnalytics } from "@app/hooks";
 
 type BlogBannerProps = {
-  blogData: BlogProps;
+  blogData?: BlogProps;
   isClickable?: boolean;
 };
 
@@ -22,8 +24,8 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
   const router = useRouter();
 
   const onClick = () => {
-    linkClickedAnalytics({ path: `/blog/${blogData.slug.current}` });
-    router.push(`/blog/${blogData.slug.current}`);
+    linkClickedAnalytics({ path: `/blog/${blogData?.slug.current}` });
+    router.push(`/blog/${blogData?.slug.current}`);
   };
 
   // Icons Map
@@ -53,7 +55,19 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
     };
   }, []);
 
-  if (!blogData) return null;
+  if (!blogData)
+    return (
+      <Styled.Container bannerHeight={BANNER_HEIGHT}>
+        <Styled.BackgroundImageContainer>
+          <Skeleton
+            borderRadius={0}
+            width="100%"
+            height="100%"
+            baseColor={colors.darkGrey["050"]}
+          />
+        </Styled.BackgroundImageContainer>
+      </Styled.Container>
+    );
 
   return (
     <>
@@ -114,7 +128,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      )
+                      ),
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>

@@ -26,6 +26,6 @@ export const Button = (data: ButtonProps) => {
   return createElement(
     StyledButton[type],
     { ...(!disabled && { onClick: onButtonClick }), disabled },
-    label?.toUpperCase()
+    label?.toUpperCase(),
   );
 };
