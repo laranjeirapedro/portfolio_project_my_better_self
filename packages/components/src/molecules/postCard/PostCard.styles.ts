@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, spacing, borderRadius } from "@app/styles";
+import { colors, spacing, borderRadius, breakpoints } from "@app/styles";
 import { css } from "@emotion/react";
 
 const WrapperCommon = css`
@@ -13,24 +13,31 @@ const WrapperCommon = css`
   }
 `;
 
-const CardPadding = css`
-  padding: ${spacing.s}px;
-`;
-
-export const SideContentCardWrapper = styled.div`
+export const SideContentCardWrapper = styled.div<{ isSideContent: boolean }>`
   ${WrapperCommon}
   /* Space for box-shadow propagate */
   margin: 4px 0px;
   cursor: pointer;
+  display: ${({ isSideContent }) => (isSideContent ? "block" : "none")};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: none;
+  }
 `;
 
-export const MainContentCardWrapper = styled.div`
+export const MainContentCardWrapper = styled.div<{ isSideContent: boolean }>`
   ${WrapperCommon}
-  display:flex;
+  display:${({ isSideContent }) => (isSideContent ? "none" : "flex")};
   flex-direction: column;
   cursor: pointer;
   width: 100%;
   height: 380px;
+  /* Space for box-shadow propagate */
+  margin: 4px 0px;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: flex;
+  }
 `;
 
 export const MainContentTextWrapper = styled.div`

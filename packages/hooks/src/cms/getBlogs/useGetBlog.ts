@@ -58,6 +58,16 @@ export const useGetBlog = async (slug: string) => {
               }
           }           
       },
+      _type == 'amazonProductsCarousel' =>{
+      ...,
+      "products":products[] {
+        ...,
+          _type == 'reference' => @->{
+              ...,
+              ${image}
+          }           
+      },
+    },
       content[]{
         ...,
         ${image}

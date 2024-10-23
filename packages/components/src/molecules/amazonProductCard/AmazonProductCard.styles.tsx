@@ -1,7 +1,7 @@
 import { breakpoints, colors, fontSize, spacing } from "@app/styles";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { SubHeading } from "../../atoms";
+import { Caption, SubHeading } from "../../atoms";
 
 const OriginalPriceStyle = css`
   font-size: ${fontSize.l * 0.6}px;
@@ -11,10 +11,10 @@ const OriginalPriceStyle = css`
   }
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div<{ mobile?: boolean }>`
   max-width: 950px;
   width: 100%;
-  min-height: 250px;
+  min-height: ${({ mobile }) => (mobile ? 450 : 250)}px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,8 @@ export const CardContainer = styled.div`
   border: 1px solid #d5d9d9;
   background-color: ${colors.offWhite["050"]};
 `;
-export const CardWrapper = styled.div`
+
+export const CardWrapper = styled.div<{ mobile?: boolean }>`
   margin: auto;
   height: 100%;
   width: 100%;
@@ -32,32 +33,55 @@ export const CardWrapper = styled.div`
   flex-direction: row;
   flex: 1;
 
-  @media (max-width: ${breakpoints.mobile}px) {
-    flex-direction: column;
-  }
+  ${({ mobile }) => {
+    if (mobile)
+      return `@media (max-width: ${breakpoints.desktop * 2}px) {
+  flex-direction: column;
+}`;
+    else
+      return `@media (max-width: ${breakpoints.mobile * 2}px) {
+  flex-direction: column;
+  }`;
+  }}
 `;
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div<{ mobile?: boolean }>`
   width: 40%;
   height: 200px;
   display: flex;
 
-  @media (max-width: ${breakpoints.mobile}px) {
+  ${({ mobile }) => {
+    if (mobile)
+      return `@media (max-width: ${breakpoints.desktop * 2}px) {
     width: 100%;
     flex: 1;
     margin-bottom: ${spacing.s}px;
-  }
+}`;
+    else
+      return `@media (max-width: ${breakpoints.mobile * 2}px) {
+    width: 100%;
+    flex: 1;
+    margin-bottom: ${spacing.s}px;
+  }`;
+  }}
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div<{ mobile?: boolean }>`
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
   justify-content: center;
 
-  @media (max-width: ${breakpoints.mobile}px) {
-    gap: ${spacing.xxxs}px;
-  }
+  ${({ mobile }) => {
+    if (mobile)
+      return `@media (max-width: ${breakpoints.desktop * 2}px) {
+  gap: ${spacing.xxxs}px;
+}`;
+    else
+      return `@media (max-width: ${breakpoints.mobile * 2}px) {
+  gap: ${spacing.xxxs}px;
+  }`;
+  }}
 `;
 
 export const RatingWrapper = styled.div`
@@ -80,6 +104,12 @@ export const OriginalPriceText = styled(SubHeading)`
   ${OriginalPriceStyle}
   margin-left: ${spacing.xxs}px;
   text-align: right;
+`;
+
+export const UpdatedDateText = styled(Caption)`
+  margin-left: ${spacing.xxs}px;
+  text-align: right;
+  color: ${colors.darkGrey[300]};
 `;
 
 export const OriginalPrice = styled(SubHeading)`

@@ -4,9 +4,10 @@ import React from "react";
 
 export type CaptionProps = {
   text: string;
+  className?: string;
 };
 
-export const Caption = ({ text }: CaptionProps) => {
+export const Caption = ({ text, className }: CaptionProps) => {
   const { fonts } = useSettingsContext() ?? {};
 
   return (
@@ -14,6 +15,7 @@ export const Caption = ({ text }: CaptionProps) => {
       color={fonts?.["caption"]?.color.hex}
       fontFamily={fonts?.["caption"]?.fontFamily}
       fontSize={fonts?.["caption"]?.fontSize}
+      className={className}
     >
       {text}
     </StyledCaption>

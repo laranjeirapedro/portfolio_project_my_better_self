@@ -27,16 +27,7 @@ export const PostFeedLayout = ({
   (!posts || currentPage != path) && getPosts();
   return (
     <Styled.Container>
-      {/* temporary background until ads gets approved by google */}
-      <Styled.AdsContainer>
-        <Adsense client="ca-pub-8361311161311634" slot="222222" />
-      </Styled.AdsContainer>
-      <Styled.MainContainer>
-        {children}
-        <Styled.ContentAdsContainer>
-          <Adsense client="ca-pub-8361311161311634" slot="222223" />
-        </Styled.ContentAdsContainer>
-      </Styled.MainContainer>
+      <Styled.MainContainer>{children}</Styled.MainContainer>
       <Styled.SideContainer>
         <SubHeading text="You May Also Like" />
         {posts?.map((post, index) => (

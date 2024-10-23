@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import {
   AmazonProductCard,
+  AmazonProductCarousel,
   BlogList,
   Card,
   LatestBlogBanner,
@@ -21,7 +22,11 @@ import { ButtonProps } from "../../atoms/button/Button.types";
 import { spacing } from "@app/styles";
 
 const ComponentWrapper = (children: React.ReactNode) => {
-  return <div style={{ margin: `0px ${spacing.m}px` }}>{children}</div>;
+  return (
+    <div style={{ margin: `0px ${spacing.none}px`, width: "100%" }}>
+      {children}
+    </div>
+  );
 };
 
 export const Block = ({ content }: any) => {
@@ -64,6 +69,9 @@ export const Block = ({ content }: any) => {
           button: ({ value }: { value: ButtonProps }) =>
             ComponentWrapper(<Button {...value} />),
           amazonProduct: ({ value }: any) => <AmazonProductCard {...value} />,
+          amazonProductsCarousel: ({ value }: any) => (
+            <AmazonProductCarousel {...value} />
+          ),
           newsletter: ({ value }: any) => <NewsletterCard {...value} />,
         },
         marks: {
@@ -93,7 +101,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    [],
+    []
   );
 
   return (

@@ -17,7 +17,7 @@ import {
   newsletter,
 } from './components'
 import {header, color, font, footer} from './layout'
-import {socialIcons, fontObject} from './objects'
+import {socialIcons, fontObject, amazonProductsCarousel} from './objects'
 
 export const schemaTypes = [
   // Layout
@@ -35,6 +35,7 @@ export const schemaTypes = [
   blogList,
   fontObject,
   socialIcons,
+  amazonProductsCarousel,
   // Sections
   page,
   blog,

@@ -14,6 +14,7 @@ export type AmazonProductCardProps = {
   _updatedAt: string;
   promoPrice?: number;
   promoDueDate?: string;
+  mobile?: boolean;
 };
 
 export const AmazonProductCard = (data: AmazonProductCardProps) => {
@@ -26,6 +27,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
     _updatedAt,
     promoDueDate,
     promoPrice,
+    mobile = false,
   } = data;
 
   const shouldSeePromo =
@@ -45,13 +47,13 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
   }, [router, siteStripeUrl, title]);
 
   return (
-    <Styled.CardContainer>
-      <Styled.CardWrapper>
-        <Styled.ImageWrapper>
+    <Styled.CardContainer mobile={mobile}>
+      <Styled.CardWrapper mobile={mobile}>
+        <Styled.ImageWrapper mobile={mobile}>
           <Image
             data={{
               image: {
-                url: image.url + "?h=200",
+                url: image.url,
                 originalFilename: title,
               },
               height: 200,
@@ -60,7 +62,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
             objectFit="contain"
           />
         </Styled.ImageWrapper>
-        <Styled.ContentWrapper>
+        <Styled.ContentWrapper mobile={mobile}>
           <SubHeading text={title} numberOfLines={2} />
           <Styled.RatingWrapper>
             {Array.from({ length: 5 }).map((_, index) => {
@@ -91,13 +93,13 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
             href={siteStripeUrl}
             target="_blank"
             onClick={onButtonClick}
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none", width: "fit-content" }}
           >
             <Styled.AmazonButton>
               <span>Visit</span>
             </Styled.AmazonButton>
           </a>
-          <Styled.OriginalPriceText
+          <Styled.UpdatedDateText
             text={`Updated At: ${new Date(_updatedAt).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric" })}`}
           />
         </Styled.ContentWrapper>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Caption, Image, Link, Paragraph, Spacer } from "../..";
-import NextImage from "next/image";
 import * as Styled from "./BlogBanner.styles";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { format } from "date-fns";
@@ -76,14 +75,26 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
         bannerHeight={BANNER_HEIGHT}
       >
         <Styled.BackgroundImageContainer>
-          <ParallaxBanner
-            style={{ aspectRatio: windowWidth / BANNER_HEIGHT, height: "100%" }}
-          >
-            <ParallaxBannerLayer
-              image={blogData.blogImage.url + "?h=500"}
-              speed={-10}
-            />
-          </ParallaxBanner>
+          {blogData?.blogImage?.url && (
+            <ParallaxBanner
+              style={{
+                aspectRatio: windowWidth / BANNER_HEIGHT,
+                height: "100%",
+              }}
+            >
+              <ParallaxBannerLayer speed={-10}>
+                <Image
+                  data={{
+                    image: {
+                      url: blogData.blogImage.url,
+                      originalFilename: blogData.blogImage.originalFilename,
+                    },
+                    height: (BANNER_HEIGHT * 3) / 2,
+                  }}
+                />
+              </ParallaxBannerLayer>
+            </ParallaxBanner>
+          )}
         </Styled.BackgroundImageContainer>
 
         <Styled.ContentWraper>
@@ -103,7 +114,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                 <Image
                   data={{
                     image: {
-                      url: blogData.author.profilePicture.url + "?h=300",
+                      url: blogData.author.profilePicture.url,
                       originalFilename:
                         blogData.author.profilePicture.originalFilename,
                     },
@@ -128,7 +139,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      ),
+                      )
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>

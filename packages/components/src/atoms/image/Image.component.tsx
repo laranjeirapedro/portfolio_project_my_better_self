@@ -2,8 +2,6 @@ import React, { useMemo } from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-const LOADER_QUALITY = 25;
-
 export const Image = ({
   data = { width: 200, height: 200, image: { url: "", originalFilename: "" } },
   objectFit = "cover",
