@@ -58,7 +58,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!siteData) return null;
 
   return (
-    <AuthGuard authSwitch={siteData.header.authSwitch}>
+    <AuthGuard siteSettings={siteData}>
       <Head>
         {Boolean(siteData.header.favicon.asset.url) && (
           <>
