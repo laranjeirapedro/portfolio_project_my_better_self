@@ -10,7 +10,6 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { ContentWrapper } from "../components";
 import AuthGuard from "../components/authGuard/AuthGuard.component";
 import { useAuth } from "../hooks/useAuth";
 import { ParallaxProvider } from "react-scroll-parallax";
@@ -100,9 +99,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <ParallaxProvider>
           <SettingsProvider data={siteData.settings}>
             <Header {...siteData.header} isAuth={isAuthenticated} />
-            <ContentWrapper>
               <Component {...pageProps} {...siteData} />
-            </ContentWrapper>
             <Footer {...(siteData.footer as FooterProps)} />
           </SettingsProvider>
         </ParallaxProvider>
