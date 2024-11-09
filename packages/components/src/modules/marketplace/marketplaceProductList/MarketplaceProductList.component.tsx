@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as Styled from "./MarketplaceProductList.styles";
 import { AmazonProductCard, AmazonProductCardProps } from "../../../molecules";
 import { useGetProducts } from "../../../../../hooks/src/cms";
+import { useMarketplaceContext } from "@app/hooks";
 
 export type MarketplaceProductListProps = {
   onSubmit: (props: any) => Promise<void>;
@@ -12,16 +13,17 @@ export type MarketplaceProductListProps = {
 
 export const MarketplaceProductList = () => {
   const [products, setProducts] = useState<AmazonProductCardProps[] | null>();
+  const { currentCategory } = useMarketplaceContext();
 
   useEffect(() => {
     const getProducts = async () => {
-      await useGetProducts().then((res) => {
+      await useGetProducts(currentCategory?.slug.current).then((res) => {
         res && setProducts(res);
       });
     };
-
-    !products && getProducts();
-  }, [products]);
+  
+    currentCategory && getProducts();
+  }, [currentCategory]);
 
   return (
     <Styled.ProductList>
