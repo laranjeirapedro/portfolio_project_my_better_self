@@ -41,7 +41,6 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
   const router = useRouter();
 
   const onButtonClick = useCallback(() => {
-    window.open(siteStripeUrl);
     amazonProductClickedAnalytics({
       origin: router.asPath,
       path: siteStripeUrl,
