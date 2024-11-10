@@ -5,7 +5,7 @@ import Head from "next/head";
 
 import { useGetPagePaths, useGetPages } from "@app/hooks";
 import { Block } from "@app/components";
-import { ContentWrapper } from "../components";
+import { ContentWrapper } from "@components";
 
 type PageProps = {
   data: {

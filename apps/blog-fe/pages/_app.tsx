@@ -1,4 +1,4 @@
-import "../src/styles/global.css";
+import "@src/styles/global.css";
 
 import { Footer, FooterProps, Header } from "@app/components";
 import {
@@ -10,8 +10,8 @@ import {
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import AuthGuard from "../components/authGuard/AuthGuard.component";
-import { useAuth } from "../hooks/useAuth";
+import AuthGuard from "@components/authGuard/AuthGuard.component";
+import { useAuth } from "@hooks/useAuth";
 import { ParallaxProvider } from "react-scroll-parallax";
 import ReactGA from "react-ga4";
 import { useRouter } from "next/router";

@@ -10,7 +10,7 @@ import {
   NewsletterCard,
   PostFeedLayout,
 } from "@app/components";
-import { ContentWrapper } from "../../components";
+import { ContentWrapper } from "@components";
 
 type BlogProps = {
   data: {

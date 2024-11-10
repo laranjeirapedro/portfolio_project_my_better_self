@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import { ContentWrapper } from "../../components";
+import { ContentWrapper } from "@components";
 import {
   MarketplaceFilterSidebar,
   MarketplaceNavbar,
