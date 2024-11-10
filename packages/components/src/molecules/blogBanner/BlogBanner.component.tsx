@@ -139,7 +139,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                             {iconsMap[icon.icon.name]?.({ size: fontSize.m })}
                           </Link>
                         </Styled.IconWrapper>
-                      )
+                      ),
                   )}
                 </Styled.SocialIconsWrapper>
               </Styled.Row>

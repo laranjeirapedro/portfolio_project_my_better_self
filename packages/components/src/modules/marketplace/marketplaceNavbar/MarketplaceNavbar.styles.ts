@@ -15,6 +15,10 @@ export const NavbarContainer = styled.div`
 export const NavbarLink = styled.div`
   padding: ${spacing.xxs}px;
   cursor: pointer;
+  border-left: 1px solid ${colors.offWhite["050"]};
+  &:first-child {
+    border-left: none;
+  }
   &:hover {
     background-color: ${colors.primary[300]};
   }

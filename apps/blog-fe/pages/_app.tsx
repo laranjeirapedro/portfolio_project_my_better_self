@@ -58,7 +58,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!siteData) return null;
 
   return (
-    <AuthGuard siteSettings={siteData}>
+    <AuthGuard
+      authSwitch={siteData.header.authSwitch}
+      marketplaceSwitch={siteData.header.marketplaceSwitch}
+    >
       <Head>
         {Boolean(siteData.header.favicon.asset.url) && (
           <>
@@ -99,7 +102,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <ParallaxProvider>
           <SettingsProvider data={siteData.settings}>
             <Header {...siteData.header} isAuth={isAuthenticated} />
-              <Component {...pageProps} {...siteData} />
+            <Component {...pageProps} {...siteData} />
             <Footer {...(siteData.footer as FooterProps)} />
           </SettingsProvider>
         </ParallaxProvider>

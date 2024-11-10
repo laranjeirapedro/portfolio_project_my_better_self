@@ -6,19 +6,15 @@ const guarderRoutes = ["/account/dashboard"];
 
 const AuthGuard = ({
   children,
-  siteSettings,
+  authSwitch,
+  marketplaceSwitch,
 }: {
   children: React.ReactNode;
-  siteSettings: {
-    header: {
-      authSwitch: boolean;
-      marketplaceSwitch: boolean;
-    }
-  };
+  authSwitch: boolean;
+  marketplaceSwitch: boolean;
 }) => {
   const { isAuthenticated, loading, isEmailVerified } = useAuth();
   const router = useRouter();
-  const { authSwitch, marketplaceSwitch } = siteSettings.header;
 
   const isRouteGuarded = (route: string): boolean => {
     return guarderRoutes.includes(route);

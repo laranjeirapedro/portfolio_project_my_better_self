@@ -49,7 +49,7 @@ export const amazonProduct = defineType({
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: {type: 'productCategory'}
+      to: {type: 'productCategory'},
     }),
   ],
 })

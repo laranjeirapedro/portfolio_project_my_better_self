@@ -9,7 +9,6 @@ export const useGetProductCategories = async () => {
     title,
     slug,
     shortDescription,
-    icon,
     _createdAt,
   } | order(_createdAt desc)`);
 

@@ -82,7 +82,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
             <Styled.PriceSup text={"$"} />
             <SubHeading text={`${Math.floor(currentPrice)}`} />
             <Styled.PriceSup
-              text={`${(currentPrice * 100 % 100).toFixed(0).padStart(2, '0')}`}
+              text={`${((currentPrice * 100) % 100).toFixed(0).padStart(2, "0")}`}
             />
             {shouldSeePromo && (
               <>

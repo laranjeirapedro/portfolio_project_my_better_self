@@ -24,10 +24,5 @@ export const productCategory = defineType({
       title: 'Description',
       type: 'string',
     }),
-    defineField({
-      name: 'icon',
-      title: 'Icon',
-      type: 'iconPicker',
-    }),
   ],
 })

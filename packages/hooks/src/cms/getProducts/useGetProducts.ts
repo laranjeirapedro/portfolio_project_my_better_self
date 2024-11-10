@@ -23,7 +23,6 @@ export const useGetProducts = async (categorySlug?: string) => {
         title,
         slug,
         description,
-        icon,
       }
     }
   } | order(_createdAt desc)`);

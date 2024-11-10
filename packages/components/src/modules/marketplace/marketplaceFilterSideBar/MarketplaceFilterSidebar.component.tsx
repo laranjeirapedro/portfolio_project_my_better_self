@@ -9,10 +9,5 @@ export type MarketplaceFilterSidebarProps = {
 };
 
 export const MarketplaceFilterSidebar = () => {
-  
-
-  return (
-    <Styled.SideBarContainer>
-    </Styled.SideBarContainer>
-  );
+  return <Styled.SideBarContainer></Styled.SideBarContainer>;
 };

@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { Category } from "@app/types";
 
-type MarketplaceData = { 
-    currentCategory?: Category,
-    setCurrentCategory: (category: Category) => void
+type MarketplaceData = {
+  currentCategory?: Category;
+  setCurrentCategory: (category: Category) => void;
 };
 
 type MarketplaceProviderProps = {
@@ -11,18 +11,18 @@ type MarketplaceProviderProps = {
 };
 
 const MarketplaceContext = createContext<MarketplaceData>({
-    setCurrentCategory: (category: Category) => {},
+  setCurrentCategory: (category: Category) => {},
 });
 
-export const MarketplaceProvider = ({
-  children,
-}: MarketplaceProviderProps) => {
-    const [currentCategory, setCurrentCategory] = useState<Category>();
+export const MarketplaceProvider = ({ children }: MarketplaceProviderProps) => {
+  const [currentCategory, setCurrentCategory] = useState<Category>();
   return (
-    <MarketplaceContext.Provider value={{ 
+    <MarketplaceContext.Provider
+      value={{
         currentCategory,
-        setCurrentCategory
-     }}>
+        setCurrentCategory,
+      }}
+    >
       {children}
     </MarketplaceContext.Provider>
   );
