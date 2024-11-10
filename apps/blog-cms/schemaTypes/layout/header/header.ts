@@ -66,7 +66,13 @@ export const header = defineType({
     defineField({
       name: 'authSwitch',
       title: 'Auth Switch',
-      description: 'Turns auth in and off',
+      description: 'Turns auth on and off',
+      type: 'boolean',
+    }),
+    defineField({
+      name: 'marketplaceSwitch',
+      title: 'Marketplace Switch',
+      description: 'Turns marketplace on and off',
       type: 'boolean',
     }),
     defineField({

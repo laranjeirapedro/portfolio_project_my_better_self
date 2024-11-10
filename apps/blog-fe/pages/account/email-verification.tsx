@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "firebase/auth";
-import { auth } from "../../utils/firebaseConfig";
+import { auth } from "@utils/firebaseConfig";
 import { sendEmailVerification, User } from "firebase/auth";
 import { Button, Heading, Paragraph, Spacer } from "@app/components";
 import { spacing } from "@app/styles";
 import styled from "@emotion/styled";
-import { ContentWrapper } from "../../components";
+import { ContentWrapper } from "@components";
 
 const EmailVerification: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);

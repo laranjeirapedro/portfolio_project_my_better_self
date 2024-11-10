@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "@hooks/useAuth";
 
 const guarderRoutes = ["/account/dashboard"];
 
 const AuthGuard = ({
   children,
   authSwitch,
+  marketplaceSwitch,
 }: {
   children: React.ReactNode;
-  authSwitch?: boolean;
+  authSwitch: boolean;
+  marketplaceSwitch: boolean;
 }) => {
   const { isAuthenticated, loading, isEmailVerified } = useAuth();
   const router = useRouter();
@@ -19,8 +21,11 @@ const AuthGuard = ({
   };
 
   const currentRoute = router.pathname;
-
   useEffect(() => {
+    if (currentRoute.includes("/marketplace") && marketplaceSwitch === false) {
+      router.push("/");
+    }
+
     if (currentRoute.includes("/account/") && authSwitch === false) {
       router.push("/");
     }

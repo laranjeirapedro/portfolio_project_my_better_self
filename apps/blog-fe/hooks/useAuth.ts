@@ -1,7 +1,7 @@
 // hooks/useAuth.ts
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth"; // Assuming you are using Firebase
-import { auth } from "../utils/firebaseConfig";
+import { auth } from "@utils/firebaseConfig";
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -3,6 +3,7 @@ import * as Styled from "./AmazonProductCard.styles";
 import { Image, SubHeading } from "../..";
 import { Star } from "./Star";
 import { amazonProductClickedAnalytics } from "@app/hooks";
+import { Category } from "@app/types";
 import { useRouter } from "next/router";
 
 export type AmazonProductCardProps = {
@@ -15,6 +16,7 @@ export type AmazonProductCardProps = {
   promoPrice?: number;
   promoDueDate?: string;
   mobile?: boolean;
+  category?: Category;
 };
 
 export const AmazonProductCard = (data: AmazonProductCardProps) => {
@@ -28,6 +30,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
     promoDueDate,
     promoPrice,
     mobile = false,
+    category,
   } = data;
 
   const shouldSeePromo =
@@ -38,7 +41,6 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
   const router = useRouter();
 
   const onButtonClick = useCallback(() => {
-    window.open(siteStripeUrl);
     amazonProductClickedAnalytics({
       origin: router.asPath,
       path: siteStripeUrl,
@@ -80,7 +82,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
             <Styled.PriceSup text={"$"} />
             <SubHeading text={`${Math.floor(currentPrice)}`} />
             <Styled.PriceSup
-              text={`${(currentPrice % Math.floor(currentPrice)).toFixed(2).substring(2, 4)}`}
+              text={`${((currentPrice * 100) % 100).toFixed(0).padStart(2, "0")}`}
             />
             {shouldSeePromo && (
               <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Heading, Paragraph, Spacer } from "@app/components";
-import { logout } from "../../utils/firebaseConfig";
-import { ContentWrapper } from "../../components";
+import { logout } from "@utils/firebaseConfig";
+import { ContentWrapper } from "@components";
 import { colors, spacing } from "@app/styles";
 import styled from "@emotion/styled";
 

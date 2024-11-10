@@ -15,6 +15,7 @@ import {
   blogList,
   amazonProduct,
   newsletter,
+  productCategory,
 } from './components'
 import {header, color, font, footer} from './layout'
 import {socialIcons, fontObject, amazonProductsCarousel} from './objects'
@@ -36,6 +37,7 @@ export const schemaTypes = [
   fontObject,
   socialIcons,
   amazonProductsCarousel,
+  productCategory,
   // Sections
   page,
   blog,

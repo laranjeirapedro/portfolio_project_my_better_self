@@ -1,14 +1,14 @@
 import { Button, Heading, Paragraph, TextInput } from "@app/components";
-import { ContentWrapper } from "../../components";
+import { ContentWrapper } from "@components";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { auth } from "../../utils/firebaseConfig";
+import { auth } from "@utils/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
 import styled from "@emotion/styled";
-import { Spacer } from "../../../../packages/components/src/atoms/spacer/spacer.component";
+import { Spacer } from "@app/components";
 import { spacing } from "@app/styles";
 import { useCallback } from "react";
 

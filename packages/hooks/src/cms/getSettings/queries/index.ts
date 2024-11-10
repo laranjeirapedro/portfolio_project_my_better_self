@@ -20,6 +20,7 @@ export const queryHeader = `
     authenticatedLinks,
     unauthenticatedLinks,
     authSwitch,
+    marketplaceSwitch,
       }[0]
 `;
 
