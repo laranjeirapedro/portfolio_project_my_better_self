@@ -20,10 +20,16 @@ import {
 } from "../../atoms";
 import { ButtonProps } from "../../atoms/button/Button.types";
 import { spacing } from "@app/styles";
+import React from "react";
 
 const ComponentWrapper = (children: React.ReactNode) => {
   return (
-    <div style={{ margin: `0px ${spacing.none}px`, width: "100%" }}>
+    <div
+      style={{
+        margin: `0px ${spacing.s}px`,
+        width: `calc(100% - ${spacing.s * 2}px)`,
+      }}
+    >
       {children}
     </div>
   );
@@ -101,7 +107,7 @@ export const Block = ({ content }: any) => {
           },
         },
       }) as unknown as PortableTextReactComponents,
-    [],
+    []
   );
 
   return (
