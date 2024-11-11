@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+@keyframes slideAnimation {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+* {
+  @apply font-sans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-slate-700;
+}
+
+p,
+span,
+a,
+button {
+  @apply text-slate-600;
+}
+
+.primary-button {
+  @apply bg-yellow-400 hover:bg-yellow-300 text-indigo-900  hover:text-indigo-700 py-2 px-4 rounded-md uppercase font-semibold text-center cursor-pointer;
+}
+
+.looper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.looper__innerList {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  gap: 0px;
+}
+
+.looper__listInstance {
+  height: 100%;
+  display: flex;
+  width: max-content;
+  margin-left: -24px;
+  margin-right: -24px;
+
+  animation: slideAnimation linear infinite;
+}
+
+.footer-row {
+  @apply p-3 flex flex-row md:flex-col xl:flex-row basis-1/2;
+}
+
+.footer-col {
+  @apply flex flex-col basis-1/2 mb-4 xl:mb-0;
+}
+
+.footer-list li {
+}
