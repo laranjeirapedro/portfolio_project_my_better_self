@@ -41,21 +41,21 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row flex-1">
             <div className="footer-row">
               <div className="footer-col">
-                <h3 className="text-md text-indigo-500 font-medium mb-1">
+                <h3 className="text-left text-md text-indigo-500 font-medium mb-1">
                   Solutions
                 </h3>
                 <ul className="footer-list">
                   <li>
                     <Link
-                      to="/"
+                      to="/services/web-development"
                       className="text-slate-400 hover:text-slate-300"
                     >
-                      Marketing
+                      Web Development
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/services/analytics"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Analytics
@@ -63,7 +63,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/services/automation"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Automation
@@ -71,7 +71,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/services/commerce"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Commerce
@@ -79,41 +79,25 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/services/mobile-apps"
                       className="text-slate-400 hover:text-slate-300"
                     >
-                      Insights
+                      Mobile Apps
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="footer-col">
-                <h3 className="text-md text-indigo-500 font-medium mb-1">
+                <h3 className="text-left text-md text-indigo-500 font-medium mb-1">
                   Support
                 </h3>
                 <ul className="footer-list">
                   <li>
                     <Link
-                      to="/"
+                      to="/contact"
                       className="text-slate-400 hover:text-slate-300"
                     >
-                      Submit ticket
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="text-slate-400 hover:text-slate-300"
-                    >
-                      Documentation
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="text-slate-400 hover:text-slate-300"
-                    >
-                      Guides
+                      Contact Us
                     </Link>
                   </li>
                 </ul>
@@ -121,13 +105,13 @@ const Footer = () => {
             </div>
             <div className="footer-row">
               <div className="footer-col">
-                <h3 className="text-md text-indigo-500 font-medium mb-1">
+                <h3 className="text-left text-md text-indigo-500 font-medium mb-1">
                   Company
                 </h3>
                 <ul className="footer-list">
                   <li>
                     <Link
-                      to="/"
+                      to="/about"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       About
@@ -135,7 +119,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/blog"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Blog
@@ -143,30 +127,22 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/careers"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Jobs
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="text-slate-400 hover:text-slate-300"
-                    >
-                      Press
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div className="footer-col">
-                <h3 className="text-md text-indigo-500 font-medium mb-1">
+                <h3 className="text-left text-md text-indigo-500 font-medium mb-1">
                   Legal
                 </h3>
                 <ul className="footer-list">
                   <li>
                     <Link
-                      to="/"
+                      to="/terms-of-service"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Terms of service
@@ -174,18 +150,10 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/"
+                      to="/privacy-policy"
                       className="text-slate-400 hover:text-slate-300"
                     >
                       Privacy policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/"
-                      className="text-slate-400 hover:text-slate-300"
-                    >
-                      License
                     </Link>
                   </li>
                 </ul>

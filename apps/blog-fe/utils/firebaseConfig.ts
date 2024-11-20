@@ -45,7 +45,6 @@ microsoftProvider.addScope("User.Read");
 export const logout = async () => {
   try {
     await auth.signOut();
-    console.log("User logged out successfully");
   } catch (error) {
     console.error("Error logging out:", error);
   }

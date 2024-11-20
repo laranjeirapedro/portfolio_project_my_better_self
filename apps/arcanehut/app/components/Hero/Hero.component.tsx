@@ -1,65 +1,74 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@remix-run/react";
-
-function InfiniteLooper({
-  speed,
-  direction,
-  children,
-}: {
-  speed: number;
-  direction: "right" | "left";
-  children: React.ReactNode;
-}) {
-  const [looperInstances, setLooperInstances] = useState(1);
-  const outerRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-
-  const setupInstances = useCallback(() => {
-    if (!innerRef?.current || !outerRef?.current) return;
-
-    const { width } = innerRef.current.getBoundingClientRect();
-
-    const { width: parentWidth } = outerRef.current.getBoundingClientRect();
-
-    const instanceWidth = width / innerRef.current.children.length;
-
-    if (width < parentWidth + instanceWidth) {
-      setLooperInstances(looperInstances + Math.ceil(parentWidth / width));
-    }
-  }, [looperInstances]);
-
-  useEffect(() => {
-    setupInstances();
-  }, [setupInstances]);
-
-  return (
-    <div className="looper" ref={outerRef}>
-      <div className="looper__innerList" ref={innerRef}>
-        {[...Array(looperInstances)]?.map((_, ind) => (
-          <div
-            key={ind}
-            className="looper__listInstance"
-            style={{
-              animationDuration: `${speed}s`,
-              animationDirection: direction === "right" ? "reverse" : "normal",
-            }}
-          >
-            {children}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import Slider, { Settings } from "react-slick";
 
 export default function Hero() {
+  const slider = useRef();
+
+  const carouselSettings: Settings = useMemo(
+    () => ({
+      infinite: true,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 0,
+      cssEase: "linear",
+      useCSS: true,
+      adaptiveHeight: true,
+      speed: 200000,
+    }),
+    []
+  );
+
+  const [isClientReady, setClientStatus] = useState(false);
+
+  useEffect(() => {
+    !isClientReady && setClientStatus(true);
+  }, [isClientReady]);
+
+  useEffect(() => {
+    let resizeTimeout:
+      | ((callback: () => void, ms?: number | undefined) => number)
+      | undefined;
+
+    window.addEventListener("resize", () => {
+      !!resizeTimeout && clearTimeout(resizeTimeout as never);
+      setClientStatus(false);
+      resizeTimeout = setTimeout(() => {
+        setClientStatus(true);
+      }, 100) as never;
+    });
+  }, []);
+
   return (
     <div className="flex flex-col w-full select-none">
       <div className="bg-indigo-900 w-full relative min-h-96 flex">
         <div className="absolute w-full h-full overflow-hidden  opacity-50 bottom-0">
-          <InfiniteLooper speed={80} direction="left">
-            <img src="/assets/4272431.webp" style={{ height: "100%" }} alt="" />
-          </InfiniteLooper>
+          {isClientReady && (
+            <Slider
+              {...carouselSettings}
+              className="relative w-full h-full bg-blue-200 test"
+              ref={slider as never}
+            >
+              <div>
+                <img
+                  className="h-full w-full object-cover object-center"
+                  src="/assets/4272431.webp"
+                  style={{ height: "100%" }}
+                  alt="arcanehut-bg"
+                />
+              </div>
+              <div>
+                <img
+                  className="h-full w-full object-cover object-center"
+                  src="/assets/4272431.webp"
+                  style={{ height: "100%" }}
+                  alt="arcanehut-bg"
+                />
+              </div>
+            </Slider>
+          )}
         </div>
 
         <div className="flex flex-col md:flex-row-reverse max-w-6xl m-auto z-10">

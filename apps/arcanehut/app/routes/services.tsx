@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
 
 export default function Services() {
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex flex-col min-h-screen p-4 max-w-5xl m-auto">
       <h1>Services</h1>
     </div>
   );
