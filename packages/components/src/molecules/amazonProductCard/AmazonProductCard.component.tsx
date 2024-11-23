@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import * as Styled from "./AmazonProductCard.styles";
-import { Image, SubHeading } from "../..";
-import { Star } from "./Star";
+import { Image, SubHeading, Rating } from "../..";
 import { amazonProductClickedAnalytics } from "@app/hooks";
 import { Category } from "@app/types";
 import { useRouter } from "next/router";
@@ -66,18 +65,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
         </Styled.ImageWrapper>
         <Styled.ContentWrapper mobile={mobile}>
           <SubHeading text={title} numberOfLines={2} />
-          <Styled.RatingWrapper>
-            {Array.from({ length: 5 }).map((_, index) => {
-              const clip =
-                rating > index + 1 ? 10 : Math.ceil((rating % index) * 10);
-
-              return (
-                <Styled.RatingIcon key={`rating-start-${index}`}>
-                  <Star clipValue={clip} />
-                </Styled.RatingIcon>
-              );
-            })}
-          </Styled.RatingWrapper>
+          <Rating rating={rating}/>
           <Styled.PriceWrapper>
             <Styled.PriceSup text={"$"} />
             <SubHeading text={`${Math.floor(currentPrice)}`} />

@@ -5,3 +5,4 @@ export * from "./typography";
 export * from "./textInput";
 export * from "./list";
 export * from "./listItem";
+export * from "./rating";
