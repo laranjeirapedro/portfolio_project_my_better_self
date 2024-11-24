@@ -1,10 +1,10 @@
-import React, { useCallback } from "react";
-import * as Styled from "./AmazonProductCard.styles";
-import { Image, SubHeading } from "../..";
-import { Star } from "./Star";
-import { amazonProductClickedAnalytics } from "@app/hooks";
-import { Category } from "@app/types";
+import { amazonProductClickedAnalytics, trackEvent } from "@app/hooks";
+import { Category, EVENT_NAMES, ProductEvent } from "@app/types";
 import { useRouter } from "next/router";
+import React, { useCallback } from "react";
+import { Image, SubHeading } from "../..";
+import * as Styled from "./AmazonProductCard.styles";
+import { Star } from "./Star";
 
 export type AmazonProductCardProps = {
   title: string;
@@ -41,6 +41,15 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
   const router = useRouter();
 
   const onButtonClick = useCallback(() => {
+    trackEvent<ProductEvent>({
+      eventName:EVENT_NAMES.PRODUCT_CLICKED,
+      eventProperties:{
+        screenPath: router.asPath,
+        path: siteStripeUrl,
+        title,
+      }
+    });
+
     amazonProductClickedAnalytics({
       origin: router.asPath,
       path: siteStripeUrl,

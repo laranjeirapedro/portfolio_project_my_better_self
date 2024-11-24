@@ -13,6 +13,7 @@
   "type": "module",
   "devDependencies": {
     "@app/eslint-config": "*",
+    "@app/hooks": "*",
     "@app/styles": "*",
     "@app/types": "*",
     "@app/typescript-config": "*",
