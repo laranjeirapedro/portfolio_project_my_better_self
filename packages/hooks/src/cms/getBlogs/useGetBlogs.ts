@@ -1,6 +1,6 @@
 import { client } from "@app/hooks";
-import { image } from "./queries";
 import { amazonProduct, newsletterRef } from "../getPages/queries";
+import { image } from "./queries";
 
 /*
  * name: useGetBlogs
@@ -8,14 +8,18 @@ import { amazonProduct, newsletterRef } from "../getPages/queries";
  * param: slug - Optional string for the blog id. If passed it will exclude this specific record from the end result list.
  */
 export const useGetBlogs = async (slug?: string) => {
+  const today = new Date().toISOString().split("T")[0];
+
   const queryCondition = slug
-    ? `_type == "blog" && slug.current!="${slug}"`
-    : `_type == "blog"`;
+    ? `_type == "blog" && slug.current!="${slug}" && (defined(postDate) && postDate <= "${today}" || !defined(postDate))`
+    : `_type == "blog" && (defined(postDate) && postDate <= "${today}" || !defined(postDate))`;
+
   const page = await client.fetch(`*[${queryCondition}]{
       title,
       slug,
       shortDescription,
       _createdAt,
+      "postDate": coalesce(postDate, _createdAt),
       blogImage{
               ...asset {
                   _type == 'reference' => @->{
@@ -56,7 +60,7 @@ export const useGetBlogs = async (slug?: string) => {
       ${amazonProduct},
       ${newsletterRef},
       }
-  } | order(_createdAt desc)`);
+  } | order(postDate desc)`);
 
   return page;
 };

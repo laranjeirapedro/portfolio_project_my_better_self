@@ -1,6 +1,6 @@
 import { client } from "@app/hooks";
-import { image } from "./queries";
 import { amazonProduct, newsletterRef } from "../getPages/queries";
+import { image } from "./queries";
 
 export const useGetBlog = async (slug: string) => {
   const page =
@@ -9,6 +9,7 @@ export const useGetBlog = async (slug: string) => {
     slug,
     shortDescription,
     _createdAt,
+    postDate,
     blogImage{
             ...asset {
                 _type == 'reference' => @->{

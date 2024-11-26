@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { linkClickedAnalytics } from "@app/hooks";
+import { colors, fontSize, spacing } from "@app/styles";
+import { format } from "date-fns";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { IconType } from "react-icons";
+import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Caption, Image, Link, Paragraph, Spacer } from "../..";
-import * as Styled from "./BlogBanner.styles";
-import { BlogProps } from "../../../../types/src/models/blog";
-import { format } from "date-fns";
-import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
-import { useRouter } from "next/navigation";
-import { IconType } from "react-icons";
-import { colors, fontSize, spacing } from "@app/styles";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
-import { linkClickedAnalytics } from "@app/hooks";
+import { Caption, Image, Link, Paragraph, Spacer } from "../..";
+import { BlogProps } from "../../../../types/src/models/blog";
+import * as Styled from "./BlogBanner.styles";
 
 type BlogBannerProps = {
   blogData?: BlogProps;
@@ -144,7 +144,7 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                 </Styled.SocialIconsWrapper>
               </Styled.Row>
               <Caption
-                text={format(blogData._createdAt, "do 'de' MMMM yyyy")}
+                text={format(blogData.postDate ?? blogData._createdAt, "do, MMMM yyyy")}
               />
             </div>
           </Styled.Row>
