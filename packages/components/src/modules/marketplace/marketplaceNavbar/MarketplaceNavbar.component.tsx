@@ -29,7 +29,14 @@ export const MarketplaceNavbar = () => {
           }}
           isCurrent={currentCategory == category}
         >
-          <Paragraph text={category.title} color={currentCategory == category ? colors.primary["500"] : colors.offWhite["900"]} />
+          <Paragraph
+            text={category.title}
+            color={
+              currentCategory == category
+                ? colors.primary["500"]
+                : colors.offWhite["900"]
+            }
+          />
         </Styled.NavbarLink>
       ))}
     </Styled.NavbarContainer>

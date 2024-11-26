@@ -12,9 +12,10 @@ export const NavbarContainer = styled.div`
   overflow: hidden;
 `;
 
-export const NavbarLink = styled.div<{isCurrent: boolean}>`
+export const NavbarLink = styled.div<{ isCurrent: boolean }>`
   padding: ${spacing.xxs}px;
-  background-color: ${({isCurrent}) => isCurrent ? colors.offWhite["900"] : colors.primary[500]};
+  background-color: ${({ isCurrent }) =>
+    isCurrent ? colors.offWhite["900"] : colors.primary[500]};
   cursor: pointer;
   border-left: 1px solid ${colors.offWhite["050"]};
   &:first-child {

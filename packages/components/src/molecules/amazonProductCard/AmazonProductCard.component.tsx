@@ -46,7 +46,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
         screenPath: router.asPath,
         path: siteStripeUrl,
         title,
-      }
+      },
     });
 
     amazonProductClickedAnalytics({

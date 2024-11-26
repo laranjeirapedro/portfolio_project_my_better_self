@@ -38,7 +38,7 @@ export const MarketplaceProvider = ({ children }: MarketplaceProviderProps) => {
         priceFilter,
         setPriceFilter,
         discountFilter,
-        setDiscountFilter
+        setDiscountFilter,
       }}
     >
       {children}

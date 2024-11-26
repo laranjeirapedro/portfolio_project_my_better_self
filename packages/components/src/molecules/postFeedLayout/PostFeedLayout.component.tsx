@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import * as Styled from "./PostFeedLayout.styles";
 import { PostCard } from "../postCard";
 import { useCallback, useEffect, useState } from "react";
@@ -22,20 +22,22 @@ export const PostFeedLayout = ({
       setCurrentPage(path);
       res && setPosts(res);
     });
-  },[setCurrentPage,setPosts ,path]);
+  }, [setCurrentPage, setPosts, path]);
 
-  useEffect(()=>{
+  useEffect(() => {
     (!posts || currentPage != path) && getPosts();
-  },[path]);
+  }, [path]);
 
   return (
     <Styled.Container>
       <Styled.MainContainer>{children}</Styled.MainContainer>
       <Styled.SideContainer>
         <SubHeading text={"You May Also Like"} />
-        {posts?.slice(0,6).map((post, index) => (
-          <PostCard key={index} data={post} isSideContent={true} />
-        ))}
+        {posts
+          ?.slice(0, 6)
+          .map((post, index) => (
+            <PostCard key={index} data={post} isSideContent={true} />
+          ))}
         {!posts &&
           Array(3)
             .fill(0)

@@ -117,7 +117,7 @@ export default function StackCarousel() {
         },
       ],
     }),
-    []
+    [],
   );
 
   const [isClientReady, setClientStatus] = useState(false);
@@ -162,7 +162,7 @@ export default function StackCarousel() {
                   {title}
                 </span>
               </div>
-            )
+            ),
           )}
         </Slider>
       ) : (

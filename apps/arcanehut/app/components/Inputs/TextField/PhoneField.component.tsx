@@ -60,7 +60,7 @@ const PhoneField = ({
 
       valueHandler(e);
     },
-    [country, valueHandler]
+    [country, valueHandler],
   );
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const PhoneField = ({
 
   const shouldShowError = useMemo(
     () => error && (isDirty || _isDirty),
-    [_isDirty, error, isDirty]
+    [_isDirty, error, isDirty],
   );
 
   return (

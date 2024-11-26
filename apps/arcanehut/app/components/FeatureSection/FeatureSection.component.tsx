@@ -28,7 +28,7 @@ const FeatureSection = () => {
         icon: FaUsers,
       },
     ],
-    []
+    [],
   );
 
   return (

@@ -144,7 +144,10 @@ export const BlogBanner = ({ blogData, isClickable }: BlogBannerProps) => {
                 </Styled.SocialIconsWrapper>
               </Styled.Row>
               <Caption
-                text={format(blogData.postDate ?? blogData._createdAt, "do, MMMM yyyy")}
+                text={format(
+                  blogData.postDate ?? blogData._createdAt,
+                  "do, MMMM yyyy",
+                )}
               />
             </div>
           </Styled.Row>

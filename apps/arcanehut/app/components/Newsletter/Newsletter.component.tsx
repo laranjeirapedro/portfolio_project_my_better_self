@@ -20,7 +20,7 @@ export default function Newsletter() {
       }
       return isValid;
     },
-    [email, isDirty]
+    [email, isDirty],
   );
 
   const onEmailChanged = useCallback(
@@ -28,7 +28,7 @@ export default function Newsletter() {
       isDirty && emailValidation(value);
       setEmail(value);
     },
-    [isDirty, emailValidation]
+    [isDirty, emailValidation],
   );
 
   const onButtonPressed = useCallback(() => {

@@ -30,7 +30,7 @@ export const FilterOptionContainer = styled.div`
 `;
 
 export const RadioButton = styled.input`
-appearance: none;
+  appearance: none;
   width: 20px;
   height: 20px;
   border: 2px solid ${colors.darkGrey["300"]};

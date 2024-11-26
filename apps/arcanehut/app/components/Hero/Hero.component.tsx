@@ -18,7 +18,7 @@ export default function Hero() {
       adaptiveHeight: true,
       speed: 200000,
     }),
-    []
+    [],
   );
 
   const [isClientReady, setClientStatus] = useState(false);
