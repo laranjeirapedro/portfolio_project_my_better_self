@@ -30,14 +30,37 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-slate-700;
+  @apply text-slate-700 my-3;
+}
+
+p {
+  @apply text-base text-left;
+}
+
+h1 {
+  @apply text-2xl text-center leading-loose font-bold;
+}
+h2 {
+  @apply text-xl leading-loose text-center font-semibold;
+}
+h3 {
+  @apply text-lg font-semibold text-center;
 }
 
 p,
 span,
 a,
-button {
-  @apply text-slate-600;
+button,
+li {
+  @apply text-slate-600 my-1;
+}
+
+.un-list {
+  @apply list-disc py-2;
+}
+
+.un-list > li {
+  @apply ml-5;
 }
 
 .primary-button {
@@ -77,4 +100,12 @@ button {
 }
 
 .footer-list li {
+}
+
+.test * {
+  @apply relative h-full bg-slate-50;
+}
+
+.slick-list {
+  height: 100% !important;
 }

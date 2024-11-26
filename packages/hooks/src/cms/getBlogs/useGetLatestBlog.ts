@@ -2,11 +2,15 @@ import { client } from "@app/hooks";
 import { image } from "./queries";
 
 export const useGetLatestBlog = async () => {
-  const page = await client.fetch(`*[_type == "blog"]{
+  const today = new Date().toISOString().split("T")[0];
+
+  const page =
+    await client.fetch(`*[_type == "blog"  && (postDate <= "${today}" || !defined(postDate))]{
     title,
     slug,
     shortDescription,
     _createdAt,
+    "postDate": coalesce(postDate, _createdAt),
     blogImage{
             ...asset {
                 _type == 'reference' => @->{
@@ -45,7 +49,7 @@ export const useGetLatestBlog = async () => {
         ${image}
       }
     }
-  } | order(_createdAt desc)[0]`);
+  } | order(postDate desc)[0]`);
 
   return page;
 };

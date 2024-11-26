@@ -1,7 +1,7 @@
-import {defineField, defineType} from 'sanity'
+import {InlineIcon, PanelLeftIcon, PanelRightIcon} from '@sanity/icons'
 import {MdWeb as icon} from 'react-icons/md'
-import {PanelLeftIcon, PanelRightIcon, InlineIcon} from '@sanity/icons'
-import {LeftTextAlign, RightTextAlign, CenterTextAlign} from '../../../schema'
+import {defineField, defineType} from 'sanity'
+import {CenterTextAlign, LeftTextAlign, RightTextAlign} from '../../../schema'
 
 export const blog = defineType({
   name: 'blog',
@@ -32,6 +32,16 @@ export const blog = defineType({
       options: {
         source: 'title',
         maxLength: 100,
+      },
+    }),
+    defineField({
+      name: 'postDate',
+      title: 'Post Date',
+      type: 'datetime',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        timeFormat: 'HH:mm:ss',
+        timeStep: 1,
       },
     }),
     defineField({

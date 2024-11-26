@@ -1,9 +1,9 @@
-import React, { useCallback } from "react";
-import * as Styled from "./AmazonProductCard.styles";
-import { Image, SubHeading, Rating } from "../..";
-import { amazonProductClickedAnalytics } from "@app/hooks";
-import { Category } from "@app/types";
+import { amazonProductClickedAnalytics, trackEvent } from "@app/hooks";
+import { Category, EVENT_NAMES, ProductEvent } from "@app/types";
 import { useRouter } from "next/router";
+import React, { useCallback } from "react";
+import { Image, Rating, SubHeading } from "../..";
+import * as Styled from "./AmazonProductCard.styles";
 
 export type AmazonProductCardProps = {
   title: string;
@@ -40,6 +40,15 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
   const router = useRouter();
 
   const onButtonClick = useCallback(() => {
+    trackEvent<ProductEvent>({
+      eventName: EVENT_NAMES.PRODUCT_CLICKED,
+      eventProperties: {
+        screenPath: router.asPath,
+        path: siteStripeUrl,
+        title,
+      }
+    });
+
     amazonProductClickedAnalytics({
       origin: router.asPath,
       path: siteStripeUrl,
@@ -65,7 +74,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
         </Styled.ImageWrapper>
         <Styled.ContentWrapper mobile={mobile}>
           <SubHeading text={title} numberOfLines={2} />
-          <Rating rating={rating}/>
+          <Rating rating={rating} />
           <Styled.PriceWrapper>
             <Styled.PriceSup text={"$"} />
             <SubHeading text={`${Math.floor(currentPrice)}`} />

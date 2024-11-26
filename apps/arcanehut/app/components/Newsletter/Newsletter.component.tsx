@@ -2,18 +2,17 @@ import { useCallback, useEffect, useState } from "react";
 import Lottie from "react-lottie";
 
 import BackgroundAnimation from "./newsletter-bg.json";
-
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+import { validateEmail } from "arcanehut/app/utils";
 
 export default function Newsletter() {
   const [hasError, setErrorStatus] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [email, setEmail] = useState("");
 
-  const validateEmail = useCallback(
+  const emailValidation = useCallback(
     (value?: string) => {
       !isDirty && setIsDirty(true);
-      const isValid = EMAIL_REGEX.test(value ?? email);
+      const isValid = validateEmail(value ?? email);
       if (isValid) {
         setErrorStatus(false);
       } else {
@@ -26,19 +25,19 @@ export default function Newsletter() {
 
   const onEmailChanged = useCallback(
     (value: string) => {
-      isDirty && validateEmail(value);
+      isDirty && emailValidation(value);
       setEmail(value);
     },
-    [isDirty, validateEmail]
+    [isDirty, emailValidation]
   );
 
   const onButtonPressed = useCallback(() => {
-    if (validateEmail()) {
+    if (emailValidation()) {
       alert("Submit form");
     } else {
       alert("Invalid Email");
     }
-  }, [validateEmail]);
+  }, [emailValidation]);
 
   const defaultOptions = {
     loop: true,
@@ -76,7 +75,7 @@ export default function Newsletter() {
           type="text"
           className={`max-w-full bg-opacity-60 focus:bg-opacity-60 w-96 md:w-full h-12 rounded-md border-collapse ${hasError && "placeholder-rose-500"} focus:placeholder-slate-400 border ${hasError ? "border-red-400" : "border-slate-400"} px-3 bg-slate-600 ${hasError ? "text-red-400" : "text-slate-300"} focus:text-slate-200 outline-none focus:bg-slate-500 focus:border-slate-300`}
           placeholder="example@email.com"
-          onBlur={() => validateEmail()}
+          onBlur={() => emailValidation()}
           onChange={(e) => onEmailChanged(e.target.value)}
           value={email}
         />
