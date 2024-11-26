@@ -52,6 +52,7 @@ export const MenuIconWrapper = styled.div({
 
 export const MenuIconBar = styled.div<{ menuOpened: boolean }>(
   ({ menuOpened }) => ({
+    userSelect: "none",
     width: "100%",
     height: 4,
     borderRadius: 4,
@@ -60,16 +61,16 @@ export const MenuIconBar = styled.div<{ menuOpened: boolean }>(
     transform: "rotate(0deg) translateY(0%)",
     transition: `${ANIMATION_DURATION}s`,
 
-    "&:nth-child(1)": {
+    "&#burger-menu-row-1": {
       ...(menuOpened && {
         transform: `rotate(45deg) translateY(${ICON_HEIGHT / 2 + 1}px)`,
         width: ICON_DIAGONAL,
       }),
     },
-    "&:nth-child(2)": {
+    "&#burger-menu-row-2": {
       ...(menuOpened && { opacity: 0 }),
     },
-    "&:nth-child(3)": {
+    "&#burger-menu-row-3": {
       ...(menuOpened && {
         transform: `rotate(-45deg) translateY(-${ICON_HEIGHT / 2 + 1}px)`,
         width: ICON_DIAGONAL,

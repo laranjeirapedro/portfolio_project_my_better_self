@@ -1,10 +1,9 @@
-import React from 'react'
-import * as Styled from "./PostFeedLayout.styles";
-import { PostCard } from "../postCard";
-import { useCallback, useEffect, useState } from "react";
 import { useGetBlogs } from "@app/hooks";
+import React, { useCallback, useEffect, useState } from 'react';
 import { BlogProps } from "../../../../types/src/models/blog";
 import { SubHeading } from "../../atoms";
+import { PostCard } from "../postCard";
+import * as Styled from "./PostFeedLayout.styles";
 
 export const PostFeedLayout = ({
   children,
@@ -34,12 +33,12 @@ export const PostFeedLayout = ({
       <Styled.SideContainer>
         <SubHeading text={"You May Also Like"} />
         {posts?.slice(0,6).map((post, index) => (
-          <PostCard key={index} data={post} isSideContent={true} />
+          <PostCard key={`${post.title}-${index}`} data={post} isSideContent={true} />
         ))}
         {!posts &&
           Array(3)
             .fill(0)
-            .map(() => <PostCard isSideContent={true} />)}
+            .map((_, index) => <PostCard isSideContent={true} key={`skeleton-${index}`} />)}
       </Styled.SideContainer>
     </Styled.Container>
   );

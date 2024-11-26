@@ -1,11 +1,11 @@
+import { linkClickedAnalytics } from "@app/hooks";
 import { fontSize, spacing } from "@app/styles";
+import { useRouter } from "next/navigation";
+import React, { useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Paragraph, Image, Spacer } from "../../atoms";
+import { Image, Paragraph, Spacer } from "../../atoms";
 import * as Styled from "./PostCard.styles";
-import { useRouter } from "next/navigation";
-import { linkClickedAnalytics } from "@app/hooks";
-import { useMemo } from "react";
 
 export type PostCardProps = {
   data?: {
