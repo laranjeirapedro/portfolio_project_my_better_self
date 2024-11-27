@@ -72,7 +72,7 @@ export default function Contact() {
       message: { field: message, handler: setMessage },
       country: { field: country, handler: setCountry },
     }),
-    [company, country, email, firstName, lastName, message, phoneNumber]
+    [company, country, email, firstName, lastName, message, phoneNumber],
   );
 
   const textValidation = useCallback(
@@ -103,7 +103,7 @@ export default function Contact() {
       }));
       return true;
     },
-    [email.value, textHandlerMap]
+    [email.value, textHandlerMap],
   );
 
   const phoneValidation = useCallback(() => {

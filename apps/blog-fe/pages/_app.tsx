@@ -1,32 +1,32 @@
-import { Footer, FooterProps, Header } from '@app/components';
+import { Footer, FooterProps, Header } from "@app/components";
 import {
   SanityClientProvider,
   SettingsProvider,
   useGetSettings,
-} from '@app/hooks';
-import AuthGuard from '@components/authGuard/AuthGuard.component';
-import { useAuth } from '@hooks/useAuth';
-import '@src/styles/global.css';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
-import ReactGA from 'react-ga4';
-import { ParallaxProvider } from 'react-scroll-parallax';
+} from "@app/hooks";
+import AuthGuard from "@components/authGuard/AuthGuard.component";
+import { useAuth } from "@hooks/useAuth";
+import "@src/styles/global.css";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
+import { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
+import { ParallaxProvider } from "react-scroll-parallax";
 
-const GA_TRACKING_ID = process.env.NEXT_PUBLIC_ANALYTICS_GA4 ?? '';
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_ANALYTICS_GA4 ?? "";
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   // checks that we are client-side
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '', {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "", {
     api_host:
-      process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
-    person_profiles: 'always', // or 'identified_only' to create profiles for auth users as well
+      process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+    person_profiles: "always", // or 'identified_only' to create profiles for auth users as well
     autocapture: false,
     loaded: (posthog) => {
-      if (process.env.NODE_ENV === 'development') posthog.debug(); // debug mode in development
+      if (process.env.NODE_ENV === "development") posthog.debug(); // debug mode in development
     },
   });
 }
@@ -57,15 +57,15 @@ const App = ({ Component, pageProps }: AppProps) => {
     ReactGA.initialize(GA_TRACKING_ID);
 
     const handleRouteChange = (url: string) => {
-      ReactGA.send({ hitType: 'pageview', page: url });
-      posthog.capture('$pageview')
+      ReactGA.send({ hitType: "pageview", page: url });
+      posthog.capture("$pageview");
     };
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 

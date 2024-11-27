@@ -5,12 +5,6 @@ import { useGetProductCategories, useMarketplaceContext } from "@app/hooks";
 import { Paragraph } from "@app/components";
 import { colors } from "@app/styles";
 
-export type MarketplaceNavbarProps = {
-  categories: Category[] | undefined;
-  currentCategory: Category | undefined;
-  setCurrentCategory: (category: Category) => void;
-};
-
 export const MarketplaceNavbar = () => {
   const [categories, setCategories] = useState<Category[] | undefined>();
   const { currentCategory, setCurrentCategory } = useMarketplaceContext();
@@ -33,8 +27,16 @@ export const MarketplaceNavbar = () => {
           onClick={() => {
             setCurrentCategory(category);
           }}
+          isCurrent={currentCategory == category}
         >
-          <Paragraph text={category.title} color={colors.offWhite["050"]} />
+          <Paragraph
+            text={category.title}
+            color={
+              currentCategory == category
+                ? colors.primary["500"]
+                : colors.offWhite["900"]
+            }
+          />
         </Styled.NavbarLink>
       ))}
     </Styled.NavbarContainer>

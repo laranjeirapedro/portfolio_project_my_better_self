@@ -2,9 +2,8 @@ import { amazonProductClickedAnalytics, trackEvent } from "@app/hooks";
 import { Category, EVENT_NAMES, ProductEvent } from "@app/types";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
-import { Image, SubHeading } from "../..";
+import { Image, Rating, SubHeading } from "../..";
 import * as Styled from "./AmazonProductCard.styles";
-import { Star } from "./Star";
 
 export type AmazonProductCardProps = {
   title: string;
@@ -42,12 +41,12 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
 
   const onButtonClick = useCallback(() => {
     trackEvent<ProductEvent>({
-      eventName:EVENT_NAMES.PRODUCT_CLICKED,
-      eventProperties:{
+      eventName: EVENT_NAMES.PRODUCT_CLICKED,
+      eventProperties: {
         screenPath: router.asPath,
         path: siteStripeUrl,
         title,
-      }
+      },
     });
 
     amazonProductClickedAnalytics({
@@ -75,18 +74,7 @@ export const AmazonProductCard = (data: AmazonProductCardProps) => {
         </Styled.ImageWrapper>
         <Styled.ContentWrapper mobile={mobile}>
           <SubHeading text={title} numberOfLines={2} />
-          <Styled.RatingWrapper>
-            {Array.from({ length: 5 }).map((_, index) => {
-              const clip =
-                rating > index + 1 ? 10 : Math.ceil((rating % index) * 10);
-
-              return (
-                <Styled.RatingIcon key={`rating-start-${index}`}>
-                  <Star clipValue={clip} />
-                </Styled.RatingIcon>
-              );
-            })}
-          </Styled.RatingWrapper>
+          <Rating rating={rating} />
           <Styled.PriceWrapper>
             <Styled.PriceSup text={"$"} />
             <SubHeading text={`${Math.floor(currentPrice)}`} />

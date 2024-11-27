@@ -32,7 +32,7 @@ export default function Header() {
         href: "/contact",
       },
     ],
-    []
+    [],
   );
 
   const toggleMenu = (value: boolean) => {
