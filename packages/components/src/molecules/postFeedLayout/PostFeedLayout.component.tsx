@@ -1,5 +1,5 @@
 import { useGetBlogs } from "@app/hooks";
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
 import { BlogProps } from "../../../../types/src/models/blog";
 import { SubHeading } from "../../atoms";
 import { PostCard } from "../postCard";
@@ -35,12 +35,18 @@ export const PostFeedLayout = ({
         {posts
           ?.slice(0, 6)
           .map((post, index) => (
-            <PostCard key={`${post.title}-${index}`} data={post} isSideContent={true} />
+            <PostCard
+              key={`${post.title}-${index}`}
+              data={post}
+              isSideContent={true}
+            />
           ))}
         {!posts &&
           Array(3)
             .fill(0)
-            .map((_, index) => <PostCard isSideContent={true} key={`skeleton-${index}`} />)}
+            .map((_, index) => (
+              <PostCard isSideContent={true} key={`skeleton-${index}`} />
+            ))}
       </Styled.SideContainer>
     </Styled.Container>
   );

@@ -95,7 +95,7 @@ export const HeaderTypeB = (data: HeaderProps) => {
                 <Styled.MenuIconBar
                   menuOpened={menuOpened}
                   key={`burger-menu-row-${i}`}
-                  id={`burger-menu-row-${i+1}`}
+                  id={`burger-menu-row-${i + 1}`}
                 />
               ))}
             </Styled.MenuIconWrapper>

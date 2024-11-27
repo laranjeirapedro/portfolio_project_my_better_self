@@ -18,15 +18,15 @@ export const Image = ({
   objectFit?: "cover" | "contain";
 }) => {
   const { url, originalFilename } = useMemo(() => data.image ?? {}, [data]);
-  
+
   const isValidUrl = useMemo(() => {
     try {
-      return Boolean(new URL(url as string))
+      return Boolean(new URL(url as string));
     } catch {
-      return false
+      return false;
     }
-  },[url])
-  
+  }, [url]);
+
   if (!url || !isValidUrl) return null;
   return (
     <ImageWraper style={{ height: data.height }} $width={data.width}>
