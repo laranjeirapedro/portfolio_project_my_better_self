@@ -1,6 +1,6 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import React, { useMemo } from "react";
 import { ImageWraper, NextImage } from "./Image.styles";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export const Image = ({
   data = { width: 200, height: 200, image: { url: "", originalFilename: "" } },
@@ -18,8 +18,16 @@ export const Image = ({
   objectFit?: "cover" | "contain";
 }) => {
   const { url, originalFilename } = useMemo(() => data.image ?? {}, [data]);
-  if (!url) return null;
-
+  
+  const isValidUrl = useMemo(() => {
+    try {
+      return Boolean(new URL(url as string))
+    } catch {
+      return false
+    }
+  },[url])
+  
+  if (!url || !isValidUrl) return null;
   return (
     <ImageWraper style={{ height: data.height }} $width={data.width}>
       <NextImage
@@ -33,7 +41,8 @@ export const Image = ({
         })}
         objectFit={objectFit}
         quality={75}
-        placeholder={`data:image/${url}`}
+        placeholder="blur"
+        blurDataURL={`${url}?q=10`}
       />
     </ImageWraper>
   );

@@ -1,9 +1,9 @@
+import { linkClickedAnalytics } from "@app/hooks";
+import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Image, Spacer } from "../../../atoms";
 import { HeaderProps } from "../Header.types";
 import * as Styled from "./HeaderTypeB.styles";
-import { Image, Spacer } from "../../../atoms";
-import { useRouter } from "next/router";
-import { linkClickedAnalytics } from "@app/hooks";
 
 export const HeaderTypeB = (data: HeaderProps) => {
   const {
@@ -95,6 +95,7 @@ export const HeaderTypeB = (data: HeaderProps) => {
                 <Styled.MenuIconBar
                   menuOpened={menuOpened}
                   key={`burger-menu-row-${i}`}
+                  id={`burger-menu-row-${i+1}`}
                 />
               ))}
             </Styled.MenuIconWrapper>
