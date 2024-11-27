@@ -2,10 +2,10 @@ import { client } from "@app/hooks";
 import { image } from "./queries";
 
 export const useGetLatestBlog = async () => {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString();
 
   const page =
-    await client.fetch(`*[_type == "blog"  && (postDate <= "${today}" || !defined(postDate))]{
+    await client.fetch(`*[_type == "blog"  && (dateTime(postDate) <= dateTime("${today}") || !defined(postDate))]{
     title,
     slug,
     shortDescription,

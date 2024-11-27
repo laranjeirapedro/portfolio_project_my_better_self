@@ -8,11 +8,11 @@ import { image } from "./queries";
  * param: slug - Optional string for the blog id. If passed it will exclude this specific record from the end result list.
  */
 export const useGetBlogs = async (slug?: string) => {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString();
 
   const queryCondition = slug
-    ? `_type == "blog" && slug.current!="${slug}" && (defined(postDate) && postDate <= "${today}" || !defined(postDate))`
-    : `_type == "blog" && (defined(postDate) && postDate <= "${today}" || !defined(postDate))`;
+    ? `_type == "blog" && slug.current!="${slug}" && (defined(postDate) && dateTime(postDate) <= dateTime("${today}") || !defined(postDate))`
+    : `_type == "blog" && (defined(postDate) && dateTime(postDate) <= dateTime("${today}") || !defined(postDate))`;
 
   const page = await client.fetch(`*[${queryCondition}]{
       title,
