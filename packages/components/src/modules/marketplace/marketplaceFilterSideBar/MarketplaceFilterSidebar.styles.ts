@@ -1,7 +1,7 @@
-import { colors, spacing, fontSize } from "@app/styles";
+import { breakpoints, colors, fontSize, spacing } from "@app/styles";
 import styled from "@emotion/styled";
 
-export const SideBarContainer = styled.div`
+export const SideBarContainer = styled.div<{ isMobileFiltersOpen: boolean }>`
   padding: 20px;
   background-color: ${colors.offWhite["050"]};
   max-width: 20%;
@@ -9,6 +9,38 @@ export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.xxs}px;
+  border-left: 1px solid ${colors.darkGrey[200]};
+  border-right: 1px solid ${colors.darkGrey[200]};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    border-left: none;
+    border-right: none;
+    padding: 16px;
+    max-width: 100%;
+    box-shadow: 0px 2px 5px ${colors.darkGrey[100]};
+    max-height: ${({ isMobileFiltersOpen }) =>
+      isMobileFiltersOpen ? "1000px" : "22px"};
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease; /* Smooth transition for max-height and padding */
+  }
+`;
+
+export const MobileFilterButton = styled.div`
+  display: none;
+  flex-direction: row;
+  gap: ${spacing.xxxs}px;
+  cursor: pointer;
+  color: ${colors.primary[600]};
+  font-family: roboto;
+  line-height: ${spacing.l}px;
+  min-height: ${spacing.l}px;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    display: flex;
+  }
 `;
 
 export const FilterContainer = styled.div`

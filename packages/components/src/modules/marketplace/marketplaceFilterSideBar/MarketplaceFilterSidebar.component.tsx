@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import * as Styled from "./MarketplaceFilterSidebar.styles";
-import { useMarketplaceContext } from "@app/hooks";
 import { Paragraph, Rating } from "@app/components";
+import { useMarketplaceContext } from "@app/hooks";
+import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import * as Styled from "./MarketplaceFilterSidebar.styles";
 
 export const MarketplaceFilterSidebar = () => {
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const {
     priceFilter,
     discountFilter,
@@ -38,7 +40,14 @@ export const MarketplaceFilterSidebar = () => {
   ];
 
   return (
-    <Styled.SideBarContainer>
+    <Styled.SideBarContainer isMobileFiltersOpen={isMobileFiltersOpen}>
+      <Styled.MobileFilterButton
+        onClick={() => {
+          setIsMobileFiltersOpen((v) => !v);
+        }}
+      >
+        Filters{isMobileFiltersOpen ? <FaChevronUp /> : <FaChevronDown />}
+      </Styled.MobileFilterButton>
       <Styled.FilterContainer>
         <Paragraph text="Customer Reviews" style={{ fontWeight: 600 }} />
         {reviewOptions.map((option) => (
