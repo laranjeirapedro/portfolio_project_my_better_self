@@ -1,13 +1,25 @@
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import { ContentWrapper } from "@components";
 import {
   MarketplaceFilterSidebar,
   MarketplaceNavbar,
   MarketplaceProductList,
 } from "@app/components";
-import { useGetProductCategories, MarketplaceProvider } from "@app/hooks";
-import { Category } from "@app/types";
+import { MarketplaceProvider } from "@app/hooks";
+import { breakpoints } from "@app/styles";
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
+
+const ContentWrapperStyled = styled.div`
+  max-width: 1438px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 194px);
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    flex-direction: column;
+  }
+`;
 
 const MarketplaceHome = () => {
   const router = useRouter();
@@ -15,10 +27,10 @@ const MarketplaceHome = () => {
   return (
     <MarketplaceProvider>
       <MarketplaceNavbar />
-      <ContentWrapper width={1438} flexDirection="row">
+      <ContentWrapperStyled>
         <MarketplaceFilterSidebar />
         <MarketplaceProductList />
-      </ContentWrapper>
+      </ContentWrapperStyled>
     </MarketplaceProvider>
   );
 };

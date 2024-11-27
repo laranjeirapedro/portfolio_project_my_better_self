@@ -1,7 +1,9 @@
+import { useGetProducts, useMarketplaceContext } from "@app/hooks";
 import React, { useEffect, useMemo, useState } from "react";
-import * as Styled from "./MarketplaceProductList.styles";
+import { Image, SubHeading } from "../../../atoms";
 import { AmazonProductCard, AmazonProductCardProps } from "../../../molecules";
-import { useMarketplaceContext, useGetProducts } from "@app/hooks";
+import NoProductsImage from "./assets/no-products-4.png";
+import * as Styled from "./MarketplaceProductList.styles";
 
 const applyFilters = (
   products: AmazonProductCardProps[],
@@ -55,9 +57,29 @@ export const MarketplaceProductList = () => {
 
   return (
     <Styled.ProductList>
-      {filteredProducts?.map((product, i) => (
-        <AmazonProductCard key={`${i}-product`} {...product} />
-      ))}
+      {filteredProducts?.length > 0 &&
+        filteredProducts.map((product, i) => (
+          <AmazonProductCard key={`${i}-product`} {...product} />
+        ))}
+      {(!filteredProducts || filteredProducts?.length == 0) && (
+        <Styled.NoProductsContainer>
+          <Image
+            data={{
+              image: {
+                url: NoProductsImage,
+                originalFilename: "No Products Image",
+              },
+              height: 250,
+              width: 250,
+            }}
+            objectFit="contain"
+          />
+          <SubHeading
+            text="Sorry, we did not find any products related to your search."
+            textAlign="center"
+          />
+        </Styled.NoProductsContainer>
+      )}
     </Styled.ProductList>
   );
 };

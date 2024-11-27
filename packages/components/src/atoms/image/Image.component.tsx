@@ -21,6 +21,7 @@ export const Image = ({
 
   const isValidUrl = useMemo(() => {
     try {
+      if (typeof url != "string") return true;
       return Boolean(new URL(url as string));
     } catch {
       return false;

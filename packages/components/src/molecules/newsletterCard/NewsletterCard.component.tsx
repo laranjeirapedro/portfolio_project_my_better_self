@@ -1,10 +1,10 @@
+import { buttonClickedAnalytics } from "@app/hooks";
 import React, { useCallback, useState } from "react";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-import * as Styled from "./NewsletterCard.styles";
-import { Image, Spacer, Button } from "../../atoms";
-import NewsletterImage from "./assets/newsletter.jpg";
+import { Button, Image, Spacer } from "../../atoms";
 import { ButtonTypes } from "../../atoms/button/Button.types";
-import { buttonClickedAnalytics } from "@app/hooks";
+import NewsletterImage from "./assets/newsletter.jpg";
+import * as Styled from "./NewsletterCard.styles";
 
 export type NewsletterCardProps = {
   title?: string;
