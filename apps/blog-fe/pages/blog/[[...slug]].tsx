@@ -1,15 +1,14 @@
 import { GetStaticPaths, GetStaticPropsContext } from "next";
-import React from "react";
 
 import Head from "next/head";
 
-import { useGetBlog, useGetPostPaths } from "@app/hooks";
 import {
   Block,
   BlogBanner,
   NewsletterCard,
   PostFeedLayout,
 } from "@app/components";
+import { useGetBlog, useGetPostPaths } from "@app/hooks";
 import { ContentWrapper } from "@components";
 
 type BlogProps = {

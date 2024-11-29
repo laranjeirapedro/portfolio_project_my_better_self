@@ -1,24 +1,24 @@
-import {blog, page} from './sections'
 import {
-  link,
-  heading,
-  subHeading,
-  caption,
-  paragraph,
-  card,
+  amazonProduct,
+  author,
+  blogFeedLayout,
+  blogList,
   button,
+  caption,
+  card,
+  heading,
   images,
   latestBlogBanner,
-  postFeedLayout,
-  blogFeedLayout,
-  author,
-  blogList,
-  amazonProduct,
+  link,
   newsletter,
+  paragraph,
+  postFeedLayout,
   productCategory,
+  subHeading,
 } from './components'
-import {header, color, font, footer} from './layout'
-import {socialIcons, fontObject, amazonProductsCarousel} from './objects'
+import {color, font, footer, header} from './layout'
+import {amazonProductsCarousel, expediaWidget, fontObject, socialIcons} from './objects'
+import {blog, page} from './sections'
 
 export const schemaTypes = [
   // Layout
@@ -37,6 +37,7 @@ export const schemaTypes = [
   fontObject,
   socialIcons,
   amazonProductsCarousel,
+  expediaWidget,
   productCategory,
   // Sections
   page,

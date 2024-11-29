@@ -69,6 +69,19 @@ export const useGetBlog = async (slug: string) => {
           }           
       },
     },
+      _type == 'expediaWidget' => {
+        ...,
+        className,
+        widget,
+        program,
+        lobs,
+        network,
+        camref,
+        layout,
+        imageType,
+        message,
+        link,
+      },
       content[]{
         ...,
         ${image}

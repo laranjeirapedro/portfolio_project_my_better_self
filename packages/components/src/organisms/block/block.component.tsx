@@ -1,13 +1,6 @@
-import { useMemo } from "react";
+import { spacing } from "@app/styles";
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import {
-  AmazonProductCard,
-  AmazonProductCarousel,
-  BlogList,
-  Card,
-  LatestBlogBanner,
-  NewsletterCard,
-} from "../../molecules";
+import React, { useMemo } from "react";
 import {
   Button,
   Heading,
@@ -19,8 +12,15 @@ import {
   SubHeading,
 } from "../../atoms";
 import { ButtonProps } from "../../atoms/button/Button.types";
-import { spacing } from "@app/styles";
-import React from "react";
+import {
+  AmazonProductCard,
+  AmazonProductCarousel,
+  BlogList,
+  Card,
+  ExpediaWidget,
+  LatestBlogBanner,
+  NewsletterCard,
+} from "../../molecules";
 
 const ComponentWrapper = (children: React.ReactNode) => {
   return (
@@ -75,6 +75,9 @@ export const Block = ({ content }: any) => {
           button: ({ value }: { value: ButtonProps }) =>
             ComponentWrapper(<Button {...value} />),
           amazonProduct: ({ value }: any) => <AmazonProductCard {...value} />,
+          expediaWidget: ({ value }: any) => {
+            return <ExpediaWidget widgetData={value} />;
+          },
           amazonProductsCarousel: ({ value }: any) => (
             <AmazonProductCarousel {...value} />
           ),

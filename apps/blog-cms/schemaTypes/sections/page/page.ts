@@ -1,7 +1,7 @@
-import {defineField, defineType} from 'sanity'
+import {InlineIcon, PanelLeftIcon, PanelRightIcon} from '@sanity/icons'
 import {MdWeb as icon} from 'react-icons/md'
-import {PanelLeftIcon, PanelRightIcon, InlineIcon} from '@sanity/icons'
-import {LeftTextAlign, RightTextAlign, CenterTextAlign} from '../../../schema'
+import {defineField, defineType} from 'sanity'
+import {CenterTextAlign, LeftTextAlign, RightTextAlign} from '../../../schema'
 
 export const page = defineType({
   name: 'page',
