@@ -6,6 +6,7 @@ import {
   button,
   caption,
   card,
+  divider,
   heading,
   images,
   latestBlogBanner,
@@ -51,4 +52,5 @@ export const schemaTypes = [
   heading,
   paragraph,
   subHeading,
+  divider,
 ]

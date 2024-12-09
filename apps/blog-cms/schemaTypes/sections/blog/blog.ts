@@ -110,6 +110,7 @@ export const blog = defineType({
         {type: 'amazonProductsCarousel'},
         {name: 'newsletterRef', type: 'reference', to: {type: 'newsletter'}},
         {type: 'expediaWidget'},
+        {type: 'divider'},
       ],
     }),
   ],

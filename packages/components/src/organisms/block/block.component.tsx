@@ -3,6 +3,7 @@ import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import React, { useMemo } from "react";
 import {
   Button,
+  Divider,
   Heading,
   Image,
   Link,
@@ -82,6 +83,7 @@ export const Block = ({ content }: any) => {
             <AmazonProductCarousel {...value} />
           ),
           newsletter: ({ value }: any) => <NewsletterCard {...value} />,
+          divider: ({ value }: any) => <Divider {...value} />,
         },
         marks: {
           link: ({
