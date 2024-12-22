@@ -2,11 +2,10 @@ import {
   MarketplaceFilterSidebar,
   MarketplaceNavbar,
   MarketplaceProductList,
-} from "@app/components";
-import { MarketplaceProvider } from "@app/hooks";
-import { breakpoints } from "@app/styles";
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
+} from '@app/components';
+import { MarketplaceProvider } from '@app/hooks';
+import { breakpoints } from '@app/styles';
+import styled from '@emotion/styled';
 
 const ContentWrapperStyled = styled.div`
   max-width: 1438px;
@@ -22,8 +21,6 @@ const ContentWrapperStyled = styled.div`
 `;
 
 const MarketplaceHome = () => {
-  const router = useRouter();
-
   return (
     <MarketplaceProvider>
       <MarketplaceNavbar />

@@ -1,29 +1,35 @@
-import { useEffect, useState } from "react";
-import { useSanityClientContext } from "../../context";
-import { queryColors, queryHeader, queryFonts, queryFooter } from "./queries";
+import { useQuery } from '@tanstack/react-query';
+import { useSanityClientContext } from '../../context';
+import { queryColors, queryHeader, queryFonts, queryFooter, queryProductKeywords } from './queries';
 
-export const useGetSettings = async () => {
+const fetchSettings = async (client: any) => {
+  if (!client) return null;
+
+  const { fonts, colors, header, footer, amazonKeywords } = await client.fetch(`{
+    ${queryHeader},
+    ${queryFonts},
+    ${queryColors},
+    ${queryFooter},
+    ${queryProductKeywords}
+  }`);
+
+  return {
+    header,
+    footer,
+    settings: {
+      fonts,
+      colors,
+    },
+    amazonKeywords,
+  };
+};
+
+export const useGetSettings = () => {
   const { client } = useSanityClientContext();
-  const [data, setData] = useState<any>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { fonts, colors, header, footer } =
-        (await client?.fetch(`{
-      ${queryHeader},
-      ${queryFonts},
-      ${queryColors},
-      ${queryFooter}
-      }
-      `)) ?? {};
-
-      setData({ header, footer, settings: { fonts, colors } });
-    };
-
-    fetchData();
-  }, [client]);
-
-  if (!data) return null;
-
-  return { ...data };
+  return useQuery({
+    queryKey: ['settings'],
+    queryFn: () => fetchSettings(client),
+    enabled: !!client,
+  });
 };

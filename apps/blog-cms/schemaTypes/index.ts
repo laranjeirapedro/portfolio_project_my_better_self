@@ -1,4 +1,5 @@
 import {
+  amazonKeyword,
   amazonProduct,
   author,
   blogFeedLayout,
@@ -22,35 +23,40 @@ import {amazonProductsCarousel, expediaWidget, fontObject, socialIcons} from './
 import {blog, page} from './sections'
 
 export const schemaTypes = [
-  // Layout
+  // Config
   font,
   color,
+  // Core components
   header,
   footer,
+  // Blog
+  latestBlogBanner,
   postFeedLayout,
   blogFeedLayout,
+  blogList,
   author,
+  // Affiliation
+  amazonProductsCarousel,
+  amazonKeyword,
   amazonProduct,
+  expediaWidget,
+  // Marketing
   newsletter,
   // Objects
-  latestBlogBanner,
-  blogList,
-  fontObject,
-  socialIcons,
-  amazonProductsCarousel,
-  expediaWidget,
   productCategory,
+  socialIcons,
+  fontObject,
   // Sections
   page,
   blog,
   // Components
-  link,
-  card,
+  subHeading,
+  paragraph,
+  caption,
+  divider,
+  heading,
   button,
   images,
-  caption,
-  heading,
-  paragraph,
-  subHeading,
-  divider,
+  card,
+  link,
 ]

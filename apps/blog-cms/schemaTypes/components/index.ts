@@ -1,4 +1,5 @@
 export * from './amazonProduct'
+export * from './amazonKeyword'
 export * from './author'
 export * from './blogFeedLayout'
 export * from './blogList'

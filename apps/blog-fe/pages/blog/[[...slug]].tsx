@@ -1,15 +1,10 @@
-import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { GetStaticPaths, GetStaticPropsContext } from 'next';
 
-import Head from "next/head";
+import Head from 'next/head';
 
-import {
-  Block,
-  BlogBanner,
-  NewsletterCard,
-  PostFeedLayout,
-} from "@app/components";
-import { useGetBlog, useGetPostPaths } from "@app/hooks";
-import { ContentWrapper } from "@components";
+import { Block, BlogBanner, NewsletterCard, PostFeedLayout } from '@app/components';
+import { useGetBlog, useGetPostPaths } from '@app/hooks';
+import { ContentWrapper } from '@components';
 
 type BlogProps = {
   data: {
@@ -31,15 +26,8 @@ const Blog = ({ data, resolvedUrl, header }: BlogProps) => {
     <div>
       <Head>
         <title>{`${header.siteName} | ${data.title}`}</title>
-        <meta
-          property="og:title"
-          content={`${header.siteName} | ${data.title}`}
-          key={data.title}
-        />
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-8361311161311634"
-        ></meta>
+        <meta property="og:title" content={`${header.siteName} | ${data.title}`} key={data.title} />
+        <meta name="google-adsense-account" content="ca-pub-8361311161311634"></meta>
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8361311161311634"
@@ -67,12 +55,12 @@ export const getStaticPaths = (async () => {
       { params: { slug: undefined } },
       ...slugs.map((slug: string) => ({ params: { slug } })),
     ],
-    fallback: "blocking", // false or "blocking"
+    fallback: 'blocking', // false or "blocking"
   };
 }) satisfies GetStaticPaths;
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const path = `${Array(params?.slug).join("/") ?? ""}`;
+  const path = `${Array(params?.slug).join('/') ?? ''}`;
 
   const data = (await useGetBlog(path)) ?? null;
 

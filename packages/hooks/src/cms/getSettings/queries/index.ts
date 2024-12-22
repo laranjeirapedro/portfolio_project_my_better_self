@@ -55,3 +55,10 @@ export const queryFooter = `
     socialIcons
     }[0]
 `;
+
+export const queryProductKeywords = `
+"amazonKeywords": *[_type == "amazonKeyword"]{
+    keyword,
+    numberOfProducts,
+    }
+`;

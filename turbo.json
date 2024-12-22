@@ -23,7 +23,10 @@
         "NEXT_PUBLIC_ANALYTICS_GA4",
         "NEXT_PUBLIC_POSTHOG_KEY",
         "NEXT_PUBLIC_POSTHOG_HOST",
-        "NODE_ENV"
+        "NODE_ENV",
+        "AMAZON_ACCESS_KEY",
+        "AMAZON_SECRET_KEY",
+        "AMAZON_PARTNER_TAG"
       ],
       "outputs": [".next/**", "!.next/cache/**"]
     },

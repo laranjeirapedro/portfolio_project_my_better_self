@@ -5,3 +5,11 @@ export type Category = {
   };
   description: string;
 };
+
+export type Product = {
+  id: string;
+  title: string;
+  price: number;
+  productUrl: string;
+  imageUrl: string;
+};
