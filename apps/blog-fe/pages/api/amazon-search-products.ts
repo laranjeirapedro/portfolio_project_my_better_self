@@ -116,7 +116,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         var error_0 = searchItemsResponse['Errors'][0];
         console.log('Error Code: ' + error_0['Code']);
         console.log('Error Message: ' + error_0['Message']);
-        res.status(500).json({ error: 'Failed to fetch items from Amazon2' });
+        res.status(500).json({ error: 'Failed to fetch items from Amazon' });
       }
     }
   };

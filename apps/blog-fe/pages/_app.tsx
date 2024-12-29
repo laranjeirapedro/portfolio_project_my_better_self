@@ -72,7 +72,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       authSwitch={siteData.header.authSwitch}
       marketplaceSwitch={siteData.header.marketplaceSwitch}
     >
-      <ProductsProvider keywords={siteData.amazonKeywords} productIDs={siteData.amazonProductIDs}>
+      <ProductsProvider keywords={siteData.amazonKeywords} productIDs={siteData.amazonProductASINs}>
         <Head>
           {Boolean(siteData.header.favicon.asset.url) && (
             <>

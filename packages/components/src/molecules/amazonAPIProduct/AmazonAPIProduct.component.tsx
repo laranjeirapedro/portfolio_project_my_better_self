@@ -6,25 +6,40 @@ import { Image, SubHeading } from '../..';
 import * as Styled from './AmazonAPIProduct.styles';
 import { useProductsContext } from '@app/hooks';
 
+type Keyword = {
+  keyword: string;
+  numberOfProducts: number;
+};
+
 export type AmazonAPIProductProps = {
-  mobile?: boolean;
-  keyword?: string;
-  ASIN?: string;
+  productName: string;
   apiType: 'keyword' | 'ASIN';
+  mobile?: boolean;
+  keywords?: Keyword[];
+  ASIN?: {
+    ASIN: string;
+    productReferenceName: string;
+  };
 };
 
 export const AmazonAPIProduct = memo((data: AmazonAPIProductProps) => {
-  const { mobile = false, keyword = '', ASIN = '' } = data;
+  const { mobile = false, keywords = [], ASIN } = data;
 
   const router = useRouter();
 
-  const { getItemByKeyword } = useProductsContext();
+  const { getItemByKeyword, getItemById, items } = useProductsContext();
 
   const [product, setProduct] = useState<Product | null>();
 
   useEffect(() => {
-    setProduct(getItemByKeyword(keyword));
-  }, [keyword]);
+    if (items.length > 0) {
+      if (ASIN && ASIN?.ASIN?.length > 0) {
+        setProduct(getItemById(ASIN.ASIN));
+      } else if (keywords && keywords[0]) {
+        setProduct(getItemByKeyword(keywords[0].keyword));
+      }
+    }
+  }, [items, keywords, ASIN]);
 
   const { title, price, imageUrl, productUrl } = product
     ? product

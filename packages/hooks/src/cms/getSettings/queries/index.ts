@@ -62,3 +62,10 @@ export const queryProductKeywords = `
     numberOfProducts,
     }
 `;
+
+export const queryProductASINs = `
+"amazonProductASINs": *[_type == "amazonProductASIN"]{
+    productReferenceName,
+    ASIN,
+    }
+`;

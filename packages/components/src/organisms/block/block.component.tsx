@@ -1,6 +1,6 @@
-import { spacing } from "@app/styles";
-import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import React, { useMemo } from "react";
+import { spacing } from '@app/styles';
+import { PortableText, PortableTextReactComponents } from '@portabletext/react';
+import React, { useMemo } from 'react';
 import {
   Button,
   Divider,
@@ -11,9 +11,10 @@ import {
   ListItem,
   Paragraph,
   SubHeading,
-} from "../../atoms";
-import { ButtonProps } from "../../atoms/button/Button.types";
+} from '../../atoms';
+import { ButtonProps } from '../../atoms/button/Button.types';
 import {
+  AmazonAPIProduct,
   AmazonProductCard,
   AmazonProductCarousel,
   BlogList,
@@ -21,7 +22,7 @@ import {
   ExpediaWidget,
   LatestBlogBanner,
   NewsletterCard,
-} from "../../molecules";
+} from '../../molecules';
 
 const ComponentWrapper = (children: React.ReactNode) => {
   return (
@@ -73,15 +74,13 @@ export const Block = ({ content }: any) => {
           card: ({ value }: any) => <Card data={value} />,
           latestBlogBanner: () => <LatestBlogBanner />,
           blogList: () => <BlogList />,
-          button: ({ value }: { value: ButtonProps }) =>
-            ComponentWrapper(<Button {...value} />),
+          button: ({ value }: { value: ButtonProps }) => ComponentWrapper(<Button {...value} />),
           amazonProduct: ({ value }: any) => <AmazonProductCard {...value} />,
+          amazonAPIProduct: ({ value }: any) => <AmazonAPIProduct {...value} />,
           expediaWidget: ({ value }: any) => {
             return <ExpediaWidget widgetData={value} />;
           },
-          amazonProductsCarousel: ({ value }: any) => (
-            <AmazonProductCarousel {...value} />
-          ),
+          amazonProductsCarousel: ({ value }: any) => <AmazonProductCarousel {...value} />,
           newsletter: ({ value }: any) => <NewsletterCard {...value} />,
           divider: ({ value }: any) => <Divider {...value} />,
         },
@@ -102,17 +101,17 @@ export const Block = ({ content }: any) => {
             );
           },
           rightTextAlign: ({ children }: { children: string[] }) => {
-            return <div style={{ textAlign: "right" }}>{children}</div>;
+            return <div style={{ textAlign: 'right' }}>{children}</div>;
           },
           leftTextAlign: ({ children }: { children: string[] }) => {
-            return <div style={{ textAlign: "left" }}>{children}</div>;
+            return <div style={{ textAlign: 'left' }}>{children}</div>;
           },
           centerTextAlign: ({ children }: { children: string[] }) => {
-            return <div style={{ textAlign: "center" }}>{children}</div>;
+            return <div style={{ textAlign: 'center' }}>{children}</div>;
           },
         },
-      }) as unknown as PortableTextReactComponents,
-    [],
+      } as unknown as PortableTextReactComponents),
+    []
   );
 
   return (

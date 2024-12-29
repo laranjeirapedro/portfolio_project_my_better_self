@@ -111,6 +111,7 @@ export const blog = defineType({
         {name: 'newsletterRef', type: 'reference', to: {type: 'newsletter'}},
         {type: 'expediaWidget'},
         {type: 'divider'},
+        {type: 'amazonAPIProduct'},
       ],
     }),
   ],

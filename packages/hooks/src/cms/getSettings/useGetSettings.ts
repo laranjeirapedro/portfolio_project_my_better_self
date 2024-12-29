@@ -1,16 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSanityClientContext } from '../../context';
-import { queryColors, queryHeader, queryFonts, queryFooter, queryProductKeywords } from './queries';
+import {
+  queryColors,
+  queryHeader,
+  queryFonts,
+  queryFooter,
+  queryProductKeywords,
+  queryProductASINs,
+} from './queries';
 
 const fetchSettings = async (client: any) => {
   if (!client) return null;
 
-  const { fonts, colors, header, footer, amazonKeywords } = await client.fetch(`{
+  const { fonts, colors, header, footer, amazonKeywords, amazonProductASINs } =
+    await client.fetch(`{
     ${queryHeader},
     ${queryFonts},
     ${queryColors},
     ${queryFooter},
-    ${queryProductKeywords}
+    ${queryProductKeywords},
+    ${queryProductASINs}
   }`);
 
   return {
@@ -21,6 +30,7 @@ const fetchSettings = async (client: any) => {
       colors,
     },
     amazonKeywords,
+    amazonProductASINs,
   };
 };
 

@@ -1,7 +1,7 @@
-import { breakpoints, colors, fontSize, spacing } from "@app/styles";
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Caption, SubHeading } from "../../atoms";
+import { breakpoints, colors, fontSize, spacing } from '@app/styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { Caption, SubHeading } from '../../atoms';
 
 const OriginalPriceStyle = css`
   font-size: ${fontSize.l * 0.6}px;
@@ -22,7 +22,7 @@ export const CardContainer = styled.div<{ mobile?: boolean }>`
   padding: ${spacing.m}px;
   box-sizing: border-box;
   border: 1px solid #d5d9d9;
-  background-color: ${colors.offWhite["050"]};
+  background-color: ${colors.offWhite['050']};
 `;
 
 export const CardWrapper = styled.div<{ mobile?: boolean }>`

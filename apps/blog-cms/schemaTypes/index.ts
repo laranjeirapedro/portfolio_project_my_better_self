@@ -1,6 +1,8 @@
 import {
   amazonKeyword,
   amazonProduct,
+  amazonAPIProduct,
+  amazonProductASIN,
   author,
   blogFeedLayout,
   blogList,
@@ -38,6 +40,7 @@ export const schemaTypes = [
   // Affiliation
   amazonProductsCarousel,
   amazonKeyword,
+  amazonProductASIN,
   amazonProduct,
   expediaWidget,
   // Marketing
@@ -59,4 +62,5 @@ export const schemaTypes = [
   images,
   card,
   link,
+  amazonAPIProduct,
 ]

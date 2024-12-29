@@ -1,5 +1,7 @@
 export * from './amazonProduct'
 export * from './amazonKeyword'
+export * from './amazonAPIProduct'
+export * from './amazonProductASIN'
 export * from './author'
 export * from './blogFeedLayout'
 export * from './blogList'

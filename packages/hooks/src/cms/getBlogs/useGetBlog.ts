@@ -1,10 +1,9 @@
-import { client } from "@app/hooks";
-import { amazonProduct, newsletterRef } from "../getPages/queries";
-import { image } from "./queries";
+import { client } from '@app/hooks';
+import { amazonProduct, newsletterRef } from '../getPages/queries';
+import { image } from './queries';
 
 export const useGetBlog = async (slug: string) => {
-  const page =
-    await client.fetch(`*[_type == "blog" && slug.current=="${slug}"]{
+  const page = await client.fetch(`*[_type == "blog" && slug.current=="${slug}"]{
     title,
     slug,
     shortDescription,
@@ -60,15 +59,15 @@ export const useGetBlog = async (slug: string) => {
           }           
       },
       _type == 'amazonProductsCarousel' =>{
-      ...,
-      "products":products[] {
         ...,
-          _type == 'reference' => @->{
-              ...,
-              ${image}
-          }           
+        "products":products[] {
+          ...,
+            _type == 'reference' => @->{
+                ...,
+                ${image}
+            }           
+        },
       },
-    },
       _type == 'expediaWidget' => {
         ...,
         className,
@@ -82,12 +81,27 @@ export const useGetBlog = async (slug: string) => {
         message,
         link,
       },
+      _type == 'amazonAPIProduct' => {
+        ...,
+        "keywords":keywords[] {
+          ...,    
+          _type == 'reference' => @->{
+            ...,
+          }     
+        },
+        ASIN {
+          ...,    
+          _type == 'reference' => @->{
+            ...,
+          } 
+        },
+      },
       content[]{
         ...,
         ${image}
-        },
-        ${amazonProduct},
-        ${newsletterRef},
+      },
+      ${amazonProduct},
+      ${newsletterRef},
     }
   }[0]`);
 
