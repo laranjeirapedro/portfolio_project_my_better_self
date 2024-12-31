@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { EG_CLASS_NAMES, EG_URL_NAMES } from "./ExpediaWidget.constants";
+import { EG_CLASS_NAMES, EG_URL_NAMES } from "@app/styles";
+import { useEffect } from "react";
 
 // Add this interface at the top of the file, before the component
 declare global {
   interface Window {
     eg: {
       widgets: any;
+      affiliate: any;
     };
   }
 }
@@ -70,10 +71,16 @@ export const ExpediaWidget = ({ widgetData }: ExpediaWidgetProps) => {
     document.body.appendChild(script);
 
     script.onload = () => {
-      if (typeof window.eg !== "undefined" && window.eg.widgets) {
-        const event = new Event("DOMContentLoaded");
-        window.dispatchEvent(event);
-      }
+      if (
+        (typeof window.eg !== "undefined" && window.eg.widgets) ||
+        window.eg.affiliate
+      )
+        try {
+          const event = new Event("DOMContentLoaded");
+          window.dispatchEvent(event);
+        } catch (error) {
+          console.error("Error initializing widget:", error);
+        }
     };
 
     script.onerror = () => console.error("Error loading script.");
