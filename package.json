@@ -1,17 +1,14 @@
 {
-  "name": "arcanehut-unified-frontend",
+  "name": "blog-project",
   "private": true,
   "scripts": {
     "build": "dotenv -- turbo build",
-    "dev": "dotenv -- turbo dev",
-    "truco:web": "dotenv -- turbo dev --filter=truco-web",
     "blog:fe": "dotenv -- turbo dev --filter=blog-fe",
     "blog:cms": "dotenv -- turbo dev --filter=blog-cms",
     "blog:cms:deploy": "dotenv -- turbo run deploy --filter=blog-cms",
     "clean": "turbo run clean && rm -rf node_modules",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "truco:mobile": "dotenv -- turbo run truco:mobile:packager --filter=truco-mobile"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "@app/eslint-config": "*",
