@@ -1,81 +1,99 @@
-# Turborepo starter
+📖 Blog Project – My Better Self
 
-This is an official starter Turborepo.
+A modern blog built with Next.js and TypeScript, structured as a monorepo using Turborepo, and connected to Sanity CMS for content management.
+The project aims to provide a platform for publishing articles about programming, technology, and industry updates.
 
-## Using this example
+🚀 Technologies Used
 
-Run the following command:
+Next.js
+ – React framework for the blog frontend
 
-```sh
-npx create-turbo@latest
-```
+React 18
+ – Main UI library
 
-## What's inside?
+TypeScript
+ – Static typing for more reliable code
 
-This Turborepo includes the following packages/apps:
+JavaScript ES6+
+ – Core language
 
-### Apps and Packages
+Sanity.io
+ – Headless CMS for content management
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@app/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@app/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@app/typescript-config`: `tsconfig.json`s used throughout the monorepo
+Turborepo
+ – Monorepo to organize frontend, CMS, and shared packages
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Prettier
+ – Code formatting
 
-### Utilities
+ESLint
+ – Code quality and best practices
 
-This Turborepo has some additional tools already setup for you:
+dotenv-cli
+ – Environment variable management
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+📂 Project Structure
+portfolio_project_my_better_self/
+├── apps/
+│   ├── blog-fe/   # Next.js frontend
+│   ├── blog-cms/  # Sanity CMS backend
+│
+├── packages/      # Shared packages (configs, types, hooks, etc.)
+│   ├── eslint-config/
+│   ├── typescript-config/
+│
+├── turbo.json     # Turborepo configuration
+├── package.json   # Dependencies and global scripts
 
-### Build
+🛠️ Main Scripts
+Command	Description
+npm run build	Builds all apps with Turborepo
+npm run blog:fe	Runs the frontend in development
+npm run blog:cms	Runs the Sanity Studio in development
+npm run blog:cms:deploy	Deploys the Sanity Studio
+npm run clean	Cleans node_modules and build artifacts
+npm run lint	Runs ESLint across packages
+npm run format	Formats code with Prettier
+🔧 Running Locally
 
-To build all apps and packages, run the following command:
+Clone the repository
 
-```
-cd my-turborepo
-pnpm build
-```
+git clone https://github.com/laranjeirapedro/portfolio_project_my_better_self.git
+cd portfolio_project_my_better_self
 
-### Develop
 
-To develop all apps and packages, run the following command:
+Install dependencies
 
-```
-cd my-turborepo
-pnpm dev
-```
+npm install
 
-### Remote Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Set up environment variables
+Create a .env file in the root with your Sanity keys and any other required variables.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+Start the frontend
 
-```
-cd my-turborepo
-npx turbo login
-```
+npm run blog:fe
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+Start the CMS
 
-```
-npx turbo link
-```
+npm run blog:cms
 
-## Useful Links
+🌍 Deployment
 
-Learn more about the power of Turborepo:
+The frontend (blog-fe) can be easily deployed on Vercel
+.
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+The CMS (blog-cms) is deployed with:
+
+npm run blog:cms:deploy
+
+📌 Future Improvements
+
+Author authentication
+
+Integrated comments
+
+Dark mode for the frontend
+
+SEO optimization for articles
